@@ -2,5 +2,4 @@
 projectfiles
 *.py*
 BUILD
-.mbed
 mbed-os
