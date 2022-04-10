@@ -23,14 +23,14 @@ int stairsCounter;
 
 int main()
 {    
+    //Initialize robot class
     myRobot = new Robot();
-    /*
-    * Initialize the Robot class
-    */
+
+    //Setup stairs counter
+    stairsCounter = 0;
     
     myRobot->driveSB(0);
     
-    stairsCounter = 0;
     while (true) {
         switch (myRobot->getProcedureCode()) {
             case WAIT_FOR_START:
