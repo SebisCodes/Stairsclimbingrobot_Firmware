@@ -2,9 +2,6 @@
 *   main.cpp - A code to control the stairsclimbing robot using the Robot.h library. 
 *   Created by Sebastian G., Winterthur, April 04, 2022 
 */
-
-#define DEBUG
-
 #include <stdio.h>
 #include "mbed.h"
 #include "PM2_Libary.h"
