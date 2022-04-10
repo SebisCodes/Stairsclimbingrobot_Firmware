@@ -39,6 +39,7 @@ class Robot {
         short getBackIRSwitch();
         short getStartSwitch();
         double getIRSensorValue();
+        
         //void playSound(std::string name); //TODO
         
     private:

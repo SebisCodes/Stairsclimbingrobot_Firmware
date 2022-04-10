@@ -18,6 +18,9 @@ enum PROCEDURES { /*TODO: Implement other enums if needed*/ WAIT_FOR_START, HOMI
 //Counter for the amount of stairs
 int stairsCounter;
 
+//Boolean to get out of process loop
+bool running = true;
+
 int main()
 {    
     //Initialize robot class
@@ -28,7 +31,7 @@ int main()
     
     myRobot->driveSB(0);
     
-    while (true) {
+    while (running) {
         switch (myRobot->getProcedureCode()) {
             case WAIT_FOR_START:
                 //TODO: Implement wait for start process
@@ -57,6 +60,7 @@ int main()
             case STOP:
                 //TODO: ...
                 //myRobot->setProcedureCode(...);
+                running = false; //Get out of while(running) loop
                 break;
             //TODO: Add more cases if needed
         }
