@@ -40,7 +40,7 @@
 
 //FastPWM M_MB(PIN_MOTOR_MAINBODY);
 //Define a new robot variable 
-Robot myRobot();
+Robot *myRobot;
 
 //To make the code beautiful, each process is described by an own enum
 enum PROCEDURES {WAIT_FOR_START, HOMING, DRIVE_FORWARD, DRIVE_BACKWARD, GO_UP, GO_DOWN, STOP};
@@ -50,6 +50,7 @@ int stairsCounter;
 
 int main()
 {    
+    myRobot = new Robot();
     /*
     * Initialize the Robot class
     */
@@ -60,6 +61,9 @@ int main()
     M_SB2.write(0.5f);
     DigitalOut en(PB_15);
     en = 1;*/
+    //myRobot->driveZ(1);
+    myRobot->driveSB(0);
+    //myRobot->driveZ(-1);
     
     stairsCounter = 0;
     while (true) {

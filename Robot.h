@@ -18,11 +18,10 @@ class Robot {
     public:
         Robot(); //TODO
         void motorStop();
-        void slowMotorStop();
         void enableMotors(bool en);
-        void driveMB(short dir); //TODO
-        void driveSB(short dir); //TODO
-        void driveZ(short dir); //TODO;
+        void driveMB(short dir);
+        void driveSB(short dir);
+        void driveZ(short dir);
         int getProcedureCode();
         void setProcedureCode(int procedureCode);
         void setError(bool errorState); 
@@ -32,14 +31,15 @@ class Robot {
         void startErrorTimeout();
         long getErrorMillis(); 
         bool isTimeoutError();
-        void playSound(std::string name); //TODO
         long getMillis(); 
         void resetTimer();
-        short getMinZSwitch(); //TODO
-        short getMaxZSwitch(); //TODO
-        short getFrontIRSwitch(); //TODO
-        short getBackIRSwitch(); //TODO
-        double getIRSensorValue(); //TODO
+        short getMinZSwitch();
+        short getMaxZSwitch();
+        short getFrontIRSwitch();
+        short getBackIRSwitch();
+        short getStartSwitch();
+        double getIRSensorValue();
+        //void playSound(std::string name); //TODO
         
     private:
 
@@ -69,6 +69,20 @@ class Robot {
         FastPWM *M_SB;
         FastPWM *M_Z;
         DigitalOut *M_EN;
+
+        /*
+        * Switch inputs
+        */
+        DigitalIn *SW_IR_BACK;
+        DigitalIn *SW_IR_FRONT;
+        DigitalIn *SW_Z_MIN;
+        DigitalIn *SW_Z_MAX;
+        DigitalIn *SW_START;
+
+        /*
+        *   Sensor inputs
+        */
+        AnalogIn *SE_IR;
 };
 
 #endif
