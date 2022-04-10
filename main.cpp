@@ -29,8 +29,6 @@ int main()
     //Setup stairs counter
     stairsCounter = 0;
     
-    myRobot->driveSB(0);
-    
     while (running) {
         switch (myRobot->getProcedureCode()) {
             case WAIT_FOR_START:
