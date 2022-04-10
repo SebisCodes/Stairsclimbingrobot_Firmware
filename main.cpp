@@ -12,38 +12,11 @@
 
 
 
-        /*
-        *   PINOUT CONFIG
-        */
-       /* const PinName PIN_SWITCH_START = PC_13;
-        const PinName PIN_SWITCH_RESET = PC_12;
-        const PinName PIN_SWITCH_Z_MIN = PA_0;
-        const PinName PIN_SWITCH_Z_MAX = PA_1;
-        const PinName PIN_SWITCH_IR_BACK = PC_7;
-        const PinName PIN_SWITCH_IR_FRONT = PA_6;
-
-        //SENSORS
-        const PinName PIN_SENSOR_DISTANCE = PC_2;
-
-        //MOTORS
-        const PinName PIN_MOTOR_MAINBODY = PB_13;
-        const PinName PIN_MOTOR_SIDEBODY = PA_9;
-        const PinName PIN_MOTOR_ZAXIS = PA_10;
-        const PinName PIN_MOTOR_ENABLE = PB_15;
-
-        //LED
-        const PinName PIN_LED_RUN = PB_2;
-        const PinName PIN_LED_ERROR = PC_8;
-
-        //BUZZER
-        const PinName PIN_BUZZER = PB_14;*/
-
-//FastPWM M_MB(PIN_MOTOR_MAINBODY);
 //Define a new robot variable 
 Robot *myRobot;
 
 //To make the code beautiful, each process is described by an own enum
-enum PROCEDURES {WAIT_FOR_START, HOMING, DRIVE_FORWARD, DRIVE_BACKWARD, GO_UP, GO_DOWN, STOP};
+enum PROCEDURES { /*TODO: Implement other enums if needed*/ WAIT_FOR_START, HOMING, DRIVE_FORWARD, DRIVE_BACKWARD, GO_UP, GO_DOWN, STOP};
 
 //Counter for the amount of stairs
 int stairsCounter;
@@ -55,33 +28,40 @@ int main()
     * Initialize the Robot class
     */
     
-    /*astPWM M_SB2(PB_13);
-    //this->M_SB() = M_SB2;
-    M_SB2.period(0.2f);
-    M_SB2.write(0.5f);
-    DigitalOut en(PB_15);
-    en = 1;*/
-    //myRobot->driveZ(1);
     myRobot->driveSB(0);
-    //myRobot->driveZ(-1);
     
     stairsCounter = 0;
     while (true) {
-        switch (1) {
+        switch (myRobot->getProcedureCode()) {
             case WAIT_FOR_START:
+                //TODO: Implement wait for start process
+                myRobot->setProcedureCode(HOMING);
                 break;
             case HOMING:
+                //TODO: Implement homing process
+                myRobot->setProcedureCode(DRIVE_FORWARD);
                 break;
             case DRIVE_FORWARD:
+                //TODO: Implement forward driving process
+                //myRobot->setProcedureCode(...);
                 break;
             case DRIVE_BACKWARD:
+                //TODO: Same as above...
+                //myRobot->setProcedureCode(...);
                 break;
             case GO_UP:
+                //TODO: ...
+                //myRobot->setProcedureCode(...);
                 break;
             case GO_DOWN:
+                //TODO: ...
+                //myRobot->setProcedureCode(...);
                 break;
             case STOP:
+                //TODO: ...
+                //myRobot->setProcedureCode(...);
                 break;
+            //TODO: Add more cases if needed
         }
     }
 }
