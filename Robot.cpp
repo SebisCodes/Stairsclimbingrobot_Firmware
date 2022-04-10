@@ -45,7 +45,7 @@ Robot::Robot() {
 
 /**
 *   Get the actual time in milliseconds since the last time reset
-*   @param return int - get the actual milliseconds since the last timer reset
+*   @return int - get the actual milliseconds since the last timer reset
 */
 long Robot::getMillis() {
     return std::chrono::duration_cast<std::chrono::milliseconds>(this->taskTimer.elapsed_time()).count();
@@ -53,7 +53,7 @@ long Robot::getMillis() {
 
 /**
 *   Get the actual time of errorTimer in milliseconds since the last time reset
-*   @param return int - get the actual milliseconds of errorTimer since the last timer reset
+*   @return int - get the actual milliseconds of errorTimer since the last timer reset
 */
 long Robot::getErrorMillis() {
     return std::chrono::duration_cast<std::chrono::milliseconds>(this->errorTimer.elapsed_time()).count();
@@ -76,7 +76,7 @@ void Robot::setProcedureCode(int procedureCode) {
 
 /**
 *   Get a running procedure code
-*   @param return int - the setted procedureCode
+*   @return int - the setted procedureCode
 */
 int Robot::getProcedureCode() {
     return this->procedureCode;
@@ -119,7 +119,7 @@ void Robot::setError(bool errorState) {
 
 /**
 *   Ge the actual error state
-*   @param return bool - True on error, false if everything is okay
+*   @return bool - True on error, false if everything is okay
 */
 bool Robot::getError() {
     return this->error;
@@ -151,7 +151,7 @@ void Robot::stopErrorTimeout() {
 
 /**
 *  Check if a timeout is reached
-* @param return bool - Timeout error is reached
+* @return bool - Timeout error is reached
 */
 bool Robot::isTimeoutError() {
     if (this->getErrorMillis() > this->errorTimeout) {
@@ -205,7 +205,7 @@ void Robot::driveZ(short dir) {
 
 /**
 *   Get the switch value
-*   @param return short - digital value of the switch 
+*   @return short - digital value of the switch 
 */
 short Robot::getMinZSwitch() {
     return this->SW_Z_MIN->read();
@@ -213,7 +213,7 @@ short Robot::getMinZSwitch() {
 
 /**
 *   Get the switch value
-*   @param return short - digital value of the switch 
+*   @return short - digital value of the switch 
 */
 short Robot::getMaxZSwitch() {
     return this->SW_Z_MAX->read();
@@ -221,7 +221,7 @@ short Robot::getMaxZSwitch() {
 
 /**
 *   Get the switch value
-*   @param return short - digital value of the switch 
+*   @return short - digital value of the switch 
 */
 short Robot::getFrontIRSwitch() {
     return this->SW_IR_FRONT->read();
@@ -229,7 +229,7 @@ short Robot::getFrontIRSwitch() {
 
 /**
 *   Get the switch value
-*   @param return short - digital value of the switch 
+*   @return short - digital value of the switch 
 */
 short Robot::getBackIRSwitch() {
     return this->SW_IR_BACK->read();
@@ -237,14 +237,14 @@ short Robot::getBackIRSwitch() {
 
 /**
 *   Get the switch value
-*   @param return short - digital value of the switch 
+*   @return short - digital value of the switch 
 */
 short Robot::getStartSwitch() {
     return this->SW_START->read();
 }
 /**
 *   Get the sensor value
-*   @param return double - analog value of the sensor 
+*   @return double - analog value of the sensor 
 */
 double Robot::getIRSensorValue() {
     return this->SE_IR->read();
