@@ -5,7 +5,3 @@ BUILD
 mbed-os
 .mbed
 PM2_Library
-PM2_Library/FastPWM
-PM2_Library/RangeFinder
-PM2_Library/LSM9DS1
-PM2_Library/RangeFinder/Pulse
