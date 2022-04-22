@@ -122,12 +122,6 @@ void Robot::motorStop() {
 *   Stop the motors in a slow way (without a jerk)
 */
 void Robot::slowMotorStop() {
-    printf("Start stop!\n");
-    //Set the amount of steps to make a slow stop
-    int steps = 10;
-    //Time to stop in seconds
-    int timeToStop = 3;
-
     //Store the speeds at beginning of the slow down process
     double startSpeeds[] = {
         this->M_MB->read(),
@@ -138,16 +132,14 @@ void Robot::slowMotorStop() {
     this->taskTimer.reset();
     //Define the actual time
     int actualTime = 0;
-    //loop whilee slowing down
+    //loop while slowing down
     while ((actualTime = this->getTaskMillis()) < MOTOR_SLOW_STOP_DURATION) {
-        printf("%llu\n", this->getTaskMillis());
         M_MB->write((0.5f-startSpeeds[0])/MOTOR_SLOW_STOP_DURATION*actualTime+startSpeeds[0]); // Speed(t) = (0.5f - startSpeed) / slow down time * t + startSpeed 
         M_SB->write((0.5f-startSpeeds[1])/MOTOR_SLOW_STOP_DURATION*actualTime+startSpeeds[1]); // Speed(t) = (0.5f - startSpeed) / slow down time * t + startSpeed 
         M_Z->write((0.5f-startSpeeds[2])/MOTOR_SLOW_STOP_DURATION*actualTime+startSpeeds[2]); // Speed(t) = (0.5f - startSpeed) / slow down time * t + startSpeed 
     }
     //Disable motors and reset speed of all motors
     this->motorStop();
-    printf("Stopped!\n");
 }
 
 /**
@@ -197,12 +189,22 @@ bool Robot::isTimeoutError() {
 *   @param dir short - 1 = forward, 0 = backward
 */
 void Robot::driveMB(short dir) {
+
     if (!this->error) {
         //make sure that all motors are stopped
         motorStop();
         //Enable motors and set speed
         this->enableMotors(true);
-        this->M_MB->write(0.5+pow(-1,MOTOR_DIRECTION_MAINBODY)*pow(-1,dir)*MOTOR_PWM_MAINBODY);
+        //Store the speed at beginning of the slow down process
+        double startSpeed = 0.5f;
+        // Reset the timer
+        this->taskTimer.reset();
+        //Define the actual time
+        int actualTime = 0;
+        //loop while speed up
+        while ((actualTime = this->getTaskMillis()) < MOTOR_SLOW_STOP_DURATION) {
+            M_MB->write(0.5f+pow(-1,MOTOR_DIRECTION_MAINBODY)*pow(-1,dir)*MOTOR_PWM_MAINBODY/MOTOR_SLOW_STOP_DURATION*actualTime); // Speed(t) = zeroSpeed + fullSpeed / slow down time * t
+        }
     }
 }
 
