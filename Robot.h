@@ -26,9 +26,7 @@ class Robot {
         void setProcedureCode(int procedureCode);
         void setError(bool errorState); 
         bool getError(); 
-        void setErrorTimeout(long timeout);
-        void stopErrorTimeout(); 
-        void startErrorTimeout();
+        void setErrorTimeout(long long timeout);
         long long getErrorMillis(); 
         bool isTimeoutError();
         long long getMillis(); 
@@ -48,7 +46,7 @@ class Robot {
         */
         int procedureCode = 0;
         bool error = false;
-        long errorTimeout = 0;
+        long long errorTimeout = 0;
         
         /*
         * Timer variables

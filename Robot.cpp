@@ -11,6 +11,7 @@ Robot::Robot() {
     *   Start the timer
     */
     this->taskTimer.start();
+    this->errorTimer.start();
     /*
     *   Setup motors
     */
@@ -126,24 +127,9 @@ bool Robot::getError() {
 *   Set a timeout: if this timeout is reached, the error state will be setted to true
 *   @param timeout long - Set the timeout in millis
 */
-void Robot::setErrorTimeout(long timeout) {
+void Robot::setErrorTimeout(long long timeout) {
     this->errorTimeout = timeout;
     this->errorTimer.reset();
-    this->startErrorTimeout();
-}
-
-/**
-*   Start the timer
-*/
-void Robot::startErrorTimeout() {
-    this->errorTimer.start();
-}
-
-/**
-*   Stop the timer
-*/
-void Robot::stopErrorTimeout() {
-    this->errorTimer.stop();
 }
 
 /**
