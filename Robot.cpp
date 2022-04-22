@@ -8,6 +8,10 @@
 
 Robot::Robot() {
     /*
+    *   Start the timer
+    */
+    this->taskTimer.start();
+    /*
     *   Setup motors
     */
     this->M_MB = new FastPWM(PIN_MOTOR_MAINBODY);
@@ -45,25 +49,18 @@ Robot::Robot() {
 
 /**
 *   Get the actual time in milliseconds since the last time reset
-*   @return int - get the actual milliseconds since the last timer reset
+*   @return unsigned long - get the actual milliseconds since the last timer reset
 */
-long Robot::getMillis() {
+long long Robot::getMillis() {
     return std::chrono::duration_cast<std::chrono::milliseconds>(this->taskTimer.elapsed_time()).count();
 }
 
 /**
 *   Get the actual time of errorTimer in milliseconds since the last time reset
-*   @return int - get the actual milliseconds of errorTimer since the last timer reset
+*   @return unsigned long - get the actual milliseconds of errorTimer since the last timer reset
 */
-long Robot::getErrorMillis() {
+long long Robot::getErrorMillis() {
     return std::chrono::duration_cast<std::chrono::milliseconds>(this->errorTimer.elapsed_time()).count();
-}
-
-/**
-*   Reset the tasktimer
-*/
-void Robot::resetTimer() {
-    this->taskTimer.reset();
 }
 
 /**

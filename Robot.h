@@ -29,10 +29,9 @@ class Robot {
         void setErrorTimeout(long timeout);
         void stopErrorTimeout(); 
         void startErrorTimeout();
-        long getErrorMillis(); 
+        long long getErrorMillis(); 
         bool isTimeoutError();
-        long getMillis(); 
-        void resetTimer();
+        long long getMillis(); 
         short getMinZSwitch();
         short getMaxZSwitch();
         short getFrontIRSwitch();
