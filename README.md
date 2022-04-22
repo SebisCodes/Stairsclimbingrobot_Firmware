@@ -1,2 +1,2 @@
 # Stairsclimbingrobot_Firmware
- A staris climbing robot as an educational project
+ A stairs climbing robot as an educational project
