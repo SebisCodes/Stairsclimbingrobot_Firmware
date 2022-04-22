@@ -10,6 +10,7 @@ Robot::Robot() {
     /*
     *   Start the timer
     */
+    this->mainTimer.start();
     this->taskTimer.start();
     this->errorTimer.start();
     /*
@@ -49,16 +50,32 @@ Robot::Robot() {
 } 
 
 /**
+*   Reset the task timer
+*/
+void Robot::resetTaskTimer() {
+    this->taskTimer.reset();
+}
+
+/**
 *   Get the actual time in milliseconds since the last time reset
-*   @return unsigned long - get the actual milliseconds since the last timer reset
+*   @return long long - get the actual milliseconds
 */
 long long Robot::getMillis() {
+    return std::chrono::duration_cast<std::chrono::milliseconds>(this->mainTimer.elapsed_time()).count();
+}
+
+
+/**
+*   Get the actual time in milliseconds since the last time reset
+*   @return long long - get the actual milliseconds since the last timer reset
+*/
+long long Robot::getTaskMillis() {
     return std::chrono::duration_cast<std::chrono::milliseconds>(this->taskTimer.elapsed_time()).count();
 }
 
 /**
 *   Get the actual time of errorTimer in milliseconds since the last time reset
-*   @return unsigned long - get the actual milliseconds of errorTimer since the last timer reset
+*   @return long long - get the actual milliseconds of errorTimer since the last timer reset
 */
 long long Robot::getErrorMillis() {
     return std::chrono::duration_cast<std::chrono::milliseconds>(this->errorTimer.elapsed_time()).count();
@@ -100,6 +117,37 @@ void Robot::motorStop() {
     this->M_MB->write(0.5f);
     this->M_SB->write(0.5f);
     this->M_Z->write(0.5f);
+}
+/**
+*   Stop the motors in a slow way (without a jerk)
+*/
+void Robot::slowMotorStop() {
+    printf("Start stop!\n");
+    //Set the amount of steps to make a slow stop
+    int steps = 10;
+    //Time to stop in seconds
+    int timeToStop = 3;
+
+    //Store the speeds at beginning of the slow down process
+    double startSpeeds[] = {
+        this->M_MB->read(),
+        this->M_SB->read(),
+        this->M_Z->read()
+    };
+    // Reset the timer
+    this->taskTimer.reset();
+    //Define the actual time
+    int actualTime = 0;
+    //loop whilee slowing down
+    while ((actualTime = this->getTaskMillis()) < MOTOR_SLOW_STOP_DURATION) {
+        printf("%llu\n", this->getTaskMillis());
+        M_MB->write((0.5f-startSpeeds[0])/MOTOR_SLOW_STOP_DURATION*actualTime+startSpeeds[0]); // Speed(t) = (0.5f - startSpeed) / slow down time * t + startSpeed 
+        M_SB->write((0.5f-startSpeeds[1])/MOTOR_SLOW_STOP_DURATION*actualTime+startSpeeds[1]); // Speed(t) = (0.5f - startSpeed) / slow down time * t + startSpeed 
+        M_Z->write((0.5f-startSpeeds[2])/MOTOR_SLOW_STOP_DURATION*actualTime+startSpeeds[2]); // Speed(t) = (0.5f - startSpeed) / slow down time * t + startSpeed 
+    }
+    //Disable motors and reset speed of all motors
+    this->motorStop();
+    printf("Stopped!\n");
 }
 
 /**

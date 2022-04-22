@@ -16,8 +16,9 @@
 class Robot {
 
     public:
-        Robot(); //TODO
+        Robot();
         void motorStop();
+        void slowMotorStop();
         void enableMotors(bool en);
         void driveMB(short dir);
         void driveSB(short dir);
@@ -27,6 +28,8 @@ class Robot {
         void setError(bool errorState); 
         bool getError(); 
         void setErrorTimeout(long long timeout);
+        void resetTaskTimer();
+        long long getTaskMillis();
         long long getErrorMillis(); 
         bool isTimeoutError();
         long long getMillis(); 
@@ -51,6 +54,7 @@ class Robot {
         /*
         * Timer variables
         */
+        Timer mainTimer; 
         Timer taskTimer; 
         Timer errorTimer; 
 

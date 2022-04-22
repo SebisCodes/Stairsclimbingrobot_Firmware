@@ -43,4 +43,6 @@
         #define MOTOR_PWM_SIDEBODY 0.5
         #define MOTOR_PWM_ZAXIS 0.5
 
+        #define MOTOR_SLOW_STOP_DURATION 3000
+
     #endif
