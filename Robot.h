@@ -56,7 +56,10 @@ class Robot {
         */
         Timer mainTimer; 
         Timer taskTimer; 
+        Timer internalTaskTimer; 
         Timer errorTimer; 
+    
+        long long getInternalTaskMillis();
 
         /*
         * LED variables
