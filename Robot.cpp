@@ -2,6 +2,7 @@
 *   Robot.cpp - A library to control the stairsclimbing robot. 
 *   Created by Sebastian G., Winterthur, April 04, 2022 
 */
+#include <stdio.h>
 #include "Robot.h"
 
 
@@ -131,12 +132,12 @@ void Robot::slowMotorStop() {
     // Reset the timer
     this->taskTimer.reset();
     //Define the actual time
-    int actualTime = 0;
+    long long actualTime = 0;
     //loop while slowing down
     while ((actualTime = this->getTaskMillis()) < MOTOR_SLOW_STOP_DURATION) {
-        M_MB->write((0.5f-startSpeeds[0])/MOTOR_SLOW_STOP_DURATION*actualTime+startSpeeds[0]); // Speed(t) = (0.5f - startSpeed) / slow down time * t + startSpeed 
-        M_SB->write((0.5f-startSpeeds[1])/MOTOR_SLOW_STOP_DURATION*actualTime+startSpeeds[1]); // Speed(t) = (0.5f - startSpeed) / slow down time * t + startSpeed 
-        M_Z->write((0.5f-startSpeeds[2])/MOTOR_SLOW_STOP_DURATION*actualTime+startSpeeds[2]); // Speed(t) = (0.5f - startSpeed) / slow down time * t + startSpeed 
+        M_MB->write((0.5-startSpeeds[0])/(double)MOTOR_SLOW_STOP_DURATION*actualTime+startSpeeds[0]); // Speed(t) = (0.5f - startSpeed) / slow down time * t + startSpeed 
+        M_SB->write((0.5-startSpeeds[1])/(double)MOTOR_SLOW_STOP_DURATION*actualTime+startSpeeds[1]); // Speed(t) = (0.5f - startSpeed) / slow down time * t + startSpeed 
+        M_Z->write((0.5-startSpeeds[2])/(double)MOTOR_SLOW_STOP_DURATION*actualTime+startSpeeds[2]); // Speed(t) = (0.5f - startSpeed) / slow down time * t + startSpeed 
     }
     //Disable motors and reset speed of all motors
     this->motorStop();
@@ -189,7 +190,6 @@ bool Robot::isTimeoutError() {
 *   @param dir short - 1 = forward, 0 = backward
 */
 void Robot::driveMB(short dir) {
-
     if (!this->error) {
         //make sure that all motors are stopped
         motorStop();
@@ -200,7 +200,7 @@ void Robot::driveMB(short dir) {
         // Reset the timer
         this->taskTimer.reset();
         //Define the actual time
-        int actualTime = 0;
+        long long actualTime = 0;
         //loop while speed up
         while ((actualTime = this->getTaskMillis()) < MOTOR_SLOW_STOP_DURATION) {
             M_MB->write(0.5f+pow(-1,MOTOR_DIRECTION_MAINBODY)*pow(-1,dir)*MOTOR_PWM_MAINBODY/MOTOR_SLOW_STOP_DURATION*actualTime); // Speed(t) = zeroSpeed + fullSpeed / slow down time * t
@@ -218,7 +218,16 @@ void Robot::driveSB(short dir) {
         motorStop();
         //Enable motors and set speed
         this->enableMotors(true);
-        this->M_SB->write(0.5+pow(-1,MOTOR_DIRECTION_SIDEBODY)*pow(-1,dir)*MOTOR_PWM_SIDEBODY);
+        //Store the speed at beginning of the slow down process
+        double startSpeed = 0.5f;
+        // Reset the timer
+        this->taskTimer.reset();
+        //Define the actual time
+        long long actualTime = 0;
+        //loop while speed up
+        while ((actualTime = this->getTaskMillis()) < MOTOR_SLOW_STOP_DURATION) {
+            M_SB->write(0.5f+pow(-1,MOTOR_DIRECTION_SIDEBODY)*pow(-1,dir)*MOTOR_PWM_SIDEBODY/MOTOR_SLOW_STOP_DURATION*actualTime); // Speed(t) = zeroSpeed + fullSpeed / slow down time * t
+        }
     }
 }
 
@@ -232,7 +241,16 @@ void Robot::driveZ(short dir) {
         motorStop();
         //Enable motors and set speed
         this->enableMotors(true);
-        this->M_Z->write(0.5+pow(-1,MOTOR_DIRECTION_ZAXIS)*pow(-1,dir)*MOTOR_PWM_ZAXIS);
+        //Store the speed at beginning of the slow down process
+        double startSpeed = 0.5f;
+        // Reset the timer
+        this->taskTimer.reset();
+        //Define the actual time
+        long long actualTime = 0;
+        //loop while speed up
+        while ((actualTime = this->getTaskMillis()) < MOTOR_SLOW_STOP_DURATION) {
+            M_Z->write(0.5f+pow(-1,MOTOR_DIRECTION_ZAXIS)*pow(-1,dir)*MOTOR_PWM_ZAXIS/MOTOR_SLOW_STOP_DURATION*actualTime); // Speed(t) = zeroSpeed + fullSpeed / slow down time * t
+        }
     }
 }
 
