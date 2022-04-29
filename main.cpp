@@ -21,6 +21,15 @@ int stairsCounter;
 //Boolean to get out of process loop
 bool running = true;
 
+//Boolean to switch between "up" and "down"
+bool down = false;
+
+//Boolean to flag another step 
+bool step = false;
+
+//Integer to use while climbing a step
+int sequence = 0;
+
 int main()
 {    
     //Initialize robot class
@@ -33,26 +42,71 @@ int main()
         switch (myRobot->getProcedureCode()) {
             case WAIT_FOR_START:
                 //TODO: Implement wait for start process
-                myRobot->setProcedureCode(HOMING);
+                if(myRobot->getStartSwitch()){
+                    myRobot->setProcedureCode(HOMING);
+                }
                 break;
             case HOMING:
                 //TODO: Implement homing process
-                myRobot->setProcedureCode(DRIVE_FORWARD);
+                if(myRobot->getMinZSwitch()){
+                    myRobot->driveZ(0);
+                }else{
+                    myRobot->slowMotorStop();
+                    myRobot->setProcedureCode(DRIVE_FORWARD);
+                }
+                
                 break;
             case DRIVE_FORWARD:
                 //TODO: Implement forward driving process
-                //myRobot->setProcedureCode(...);
+                myRobot->driveMB(1);
+                if(sequence == 0){
+                    if(myRobot->getFrontIRSwitch() && !down){
+                        myRobot->slowMotorStop();
+                        myRobot->setProcedureCode(GO_UP);
+                    }
+                }else if(sequence == 1){
+                    if(myRobot->getMiddleIRSwitch() && !down){
+                        myRobot->slowMotorStop();
+                        myRobot->setProcedureCode(GO_DOWN);
+                    }        
+                }else if(sequence ==2){
+                    if(myRobot->getMiddleIRSwitch() && !down){
+                        myRobot->slowMotorStop();
+                        myRobot->setProcedureCode(GO_UP);
+                    }
+                }
                 break;
             case DRIVE_BACKWARD:
                 //TODO: Same as above...
+                
                 //myRobot->setProcedureCode(...);
                 break;
             case GO_UP:
                 //TODO: ...
+                myRobot->driveZ(1);
+                if(!down){
+                    if(myRobot->getIRSensorValue()<=1 && !step){
+                        step = true;
+                        stairsCounter +=1;
+                    }
+                    if(myRobot->getMaxZSwitch()){
+                        sequence +=1;
+                        myRobot->slowMotorStop();
+                        myRobot->setProcedureCode(DRIVE_FORWARD);
+                    }
+                }
                 //myRobot->setProcedureCode(...);
                 break;
             case GO_DOWN:
                 //TODO: ...
+                myRobot->driveZ(0);
+                if(!down){
+                    if(myRobot->getMinZSwitch()){
+                        sequence += 1;
+                        myRobot->slowMotorStop();
+                        myRobot->setProcedureCode(DRIVE_FORWARD);
+                    }
+                }
                 //myRobot->setProcedureCode(...);
                 break;
             case STOP:
