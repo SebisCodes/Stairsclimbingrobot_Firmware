@@ -13,6 +13,7 @@
         #define PIN_SWITCH_Z_MIN PA_0
         #define PIN_SWITCH_Z_MAX PA_1
         #define PIN_SWITCH_IR_BACK PC_7
+        #define PIN_SWITCH_IR_MIDDLE ???
         #define PIN_SWITCH_IR_FRONT PA_6
 
         //SENSORS

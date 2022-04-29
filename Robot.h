@@ -36,6 +36,7 @@ class Robot {
         short getMinZSwitch();
         short getMaxZSwitch();
         short getFrontIRSwitch();
+        short getMiddleIRSwitch();
         short getBackIRSwitch();
         short getStartSwitch();
         double getIRSensorValue();
@@ -79,6 +80,7 @@ class Robot {
         * Switch inputs
         */
         DigitalIn *SW_IR_BACK;
+        DigitalIn *SW_IR_MIDDLE;
         DigitalIn *SW_IR_FRONT;
         DigitalIn *SW_Z_MIN;
         DigitalIn *SW_Z_MAX;

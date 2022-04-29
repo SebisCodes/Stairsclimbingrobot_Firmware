@@ -31,6 +31,7 @@ Robot::Robot() {
     *   Setup switches
     */
     this->SW_IR_BACK = new DigitalIn(PIN_SWITCH_IR_BACK);
+    this->SW_IR_MIDDLE = new DigitalIn(PIN_SWITCH_IR_MIDDLE);
     this->SW_IR_FRONT = new DigitalIn(PIN_SWITCH_IR_FRONT);
     this->SW_Z_MIN = new DigitalIn(PIN_SWITCH_Z_MIN);
     this->SW_Z_MAX = new DigitalIn(PIN_SWITCH_Z_MAX);
@@ -286,6 +287,14 @@ short Robot::getMaxZSwitch() {
 */
 short Robot::getFrontIRSwitch() {
     return this->SW_IR_FRONT->read();
+}
+
+/**
+*   Get the switch value
+*   @return short - digital value of the switch 
+*/
+short Robot::getMiddleIRSwitch() {
+    return this->SW_IR_MIDDLE->read();
 }
 
 /**
