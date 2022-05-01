@@ -1,0 +1,26 @@
+var class_robot =
+[
+    [ "driveMB", "class_robot.html#a0a33c6282831e4729f55fec282735c3b", null ],
+    [ "driveSB", "class_robot.html#a6782f2cac09a1b89ced0c508ceea497e", null ],
+    [ "driveZ", "class_robot.html#a65189b9ced7934e277a454ec391f2a0b", null ],
+    [ "enableMotors", "class_robot.html#a0e8c08ff2cd6a56393f752822cc7bbeb", null ],
+    [ "getBackIRSwitch", "class_robot.html#a7271eba19120f12c86ada4e454e27316", null ],
+    [ "getError", "class_robot.html#ac56e95fe67bfe14f20778c1402bb4373", null ],
+    [ "getErrorMillis", "class_robot.html#a644e0027cf4a896245e43628aed25a49", null ],
+    [ "getFrontIRSwitch", "class_robot.html#a31c054e3125850cd83bf701e72f3ebfa", null ],
+    [ "getIRSensorValue", "class_robot.html#a578aaa7a8aea36006b3aebf7a60b4b31", null ],
+    [ "getMaxZSwitch", "class_robot.html#a492925a445c4b7b49cdda9f5a2c11326", null ],
+    [ "getMiddleIRSwitch", "class_robot.html#a6b8c7a900aafbf417cd306cbf4b5812c", null ],
+    [ "getMillis", "class_robot.html#a382c73cfa5fde35390ddf8e4c2489b01", null ],
+    [ "getMinZSwitch", "class_robot.html#a630c3f21da5160bf144def6989714ca0", null ],
+    [ "getProcedureCode", "class_robot.html#a71d7730f623f5f9405077de72b7204ad", null ],
+    [ "getStartSwitch", "class_robot.html#a43f8ab5c9cdc6ad2cc1dc863d3a3e431", null ],
+    [ "getTaskMillis", "class_robot.html#a8514da71b1b45e4f6a841e8c4c9da5c0", null ],
+    [ "isTimeoutError", "class_robot.html#a367c31a50c2b9ea1f1085535bbae1f89", null ],
+    [ "motorStop", "class_robot.html#aa549f85959a737c086d306d3f025e56d", null ],
+    [ "resetTaskTimer", "class_robot.html#a991d4c3b97c65f7a385561438529a129", null ],
+    [ "setError", "class_robot.html#ac75c5ff4ebbed315b40ae90bd7faaa2f", null ],
+    [ "setErrorTimeout", "class_robot.html#ab99801888149d86e05fbbaeadec2b4e5", null ],
+    [ "setProcedureCode", "class_robot.html#a36c8d24c32e21b37d9f31f20372fea69", null ],
+    [ "slowMotorStop", "class_robot.html#abd4b5a0493fdf86e45fe3a027c8f059a", null ]
+];

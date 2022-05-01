@@ -1,0 +1,150 @@
+\hypertarget{_tone_8h_source}{}\doxysection{Tone.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef TONE\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define TONE\_H}}
+\DoxyCodeLine{3  }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}mbed.h"{}}}
+\DoxyCodeLine{5  }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define PI 3.14159265359}}
+\DoxyCodeLine{7  }
+\DoxyCodeLine{8 \textcolor{keyword}{class }\mbox{\hyperlink{class_tone}{Tone}} \{}
+\DoxyCodeLine{9  }
+\DoxyCodeLine{10     \textcolor{keyword}{public}:}
+\DoxyCodeLine{11     }
+\DoxyCodeLine{12     \textcolor{comment}{// constructor/destructor}}
+\DoxyCodeLine{13     \mbox{\hyperlink{class_tone}{Tone}}(PinName dacPin);}
+\DoxyCodeLine{14     \mbox{\hyperlink{class_tone}{\string~Tone}}();}
+\DoxyCodeLine{15     }
+\DoxyCodeLine{16     \textcolor{comment}{// initialise the sine lookup table with number of notes}}
+\DoxyCodeLine{17     \textcolor{keywordtype}{void} init();}
+\DoxyCodeLine{18     }
+\DoxyCodeLine{19     \textcolor{comment}{// play single note of specific duration}}
+\DoxyCodeLine{20     \textcolor{keywordtype}{void} play(\textcolor{keyword}{const} \textcolor{keywordtype}{float} frequency,\textcolor{keyword}{const} \textcolor{keywordtype}{float} duration);}
+\DoxyCodeLine{21     }
+\DoxyCodeLine{22     \textcolor{comment}{// play array of notes and duration, must send length and beats per minute}}
+\DoxyCodeLine{23     \textcolor{keywordtype}{void} play\_melody(\textcolor{keywordtype}{int} length,\textcolor{keyword}{const} \textcolor{keywordtype}{int} *notes,\textcolor{keyword}{const} \textcolor{keywordtype}{int} *durations,\textcolor{keywordtype}{float} bpm,\textcolor{keywordtype}{bool} repeat);}
+\DoxyCodeLine{24     }
+\DoxyCodeLine{25     \textcolor{comment}{// change the BPM}}
+\DoxyCodeLine{26     \textcolor{keywordtype}{void} set\_bpm(\textcolor{keywordtype}{float} bpm);}
+\DoxyCodeLine{27      }
+\DoxyCodeLine{28     \textcolor{keyword}{private}:}
+\DoxyCodeLine{29     }
+\DoxyCodeLine{30     AnalogOut *dac;}
+\DoxyCodeLine{31     Ticker *ticker;}
+\DoxyCodeLine{32     Timeout *timeout;}
+\DoxyCodeLine{33     Timeout *note\_timeout;}
+\DoxyCodeLine{34  }
+\DoxyCodeLine{35     \textcolor{keywordtype}{float} *\_sample\_array;}
+\DoxyCodeLine{36     \textcolor{keyword}{const} \textcolor{keywordtype}{int} *\_notes;}
+\DoxyCodeLine{37     \textcolor{keyword}{const} \textcolor{keywordtype}{int} *\_durations;}
+\DoxyCodeLine{38     }
+\DoxyCodeLine{39     \textcolor{keywordtype}{int} \_n;}
+\DoxyCodeLine{40     \textcolor{keywordtype}{int} \_melody\_length;}
+\DoxyCodeLine{41     \textcolor{keyword}{volatile} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \_sample;}
+\DoxyCodeLine{42     \textcolor{keyword}{volatile} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \_note;}
+\DoxyCodeLine{43     \textcolor{keywordtype}{float} \_bpm;}
+\DoxyCodeLine{44     \textcolor{keywordtype}{bool} \_repeat;}
+\DoxyCodeLine{45     }
+\DoxyCodeLine{46     \textcolor{keywordtype}{void} ticker\_isr();    }
+\DoxyCodeLine{47     \textcolor{keywordtype}{void} timeout\_isr();}
+\DoxyCodeLine{48     \textcolor{keywordtype}{void} note\_timeout\_isr();  }
+\DoxyCodeLine{49     \textcolor{keywordtype}{void} play\_next\_note();}
+\DoxyCodeLine{50     }
+\DoxyCodeLine{51 \};}
+\DoxyCodeLine{52  }
+\DoxyCodeLine{53 \textcolor{comment}{// Note definitions from Arduino.cc}}
+\DoxyCodeLine{54 \textcolor{preprocessor}{\#define NOTE\_B0  31}}
+\DoxyCodeLine{55 \textcolor{preprocessor}{\#define NOTE\_C1  33}}
+\DoxyCodeLine{56 \textcolor{preprocessor}{\#define NOTE\_CS1 35}}
+\DoxyCodeLine{57 \textcolor{preprocessor}{\#define NOTE\_D1  37}}
+\DoxyCodeLine{58 \textcolor{preprocessor}{\#define NOTE\_DS1 39}}
+\DoxyCodeLine{59 \textcolor{preprocessor}{\#define NOTE\_E1  41}}
+\DoxyCodeLine{60 \textcolor{preprocessor}{\#define NOTE\_F1  44}}
+\DoxyCodeLine{61 \textcolor{preprocessor}{\#define NOTE\_FS1 46}}
+\DoxyCodeLine{62 \textcolor{preprocessor}{\#define NOTE\_G1  49}}
+\DoxyCodeLine{63 \textcolor{preprocessor}{\#define NOTE\_GS1 52}}
+\DoxyCodeLine{64 \textcolor{preprocessor}{\#define NOTE\_A1  55}}
+\DoxyCodeLine{65 \textcolor{preprocessor}{\#define NOTE\_AS1 58}}
+\DoxyCodeLine{66 \textcolor{preprocessor}{\#define NOTE\_B1  62}}
+\DoxyCodeLine{67 \textcolor{preprocessor}{\#define NOTE\_C2  65}}
+\DoxyCodeLine{68 \textcolor{preprocessor}{\#define NOTE\_CS2 69}}
+\DoxyCodeLine{69 \textcolor{preprocessor}{\#define NOTE\_D2  73}}
+\DoxyCodeLine{70 \textcolor{preprocessor}{\#define NOTE\_DS2 78}}
+\DoxyCodeLine{71 \textcolor{preprocessor}{\#define NOTE\_E2  82}}
+\DoxyCodeLine{72 \textcolor{preprocessor}{\#define NOTE\_F2  87}}
+\DoxyCodeLine{73 \textcolor{preprocessor}{\#define NOTE\_FS2 93}}
+\DoxyCodeLine{74 \textcolor{preprocessor}{\#define NOTE\_G2  98}}
+\DoxyCodeLine{75 \textcolor{preprocessor}{\#define NOTE\_GS2 104}}
+\DoxyCodeLine{76 \textcolor{preprocessor}{\#define NOTE\_A2  110}}
+\DoxyCodeLine{77 \textcolor{preprocessor}{\#define NOTE\_AS2 117}}
+\DoxyCodeLine{78 \textcolor{preprocessor}{\#define NOTE\_B2  123}}
+\DoxyCodeLine{79 \textcolor{preprocessor}{\#define NOTE\_C3  131}}
+\DoxyCodeLine{80 \textcolor{preprocessor}{\#define NOTE\_CS3 139}}
+\DoxyCodeLine{81 \textcolor{preprocessor}{\#define NOTE\_D3  147}}
+\DoxyCodeLine{82 \textcolor{preprocessor}{\#define NOTE\_DS3 156}}
+\DoxyCodeLine{83 \textcolor{preprocessor}{\#define NOTE\_E3  165}}
+\DoxyCodeLine{84 \textcolor{preprocessor}{\#define NOTE\_F3  175}}
+\DoxyCodeLine{85 \textcolor{preprocessor}{\#define NOTE\_FS3 185}}
+\DoxyCodeLine{86 \textcolor{preprocessor}{\#define NOTE\_G3  196}}
+\DoxyCodeLine{87 \textcolor{preprocessor}{\#define NOTE\_GS3 208}}
+\DoxyCodeLine{88 \textcolor{preprocessor}{\#define NOTE\_A3  220}}
+\DoxyCodeLine{89 \textcolor{preprocessor}{\#define NOTE\_AS3 233}}
+\DoxyCodeLine{90 \textcolor{preprocessor}{\#define NOTE\_B3  247}}
+\DoxyCodeLine{91 \textcolor{preprocessor}{\#define NOTE\_C4  262}}
+\DoxyCodeLine{92 \textcolor{preprocessor}{\#define NOTE\_CS4 277}}
+\DoxyCodeLine{93 \textcolor{preprocessor}{\#define NOTE\_D4  294}}
+\DoxyCodeLine{94 \textcolor{preprocessor}{\#define NOTE\_DS4 311}}
+\DoxyCodeLine{95 \textcolor{preprocessor}{\#define NOTE\_E4  330}}
+\DoxyCodeLine{96 \textcolor{preprocessor}{\#define NOTE\_F4  349}}
+\DoxyCodeLine{97 \textcolor{preprocessor}{\#define NOTE\_FS4 370}}
+\DoxyCodeLine{98 \textcolor{preprocessor}{\#define NOTE\_G4  392}}
+\DoxyCodeLine{99 \textcolor{preprocessor}{\#define NOTE\_GS4 415}}
+\DoxyCodeLine{100 \textcolor{preprocessor}{\#define NOTE\_A4  440}}
+\DoxyCodeLine{101 \textcolor{preprocessor}{\#define NOTE\_AS4 466}}
+\DoxyCodeLine{102 \textcolor{preprocessor}{\#define NOTE\_B4  494}}
+\DoxyCodeLine{103 \textcolor{preprocessor}{\#define NOTE\_C5  523}}
+\DoxyCodeLine{104 \textcolor{preprocessor}{\#define NOTE\_CS5 554}}
+\DoxyCodeLine{105 \textcolor{preprocessor}{\#define NOTE\_D5  587}}
+\DoxyCodeLine{106 \textcolor{preprocessor}{\#define NOTE\_DS5 622}}
+\DoxyCodeLine{107 \textcolor{preprocessor}{\#define NOTE\_E5  659}}
+\DoxyCodeLine{108 \textcolor{preprocessor}{\#define NOTE\_F5  698}}
+\DoxyCodeLine{109 \textcolor{preprocessor}{\#define NOTE\_FS5 740}}
+\DoxyCodeLine{110 \textcolor{preprocessor}{\#define NOTE\_G5  784}}
+\DoxyCodeLine{111 \textcolor{preprocessor}{\#define NOTE\_GS5 831}}
+\DoxyCodeLine{112 \textcolor{preprocessor}{\#define NOTE\_A5  880}}
+\DoxyCodeLine{113 \textcolor{preprocessor}{\#define NOTE\_AS5 932}}
+\DoxyCodeLine{114 \textcolor{preprocessor}{\#define NOTE\_B5  988}}
+\DoxyCodeLine{115 \textcolor{preprocessor}{\#define NOTE\_C6  1047}}
+\DoxyCodeLine{116 \textcolor{preprocessor}{\#define NOTE\_CS6 1109}}
+\DoxyCodeLine{117 \textcolor{preprocessor}{\#define NOTE\_D6  1175}}
+\DoxyCodeLine{118 \textcolor{preprocessor}{\#define NOTE\_DS6 1245}}
+\DoxyCodeLine{119 \textcolor{preprocessor}{\#define NOTE\_E6  1319}}
+\DoxyCodeLine{120 \textcolor{preprocessor}{\#define NOTE\_F6  1397}}
+\DoxyCodeLine{121 \textcolor{preprocessor}{\#define NOTE\_FS6 1480}}
+\DoxyCodeLine{122 \textcolor{preprocessor}{\#define NOTE\_G6  1568}}
+\DoxyCodeLine{123 \textcolor{preprocessor}{\#define NOTE\_GS6 1661}}
+\DoxyCodeLine{124 \textcolor{preprocessor}{\#define NOTE\_A6  1760}}
+\DoxyCodeLine{125 \textcolor{preprocessor}{\#define NOTE\_AS6 1865}}
+\DoxyCodeLine{126 \textcolor{preprocessor}{\#define NOTE\_B6  1976}}
+\DoxyCodeLine{127 \textcolor{preprocessor}{\#define NOTE\_C7  2093}}
+\DoxyCodeLine{128 \textcolor{preprocessor}{\#define NOTE\_CS7 2217}}
+\DoxyCodeLine{129 \textcolor{preprocessor}{\#define NOTE\_D7  2349}}
+\DoxyCodeLine{130 \textcolor{preprocessor}{\#define NOTE\_DS7 2489}}
+\DoxyCodeLine{131 \textcolor{preprocessor}{\#define NOTE\_E7  2637}}
+\DoxyCodeLine{132 \textcolor{preprocessor}{\#define NOTE\_F7  2794}}
+\DoxyCodeLine{133 \textcolor{preprocessor}{\#define NOTE\_FS7 2960}}
+\DoxyCodeLine{134 \textcolor{preprocessor}{\#define NOTE\_G7  3136}}
+\DoxyCodeLine{135 \textcolor{preprocessor}{\#define NOTE\_GS7 3322}}
+\DoxyCodeLine{136 \textcolor{preprocessor}{\#define NOTE\_A7  3520}}
+\DoxyCodeLine{137 \textcolor{preprocessor}{\#define NOTE\_AS7 3729}}
+\DoxyCodeLine{138 \textcolor{preprocessor}{\#define NOTE\_B7  3951}}
+\DoxyCodeLine{139 \textcolor{preprocessor}{\#define NOTE\_C8  4186}}
+\DoxyCodeLine{140 \textcolor{preprocessor}{\#define NOTE\_CS8 4435}}
+\DoxyCodeLine{141 \textcolor{preprocessor}{\#define NOTE\_D8  4699}}
+\DoxyCodeLine{142 \textcolor{preprocessor}{\#define NOTE\_DS8 4978}}
+\DoxyCodeLine{143 \textcolor{preprocessor}{\#define REST 0}}
+\DoxyCodeLine{144  }
+\DoxyCodeLine{145 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

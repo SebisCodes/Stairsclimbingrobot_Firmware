@@ -1,0 +1,100 @@
+\hypertarget{_robot_8h_source}{}\doxysection{Robot.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{2 \textcolor{comment}{/*}}
+\DoxyCodeLine{3 \textcolor{comment}{*   Robot.h -\/ A library to control the stairsclimbing robot. }}
+\DoxyCodeLine{4 \textcolor{comment}{*   Created by Sebastian G., Winterthur, April 04, 2022 }}
+\DoxyCodeLine{5 \textcolor{comment}{*/}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}mbed.h"{}}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}MyConfig.h"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}PM2\_Libary.h"{}}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#ifndef ROBOT\_H}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#define ROBOT\_H}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{keyword}{class }\mbox{\hyperlink{class_robot}{Robot}} \{}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18     \textcolor{keyword}{public}:}
+\DoxyCodeLine{19         \mbox{\hyperlink{class_robot}{Robot}}();}
+\DoxyCodeLine{20         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_robot_aa549f85959a737c086d306d3f025e56d}{motorStop}}();}
+\DoxyCodeLine{21         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_robot_abd4b5a0493fdf86e45fe3a027c8f059a}{slowMotorStop}}();}
+\DoxyCodeLine{22         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_robot_a0e8c08ff2cd6a56393f752822cc7bbeb}{enableMotors}}(\textcolor{keywordtype}{bool} en);}
+\DoxyCodeLine{23         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_robot_a0a33c6282831e4729f55fec282735c3b}{driveMB}}(\textcolor{keywordtype}{short} dir);}
+\DoxyCodeLine{24         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_robot_a6782f2cac09a1b89ced0c508ceea497e}{driveSB}}(\textcolor{keywordtype}{short} dir);}
+\DoxyCodeLine{25         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_robot_a65189b9ced7934e277a454ec391f2a0b}{driveZ}}(\textcolor{keywordtype}{short} dir);}
+\DoxyCodeLine{26         \textcolor{keywordtype}{int} \mbox{\hyperlink{class_robot_a71d7730f623f5f9405077de72b7204ad}{getProcedureCode}}();}
+\DoxyCodeLine{27         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_robot_a36c8d24c32e21b37d9f31f20372fea69}{setProcedureCode}}(\textcolor{keywordtype}{int} procedureCode);}
+\DoxyCodeLine{28         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_robot_ac75c5ff4ebbed315b40ae90bd7faaa2f}{setError}}(\textcolor{keywordtype}{bool} errorState); }
+\DoxyCodeLine{29         \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_robot_ac56e95fe67bfe14f20778c1402bb4373}{getError}}(); }
+\DoxyCodeLine{30         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_robot_ab99801888149d86e05fbbaeadec2b4e5}{setErrorTimeout}}(\textcolor{keywordtype}{long} \textcolor{keywordtype}{long} timeout);}
+\DoxyCodeLine{31         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_robot_a991d4c3b97c65f7a385561438529a129}{resetTaskTimer}}();}
+\DoxyCodeLine{32         \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} \mbox{\hyperlink{class_robot_a8514da71b1b45e4f6a841e8c4c9da5c0}{getTaskMillis}}();}
+\DoxyCodeLine{33         \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} \mbox{\hyperlink{class_robot_a644e0027cf4a896245e43628aed25a49}{getErrorMillis}}(); }
+\DoxyCodeLine{34         \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_robot_a367c31a50c2b9ea1f1085535bbae1f89}{isTimeoutError}}();}
+\DoxyCodeLine{35         \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} \mbox{\hyperlink{class_robot_a382c73cfa5fde35390ddf8e4c2489b01}{getMillis}}(); }
+\DoxyCodeLine{36         \textcolor{keywordtype}{short} \mbox{\hyperlink{class_robot_a630c3f21da5160bf144def6989714ca0}{getMinZSwitch}}();}
+\DoxyCodeLine{37         \textcolor{keywordtype}{short} \mbox{\hyperlink{class_robot_a492925a445c4b7b49cdda9f5a2c11326}{getMaxZSwitch}}();}
+\DoxyCodeLine{38         \textcolor{keywordtype}{short} \mbox{\hyperlink{class_robot_a31c054e3125850cd83bf701e72f3ebfa}{getFrontIRSwitch}}();}
+\DoxyCodeLine{39         \textcolor{keywordtype}{short} \mbox{\hyperlink{class_robot_a6b8c7a900aafbf417cd306cbf4b5812c}{getMiddleIRSwitch}}();}
+\DoxyCodeLine{40         \textcolor{keywordtype}{short} \mbox{\hyperlink{class_robot_a7271eba19120f12c86ada4e454e27316}{getBackIRSwitch}}();}
+\DoxyCodeLine{41         \textcolor{keywordtype}{short} \mbox{\hyperlink{class_robot_a43f8ab5c9cdc6ad2cc1dc863d3a3e431}{getStartSwitch}}();}
+\DoxyCodeLine{42         \textcolor{keywordtype}{double} \mbox{\hyperlink{class_robot_a578aaa7a8aea36006b3aebf7a60b4b31}{getIRSensorValue}}();}
+\DoxyCodeLine{43         }
+\DoxyCodeLine{44         \textcolor{comment}{//void playSound(std::string name); //TODO}}
+\DoxyCodeLine{45         }
+\DoxyCodeLine{46     \textcolor{keyword}{private}:}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48         \textcolor{comment}{/*}}
+\DoxyCodeLine{49 \textcolor{comment}{        *   General variables}}
+\DoxyCodeLine{50 \textcolor{comment}{        */}}
+\DoxyCodeLine{51         \textcolor{keywordtype}{int} procedureCode = 0;}
+\DoxyCodeLine{52         \textcolor{keywordtype}{bool} error = \textcolor{keyword}{false};}
+\DoxyCodeLine{53         \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} errorTimeout = 0;}
+\DoxyCodeLine{54         }
+\DoxyCodeLine{55         \textcolor{comment}{/*}}
+\DoxyCodeLine{56 \textcolor{comment}{        * Timer variables}}
+\DoxyCodeLine{57 \textcolor{comment}{        */}}
+\DoxyCodeLine{58         Timer mainTimer; }
+\DoxyCodeLine{59         Timer taskTimer; }
+\DoxyCodeLine{60         Timer internalTaskTimer; }
+\DoxyCodeLine{61         Timer errorTimer; }
+\DoxyCodeLine{62     }
+\DoxyCodeLine{63         \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} getInternalTaskMillis();}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65         \textcolor{comment}{/*}}
+\DoxyCodeLine{66 \textcolor{comment}{        * LED variables}}
+\DoxyCodeLine{67 \textcolor{comment}{        */}}
+\DoxyCodeLine{68         DigitalOut *LED\_error;}
+\DoxyCodeLine{69         DigitalOut *LED\_running;}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71         \textcolor{comment}{/*}}
+\DoxyCodeLine{72 \textcolor{comment}{        * Motor variables}}
+\DoxyCodeLine{73 \textcolor{comment}{        */}}
+\DoxyCodeLine{74         FastPWM *M\_MB;}
+\DoxyCodeLine{75         FastPWM *M\_SB;}
+\DoxyCodeLine{76         FastPWM *M\_Z;}
+\DoxyCodeLine{77         DigitalOut *M\_EN;}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79         \textcolor{comment}{/*}}
+\DoxyCodeLine{80 \textcolor{comment}{        * Switch inputs}}
+\DoxyCodeLine{81 \textcolor{comment}{        */}}
+\DoxyCodeLine{82         DigitalIn *SW\_IR\_BACK;}
+\DoxyCodeLine{83         DigitalIn *SW\_IR\_MIDDLE;}
+\DoxyCodeLine{84         DigitalIn *SW\_IR\_FRONT;}
+\DoxyCodeLine{85         DigitalIn *SW\_Z\_MIN;}
+\DoxyCodeLine{86         DigitalIn *SW\_Z\_MAX;}
+\DoxyCodeLine{87         DigitalIn *SW\_START;}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89         \textcolor{comment}{/*}}
+\DoxyCodeLine{90 \textcolor{comment}{        *   Sensor inputs}}
+\DoxyCodeLine{91 \textcolor{comment}{        */}}
+\DoxyCodeLine{92         AnalogIn *SE\_IR;}
+\DoxyCodeLine{93 \};}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
