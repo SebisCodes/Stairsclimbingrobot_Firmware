@@ -1,0 +1,54 @@
+\hypertarget{_my_config_8h_source}{}\doxysection{My\+Config.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#include "{}mbed.h"{}}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#ifndef MYCONFIG\_H}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MYCONFIG\_H}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7         \textcolor{comment}{/*}}
+\DoxyCodeLine{8 \textcolor{comment}{        *   PINOUT CONFIG}}
+\DoxyCodeLine{9 \textcolor{comment}{        */}}
+\DoxyCodeLine{10         \textcolor{comment}{//SWITCHES}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{        \#define PIN\_SWITCH\_START PC\_13}}
+\DoxyCodeLine{12         \textcolor{comment}{//\#define PIN\_SWITCH\_RESET PC\_12}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{        \#define PIN\_SWITCH\_Z\_MIN PA\_0}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{        \#define PIN\_SWITCH\_Z\_MAX PA\_1}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{        \#define PIN\_SWITCH\_IR\_BACK PB6}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{        \#define PIN\_SWITCH\_IR\_MIDDLE PC7}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{        \#define PIN\_SWITCH\_IR\_FRONT PA\_6}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19         \textcolor{comment}{//SENSORS}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{        \#define PIN\_SENSOR\_DISTANCE PC\_2}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22         \textcolor{comment}{//MOTORS}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{        \#define PIN\_MOTOR\_MAINBODY PB\_13}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{        \#define PIN\_MOTOR\_SIDEBODY PA\_9}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{        \#define PIN\_MOTOR\_ZAXIS PA\_10}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{        \#define PIN\_MOTOR\_ENABLE PB\_15}}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28         \textcolor{comment}{//LED}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{        \#define PIN\_LED\_RUN PB\_2}}
+\DoxyCodeLine{30 \textcolor{preprocessor}{        \#define PIN\_LED\_ERROR PC\_8}}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32         \textcolor{comment}{//BUZZER}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{        \#define PIN\_BUZZER PB\_14}}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35         \textcolor{comment}{/*}}
+\DoxyCodeLine{36 \textcolor{comment}{        *   MOTOR CONTROL CONFIG}}
+\DoxyCodeLine{37 \textcolor{comment}{        */}}
+\DoxyCodeLine{38         \textcolor{comment}{// Motor direction control: 0 = normal direction, 1 = inverted direction}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{        \#define MOTOR\_DIRECTION\_MAINBODY 0}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{        \#define MOTOR\_DIRECTION\_SIDEBODY 1}}
+\DoxyCodeLine{41 \textcolor{preprocessor}{        \#define MOTOR\_DIRECTION\_ZAXIS 0}}
+\DoxyCodeLine{42         \textcolor{comment}{// Motor pwm: range between 0.0f and 0.5f}}
+\DoxyCodeLine{43 \textcolor{preprocessor}{        \#define MOTOR\_PWM\_MAINBODY 0.5}}
+\DoxyCodeLine{44 \textcolor{preprocessor}{        \#define MOTOR\_PWM\_SIDEBODY 0.5}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{        \#define MOTOR\_PWM\_ZAXIS 0.5}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{preprocessor}{        \#define MOTOR\_SLOW\_STOP\_DURATION 200}}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 \textcolor{preprocessor}{    \#endif}}
+
+\end{DoxyCode}

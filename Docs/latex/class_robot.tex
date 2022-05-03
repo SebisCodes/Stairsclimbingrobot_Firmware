@@ -1,0 +1,272 @@
+\hypertarget{class_robot}{}\doxysection{Robot Class Reference}
+\label{class_robot}\index{Robot@{Robot}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_robot_aa549f85959a737c086d306d3f025e56d}{motor\+Stop}} ()
+\item 
+void \mbox{\hyperlink{class_robot_abd4b5a0493fdf86e45fe3a027c8f059a}{slow\+Motor\+Stop}} ()
+\item 
+void \mbox{\hyperlink{class_robot_a0e8c08ff2cd6a56393f752822cc7bbeb}{enable\+Motors}} (bool en)
+\item 
+void \mbox{\hyperlink{class_robot_a0a33c6282831e4729f55fec282735c3b}{drive\+MB}} (short dir)
+\item 
+void \mbox{\hyperlink{class_robot_a6782f2cac09a1b89ced0c508ceea497e}{drive\+SB}} (short dir)
+\item 
+void \mbox{\hyperlink{class_robot_a65189b9ced7934e277a454ec391f2a0b}{driveZ}} (short dir)
+\item 
+int \mbox{\hyperlink{class_robot_a71d7730f623f5f9405077de72b7204ad}{get\+Procedure\+Code}} ()
+\item 
+void \mbox{\hyperlink{class_robot_a36c8d24c32e21b37d9f31f20372fea69}{set\+Procedure\+Code}} (int procedure\+Code)
+\item 
+void \mbox{\hyperlink{class_robot_ac75c5ff4ebbed315b40ae90bd7faaa2f}{set\+Error}} (bool error\+State)
+\item 
+bool \mbox{\hyperlink{class_robot_ac56e95fe67bfe14f20778c1402bb4373}{get\+Error}} ()
+\item 
+void \mbox{\hyperlink{class_robot_ab99801888149d86e05fbbaeadec2b4e5}{set\+Error\+Timeout}} (long long timeout)
+\item 
+void \mbox{\hyperlink{class_robot_a991d4c3b97c65f7a385561438529a129}{reset\+Task\+Timer}} ()
+\item 
+long long \mbox{\hyperlink{class_robot_a8514da71b1b45e4f6a841e8c4c9da5c0}{get\+Task\+Millis}} ()
+\item 
+long long \mbox{\hyperlink{class_robot_a644e0027cf4a896245e43628aed25a49}{get\+Error\+Millis}} ()
+\item 
+bool \mbox{\hyperlink{class_robot_a367c31a50c2b9ea1f1085535bbae1f89}{is\+Timeout\+Error}} ()
+\item 
+long long \mbox{\hyperlink{class_robot_a382c73cfa5fde35390ddf8e4c2489b01}{get\+Millis}} ()
+\item 
+short \mbox{\hyperlink{class_robot_a630c3f21da5160bf144def6989714ca0}{get\+Min\+ZSwitch}} ()
+\item 
+short \mbox{\hyperlink{class_robot_a492925a445c4b7b49cdda9f5a2c11326}{get\+Max\+ZSwitch}} ()
+\item 
+short \mbox{\hyperlink{class_robot_a31c054e3125850cd83bf701e72f3ebfa}{get\+Front\+IRSwitch}} ()
+\item 
+short \mbox{\hyperlink{class_robot_a6b8c7a900aafbf417cd306cbf4b5812c}{get\+Middle\+IRSwitch}} ()
+\item 
+short \mbox{\hyperlink{class_robot_a7271eba19120f12c86ada4e454e27316}{get\+Back\+IRSwitch}} ()
+\item 
+short \mbox{\hyperlink{class_robot_a43f8ab5c9cdc6ad2cc1dc863d3a3e431}{get\+Start\+Switch}} ()
+\item 
+double \mbox{\hyperlink{class_robot_a578aaa7a8aea36006b3aebf7a60b4b31}{get\+IRSensor\+Value}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_robot_a0a33c6282831e4729f55fec282735c3b}\label{class_robot_a0a33c6282831e4729f55fec282735c3b}} 
+\index{Robot@{Robot}!driveMB@{driveMB}}
+\index{driveMB@{driveMB}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{driveMB()}{driveMB()}}
+{\footnotesize\ttfamily void Robot\+::drive\+MB (\begin{DoxyParamCaption}\item[{short}]{dir }\end{DoxyParamCaption})}
+
+Start to drive the mainbody motor 
+\begin{DoxyParams}{Parameters}
+{\em dir} & short -\/ 1 = forward, 0 = backward \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_robot_a6782f2cac09a1b89ced0c508ceea497e}\label{class_robot_a6782f2cac09a1b89ced0c508ceea497e}} 
+\index{Robot@{Robot}!driveSB@{driveSB}}
+\index{driveSB@{driveSB}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{driveSB()}{driveSB()}}
+{\footnotesize\ttfamily void Robot\+::drive\+SB (\begin{DoxyParamCaption}\item[{short}]{dir }\end{DoxyParamCaption})}
+
+Start to drive the sidebody motor 
+\begin{DoxyParams}{Parameters}
+{\em dir} & short -\/ 1 = forward, 0 = backward \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_robot_a65189b9ced7934e277a454ec391f2a0b}\label{class_robot_a65189b9ced7934e277a454ec391f2a0b}} 
+\index{Robot@{Robot}!driveZ@{driveZ}}
+\index{driveZ@{driveZ}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{driveZ()}{driveZ()}}
+{\footnotesize\ttfamily void Robot\+::driveZ (\begin{DoxyParamCaption}\item[{short}]{dir }\end{DoxyParamCaption})}
+
+Start to drive the Z-\/axis motor 
+\begin{DoxyParams}{Parameters}
+{\em dir} & short -\/ 1 = forward, 0 = backward \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_robot_a0e8c08ff2cd6a56393f752822cc7bbeb}\label{class_robot_a0e8c08ff2cd6a56393f752822cc7bbeb}} 
+\index{Robot@{Robot}!enableMotors@{enableMotors}}
+\index{enableMotors@{enableMotors}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{enableMotors()}{enableMotors()}}
+{\footnotesize\ttfamily void Robot\+::enable\+Motors (\begin{DoxyParamCaption}\item[{bool}]{en }\end{DoxyParamCaption})}
+
+Set the enabled state of the motors 
+\begin{DoxyParams}{Parameters}
+{\em en} & Bool -\/ Set the enabled state of the motors\+: true -\/\texorpdfstring{$>$}{>} enabled, false -\/\texorpdfstring{$>$}{>} disabled \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_robot_a7271eba19120f12c86ada4e454e27316}\label{class_robot_a7271eba19120f12c86ada4e454e27316}} 
+\index{Robot@{Robot}!getBackIRSwitch@{getBackIRSwitch}}
+\index{getBackIRSwitch@{getBackIRSwitch}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{getBackIRSwitch()}{getBackIRSwitch()}}
+{\footnotesize\ttfamily short Robot\+::get\+Back\+IRSwitch (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the switch value \begin{DoxyReturn}{Returns}
+short -\/ digital value of the switch 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_robot_ac56e95fe67bfe14f20778c1402bb4373}\label{class_robot_ac56e95fe67bfe14f20778c1402bb4373}} 
+\index{Robot@{Robot}!getError@{getError}}
+\index{getError@{getError}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{getError()}{getError()}}
+{\footnotesize\ttfamily bool Robot\+::get\+Error (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Ge the actual error state \begin{DoxyReturn}{Returns}
+bool -\/ True on error, false if everything is okay 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_robot_a644e0027cf4a896245e43628aed25a49}\label{class_robot_a644e0027cf4a896245e43628aed25a49}} 
+\index{Robot@{Robot}!getErrorMillis@{getErrorMillis}}
+\index{getErrorMillis@{getErrorMillis}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{getErrorMillis()}{getErrorMillis()}}
+{\footnotesize\ttfamily long long Robot\+::get\+Error\+Millis (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the actual time of error\+Timer in milliseconds since the last time reset \begin{DoxyReturn}{Returns}
+long long -\/ get the actual milliseconds of error\+Timer since the last timer reset 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_robot_a31c054e3125850cd83bf701e72f3ebfa}\label{class_robot_a31c054e3125850cd83bf701e72f3ebfa}} 
+\index{Robot@{Robot}!getFrontIRSwitch@{getFrontIRSwitch}}
+\index{getFrontIRSwitch@{getFrontIRSwitch}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{getFrontIRSwitch()}{getFrontIRSwitch()}}
+{\footnotesize\ttfamily short Robot\+::get\+Front\+IRSwitch (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the switch value \begin{DoxyReturn}{Returns}
+short -\/ digital value of the switch 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_robot_a578aaa7a8aea36006b3aebf7a60b4b31}\label{class_robot_a578aaa7a8aea36006b3aebf7a60b4b31}} 
+\index{Robot@{Robot}!getIRSensorValue@{getIRSensorValue}}
+\index{getIRSensorValue@{getIRSensorValue}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{getIRSensorValue()}{getIRSensorValue()}}
+{\footnotesize\ttfamily double Robot\+::get\+IRSensor\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the sensor value \begin{DoxyReturn}{Returns}
+double -\/ analog value of the sensor 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_robot_a492925a445c4b7b49cdda9f5a2c11326}\label{class_robot_a492925a445c4b7b49cdda9f5a2c11326}} 
+\index{Robot@{Robot}!getMaxZSwitch@{getMaxZSwitch}}
+\index{getMaxZSwitch@{getMaxZSwitch}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{getMaxZSwitch()}{getMaxZSwitch()}}
+{\footnotesize\ttfamily short Robot\+::get\+Max\+ZSwitch (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the switch value \begin{DoxyReturn}{Returns}
+short -\/ digital value of the switch 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_robot_a6b8c7a900aafbf417cd306cbf4b5812c}\label{class_robot_a6b8c7a900aafbf417cd306cbf4b5812c}} 
+\index{Robot@{Robot}!getMiddleIRSwitch@{getMiddleIRSwitch}}
+\index{getMiddleIRSwitch@{getMiddleIRSwitch}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{getMiddleIRSwitch()}{getMiddleIRSwitch()}}
+{\footnotesize\ttfamily short Robot\+::get\+Middle\+IRSwitch (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the switch value \begin{DoxyReturn}{Returns}
+short -\/ digital value of the switch 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_robot_a382c73cfa5fde35390ddf8e4c2489b01}\label{class_robot_a382c73cfa5fde35390ddf8e4c2489b01}} 
+\index{Robot@{Robot}!getMillis@{getMillis}}
+\index{getMillis@{getMillis}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{getMillis()}{getMillis()}}
+{\footnotesize\ttfamily long long Robot\+::get\+Millis (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the actual time in milliseconds since the last time reset \begin{DoxyReturn}{Returns}
+long long -\/ get the actual milliseconds 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_robot_a630c3f21da5160bf144def6989714ca0}\label{class_robot_a630c3f21da5160bf144def6989714ca0}} 
+\index{Robot@{Robot}!getMinZSwitch@{getMinZSwitch}}
+\index{getMinZSwitch@{getMinZSwitch}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{getMinZSwitch()}{getMinZSwitch()}}
+{\footnotesize\ttfamily short Robot\+::get\+Min\+ZSwitch (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the switch value \begin{DoxyReturn}{Returns}
+short -\/ digital value of the switch 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_robot_a71d7730f623f5f9405077de72b7204ad}\label{class_robot_a71d7730f623f5f9405077de72b7204ad}} 
+\index{Robot@{Robot}!getProcedureCode@{getProcedureCode}}
+\index{getProcedureCode@{getProcedureCode}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{getProcedureCode()}{getProcedureCode()}}
+{\footnotesize\ttfamily int Robot\+::get\+Procedure\+Code (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get a running procedure code \begin{DoxyReturn}{Returns}
+int -\/ the setted procedure\+Code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_robot_a43f8ab5c9cdc6ad2cc1dc863d3a3e431}\label{class_robot_a43f8ab5c9cdc6ad2cc1dc863d3a3e431}} 
+\index{Robot@{Robot}!getStartSwitch@{getStartSwitch}}
+\index{getStartSwitch@{getStartSwitch}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{getStartSwitch()}{getStartSwitch()}}
+{\footnotesize\ttfamily short Robot\+::get\+Start\+Switch (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the switch value \begin{DoxyReturn}{Returns}
+short -\/ digital value of the switch 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_robot_a8514da71b1b45e4f6a841e8c4c9da5c0}\label{class_robot_a8514da71b1b45e4f6a841e8c4c9da5c0}} 
+\index{Robot@{Robot}!getTaskMillis@{getTaskMillis}}
+\index{getTaskMillis@{getTaskMillis}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{getTaskMillis()}{getTaskMillis()}}
+{\footnotesize\ttfamily long long Robot\+::get\+Task\+Millis (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the actual time in milliseconds since the last time reset \begin{DoxyReturn}{Returns}
+long long -\/ get the actual milliseconds since the last timer reset 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_robot_a367c31a50c2b9ea1f1085535bbae1f89}\label{class_robot_a367c31a50c2b9ea1f1085535bbae1f89}} 
+\index{Robot@{Robot}!isTimeoutError@{isTimeoutError}}
+\index{isTimeoutError@{isTimeoutError}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{isTimeoutError()}{isTimeoutError()}}
+{\footnotesize\ttfamily bool Robot\+::is\+Timeout\+Error (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Check if a timeout is reached \begin{DoxyReturn}{Returns}
+bool -\/ Timeout error is reached 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_robot_aa549f85959a737c086d306d3f025e56d}\label{class_robot_aa549f85959a737c086d306d3f025e56d}} 
+\index{Robot@{Robot}!motorStop@{motorStop}}
+\index{motorStop@{motorStop}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{motorStop()}{motorStop()}}
+{\footnotesize\ttfamily void Robot\+::motor\+Stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Stop the motors in a fast way \mbox{\Hypertarget{class_robot_a991d4c3b97c65f7a385561438529a129}\label{class_robot_a991d4c3b97c65f7a385561438529a129}} 
+\index{Robot@{Robot}!resetTaskTimer@{resetTaskTimer}}
+\index{resetTaskTimer@{resetTaskTimer}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{resetTaskTimer()}{resetTaskTimer()}}
+{\footnotesize\ttfamily void Robot\+::reset\+Task\+Timer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Reset the task timer \mbox{\Hypertarget{class_robot_ac75c5ff4ebbed315b40ae90bd7faaa2f}\label{class_robot_ac75c5ff4ebbed315b40ae90bd7faaa2f}} 
+\index{Robot@{Robot}!setError@{setError}}
+\index{setError@{setError}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{setError()}{setError()}}
+{\footnotesize\ttfamily void Robot\+::set\+Error (\begin{DoxyParamCaption}\item[{bool}]{error\+State }\end{DoxyParamCaption})}
+
+Set an error state and show it over an LED 
+\begin{DoxyParams}{Parameters}
+{\em error\+State} & bool -\/ If error, set true, if not set false \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_robot_ab99801888149d86e05fbbaeadec2b4e5}\label{class_robot_ab99801888149d86e05fbbaeadec2b4e5}} 
+\index{Robot@{Robot}!setErrorTimeout@{setErrorTimeout}}
+\index{setErrorTimeout@{setErrorTimeout}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{setErrorTimeout()}{setErrorTimeout()}}
+{\footnotesize\ttfamily void Robot\+::set\+Error\+Timeout (\begin{DoxyParamCaption}\item[{long long}]{timeout }\end{DoxyParamCaption})}
+
+Set a timeout\+: if this timeout is reached, the error state will be setted to true 
+\begin{DoxyParams}{Parameters}
+{\em timeout} & long -\/ Set the timeout in millis \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_robot_a36c8d24c32e21b37d9f31f20372fea69}\label{class_robot_a36c8d24c32e21b37d9f31f20372fea69}} 
+\index{Robot@{Robot}!setProcedureCode@{setProcedureCode}}
+\index{setProcedureCode@{setProcedureCode}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{setProcedureCode()}{setProcedureCode()}}
+{\footnotesize\ttfamily void Robot\+::set\+Procedure\+Code (\begin{DoxyParamCaption}\item[{int}]{procedure\+Code }\end{DoxyParamCaption})}
+
+Store a running procedure code 
+\begin{DoxyParams}{Parameters}
+{\em procedure\+Code} & int -\/ the procedure\+Code to set \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_robot_abd4b5a0493fdf86e45fe3a027c8f059a}\label{class_robot_abd4b5a0493fdf86e45fe3a027c8f059a}} 
+\index{Robot@{Robot}!slowMotorStop@{slowMotorStop}}
+\index{slowMotorStop@{slowMotorStop}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{slowMotorStop()}{slowMotorStop()}}
+{\footnotesize\ttfamily void Robot\+::slow\+Motor\+Stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Stop the motors in a slow way (without a jerk) 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Robot.\+h\item 
+Robot.\+cpp\end{DoxyCompactItemize}
