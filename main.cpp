@@ -44,6 +44,7 @@ int main()
                 //TODO: Implement wait for start process
                 if(!myRobot->getStartSwitch()){
                     step = true;
+                    sequence = 0;
                     myRobot->setProcedureCode(HOMING);
                 }
                 break;
@@ -80,6 +81,7 @@ int main()
                     myRobot->resetTaskTimer();
                     //TODO: find good value
                     if(myRobot->getTaskMillis()>=100){
+                        sequence = 0;
                         myRobot->slowMotorStop();
                         myRobot->setProcedureCode(STOP);
                     }
@@ -105,6 +107,7 @@ int main()
                     myRobot->resetTaskTimer();
                     //TODO: find good value
                     if(myRobot->getTaskMillis()>=100){
+                        sequence = 0;
                         myRobot->slowMotorStop();
                         myRobot->setProcedureCode(STOP);
                     }
