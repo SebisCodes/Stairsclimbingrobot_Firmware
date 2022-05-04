@@ -45,12 +45,12 @@ int main()
                 if(!myRobot->getStartSwitch()){
                     step = true;
                     sequence = 0;
+                    myRobot->resetTaskTimer();
                     myRobot->setProcedureCode(HOMING);
                 }
                 break;
             case HOMING:
                 //TODO: Implement homing process
-                myRobot->resetTaskTimer();
                 if(myRobot->getTaskMillis()>=10000){
                     myRobot->setError(true);
                     myRobot->slowMotorStop();
@@ -78,7 +78,6 @@ int main()
                         myRobot->setProcedureCode(GO_DOWN);
                     }  
                 }else if(sequence == 2){
-                    myRobot->resetTaskTimer();
                     //TODO: find good value
                     if(myRobot->getTaskMillis()>=100){
                         sequence = 0;
@@ -104,7 +103,6 @@ int main()
                         myRobot->setProcedureCode(GO_UP);
                     }  
                 }else if(sequence == 2){
-                    myRobot->resetTaskTimer();
                     //TODO: find good value
                     if(myRobot->getTaskMillis()>=100){
                         sequence = 0;
@@ -131,6 +129,7 @@ int main()
                         sequence += 1;  //0 if there is a next step, 2 if there is none
                         step = false;
                         myRobot->slowMotorStop();
+                        myRobot->resetTaskTimer();
                         myRobot->setProcedureCode(DRIVE_FORWARD);
                     }
                 }else{
@@ -139,6 +138,7 @@ int main()
                         if(stairsCounter > 0){
                             sequence = 0;
                         }else{
+                            myRobot->resetTaskTimer();
                             sequence = 2;
                         }
                         myRobot->setProcedureCode(DRIVE_BACKWARD);
