@@ -35,7 +35,7 @@ Robot::Robot() {
     this->SW_IR_FRONT = new DigitalIn(PIN_SWITCH_IR_FRONT);
     this->SW_Z_MIN = new DigitalIn(PIN_SWITCH_Z_MIN);
     this->SW_Z_MAX = new DigitalIn(PIN_SWITCH_Z_MAX);
-    this->SW_START = new DigitalIn(PIN_SWITCH_START);
+    this->SW_START = new InterruptIn(PIN_SWITCH_START);
 
     this->SW_Z_MIN->mode(PullUp);
     this->SW_Z_MAX->mode(PullUp);
@@ -364,4 +364,12 @@ short Robot::getStartSwitch() {
 */
 double Robot::getIRSensorValue() {
     return this->SE_IR->read();
+}
+
+bool Robot::getInitPos(){
+    if(!(this->getFrontIRSwitch()) && this->getMiddleIRSwitch() && this-> getBackIRSwitch() && this->getMaxZSwitch() && !(this->getMinZSwitch())){
+        return true;
+    }else{
+        return false;
+    }
 }

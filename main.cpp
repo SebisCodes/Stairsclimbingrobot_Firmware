@@ -14,13 +14,14 @@
 Robot *myRobot;
 
 //To make the code beautiful, each process is described by an own enum
-enum PROCEDURES { /*TODO: Implement other enums if needed*/ WAIT_FOR_START, HOMING, DRIVE_FORWARD, DRIVE_BACKWARD, GO_DOWN, GO_UP, IN_ERROR, STOP};
+enum PROCEDURES { /*TODO: Implement other enums if needed*/ WAIT_FOR_START, INIT, SETUP, WAIT_FOR_DOWN, FW_TO_STEP, FW_ON_STEP, FW_LAST_STEP, BW_TO_EDGE, BW_OVER_EDGE, BW_LAST_STEP, GO_DOWN, FW_GO_UP, BW_GO_UP, IN_ERROR, STOP};
 
 //Counter for the amount of stairs
 int stairsCounter;
 
 //Boolean to get out of process loop
 bool running = true;
+bool run = false;
 
 //Boolean to switch between "up" and "down"
 bool down = false;
@@ -28,161 +29,236 @@ bool down = false;
 //Boolean to flag another step 
 bool step = false;
 
-//Integer to use while climbing a step
-int stepSequence = 0;
+void eStop(){
+    myRobot->setError(true);
+    myRobot->setWarning(true);
+    myRobot->emergencyStop();
+}
 
 int main()
 {    
     //Initialize robot class
     myRobot = new Robot();
-
+    myRobot->SW_START->fall(eStop);
     //Setup stairs counter
-    stairsCounter = 0;
-    while(true) printf("Test\n");
+
     while (running) {
         switch (myRobot->getProcedureCode()) {
             case WAIT_FOR_START:
                 //TODO: Implement wait for start process
-                if(myRobot->getStartSwitch()){
-                    step = true;
-                    stepSequence = 0;
-                    myRobot->resetTaskTimer();
-                    myRobot->setProcedureCode(HOMING);
+                printf("WAIT_FOR_START\n");
+                while(!myRobot->getStartSwitch()); // wait
+                myRobot->setProcedureCode(INIT);
+                break;
+            
+            case INIT:            
+                printf("INIT\n");
+                step = true;
+                down = false;
+                stairsCounter = 0;
+                if(myRobot->getInitPos()){
+                    myRobot->setProcedureCode(FW_TO_STEP);
+                }else {
+                    myRobot->setProcedureCode(SETUP);
                 }
                 break;
-            case HOMING:
-                //TODO: Implement homing process
-                if(myRobot->getTaskMillis()>=10000){
+
+            case SETUP:
+                printf("SETUP\n");
+                if (!myRobot->getMaxZSwitch()) {
+                    myRobot->driveZ(1);
+                    myRobot->resetTaskTimer();
+                    run = true;
+                }
+                while (run) {
+                    if(myRobot->getTaskMillis()>=10000){
+                        myRobot->setError(true);
+                        myRobot->setProcedureCode(IN_ERROR);
+                        run = false;
+                    }
+                    if(myRobot->getMaxZSwitch()){
+                        myRobot->slowMotorStop();
+                        run = false;
+                    }
+                }
+                if(myRobot->getInitPos()){
+                    myRobot->setProcedureCode(FW_TO_STEP);
+                }else {
                     myRobot->setError(true);
                     myRobot->setProcedureCode(IN_ERROR);
                 }
-                if(!myRobot->getMaxZSwitch()){
-                    myRobot->driveZ(1);
-                }else{
-                    myRobot->slowMotorStop();
-                    myRobot->setProcedureCode(DRIVE_FORWARD);
+            break;
+
+            case FW_TO_STEP:
+                printf("FW_TO_STEP\n");
+                if(!myRobot->getFrontIRSwitch()){
+                    myRobot->driveH(1);
+                    run = true;    
                 }
-                
-                break;
-            case DRIVE_FORWARD:
-                //TODO: Implement forward driving process
-                myRobot->driveH(1);
-                if(stepSequence == 0){
+                while(run) {
                     if(myRobot->getFrontIRSwitch()){
                         myRobot->slowMotorStop();
-                        myRobot->setProcedureCode(GO_DOWN);
+                        run = false;
                     }
-                }else if(stepSequence == 1){
+                }
+                myRobot->setProcedureCode(GO_DOWN);
+                break;
+            
+            case FW_ON_STEP:
+                printf("FW_ON_STEP\n");
+                if(!myRobot->getMiddleIRSwitch()){
+                    myRobot->driveH(1);
+                    run = true;
+                }
+                while(run){
                     if(myRobot->getMiddleIRSwitch()){
                         myRobot->slowMotorStop();
-                        myRobot->setProcedureCode(GO_UP);
-                    }  
-                }else if(stepSequence == 2){
-                    //TODO: find good value
-                    if(myRobot->getTaskMillis()>=3000){
-                        stepSequence = 0;
-                        myRobot->slowMotorStop();
-                        myRobot->setProcedureCode(STOP);
-                    }
-                }else { 
-                    myRobot->setError(true);
-                    myRobot->setProcedureCode(IN_ERROR); 
+                        run = false;
+                    } 
                 }
+                myRobot->setProcedureCode(FW_GO_UP);
                 break;
-            case DRIVE_BACKWARD:
-                //TODO: Same as above...
-                myRobot->driveH(0);
-                if(stepSequence == 0){
-                    if(myRobot->getBackIRSwitch()){
-                        myRobot->slowMotorStop();
-                        myRobot->setProcedureCode(GO_UP);
-                    }
-                }else if(stepSequence == 1){
-                    if(myRobot->getFrontIRSwitch()){
-                        myRobot->slowMotorStop();
-                        myRobot->setProcedureCode(GO_DOWN);
-                    }  
-                }else if(stepSequence == 2){
-                    //TODO: find good value
+
+            case FW_LAST_STEP:
+                printf("FW_LAST_STEP\n");
+                myRobot->resetTaskTimer();
+                myRobot->driveH(1);
+                run = true;
+                while(run){
                     if(myRobot->getTaskMillis()>=3000){
-                        stepSequence = 0;
-                        myRobot->resetTaskTimer();
                         myRobot->slowMotorStop();
-                        myRobot->setProcedureCode(STOP);
+                        run = false;
                     }
-                }else { 
-                    myRobot->setError(true); 
-                    myRobot->setProcedureCode(IN_ERROR);
                 }
-                //myRobot->setProcedureCode(...);
+                myRobot->setProcedureCode(WAIT_FOR_DOWN);
                 break;
+    
+            case WAIT_FOR_DOWN:
+                printf("WAIT_FOR_DOWN\n");
+                while(!myRobot->getStartSwitch()); // wait 
+                down = true;
+                myRobot->setProcedureCode(BW_TO_EDGE);
+                break;
+
+            case BW_TO_EDGE:
+                printf("BACKWARD_TO EDGE\n");
+                if(myRobot->getBackIRSwitch()){
+                    myRobot->driveH(0);
+                    run = true;
+                }
+                while(true){
+                    if(!myRobot->getBackIRSwitch()){
+                        myRobot->slowMotorStop();
+                        run = false;
+                    }
+                }
+                myRobot->setProcedureCode(BW_GO_UP);
+                break;
+
+            case BW_OVER_EDGE:
+                printf("BW_OVER_EDGE\n");
+                if(myRobot->getFrontIRSwitch()){
+                    myRobot->driveH(0);
+                    run = true;
+                }
+                while(true){
+                    if(!myRobot->getFrontIRSwitch()){
+                        myRobot->slowMotorStop();
+                        run = false;
+                    }
+                }
+                myRobot->setProcedureCode(GO_DOWN);
+                break;
+
+            case BW_LAST_STEP:
+                printf("BW_LAST_STEP\n");
+                myRobot->resetTaskTimer();
+                run = true;
+                while(true){
+                    if(myRobot->getTaskMillis()>=3000){
+                        myRobot->slowMotorStop();
+                        run = false;
+                    }
+                }
+                myRobot->setProcedureCode(STOP);
+                break;
+
             case GO_DOWN:
-                //TODO: ...
-                myRobot->driveZ(1);
+                printf("GO_DOWN\n");
+                if(!myRobot->getMinZSwitch()){
+                    myRobot->driveZ(0);
+                    run = true;
+                }
+                while(run){
+                    if(myRobot->getMinZSwitch()){
+                        myRobot->slowMotorStop();
+                        run = false;
+                    }
+                }
                 if(!down){
-                    //TODO: Find working IR sensor value.
+                    myRobot->setProcedureCode(FW_ON_STEP);
+                }else{
+                    myRobot->setProcedureCode(BW_OVER_EDGE);
+                }
+                break;
+
+            case FW_GO_UP:
+                printf("FW_GO_UP\n");
+                if(!myRobot->getMaxZSwitch()){
+                    myRobot->driveZ(1);
+                    run = true;
+                }
+                while(run){
                     if(myRobot->getIRSensorValue()<0.1 && !step){
                         step = true;
-                        stepSequence = -1;  //will be set to 0
                         stairsCounter += 1;
                     }
                     if(myRobot->getMaxZSwitch()){
-                        stepSequence += 1;  //0 if there is a next step, 2 if there is none
-                        step = false;
                         myRobot->slowMotorStop();
-                        myRobot->resetTaskTimer();
-                        myRobot->setProcedureCode(DRIVE_FORWARD);
+                        if(step){
+                            myRobot->setProcedureCode(FW_TO_STEP);
+                        }else{
+                            myRobot->setProcedureCode(FW_LAST_STEP);
+                        }
+                        step = false;
+                        run = false;
                     }
-                }else{
+                }
+            break;
+
+            case BW_GO_UP:
+                printf("BW_GO_UP\n");
+                if(!myRobot->getMaxZSwitch()){
+                    myRobot->driveZ(1);
+                    run = true;
+                }
+                while(run){
                     if(myRobot->getMaxZSwitch()){
+                        myRobot->slowMotorStop();
                         stairsCounter -= 1;
                         if(stairsCounter > 0){
-                            stepSequence = 0;
+                            myRobot->setProcedureCode(BW_TO_EDGE);
                         }else{
-                            myRobot->resetTaskTimer();
-                            stepSequence = 2;
+                            myRobot->setProcedureCode(BW_LAST_STEP);
                         }
-                        myRobot->setProcedureCode(DRIVE_BACKWARD);
+
                     }
                 }
-                //myRobot->setProcedureCode(...);
-                break;
-            case GO_UP:
-                //TODO: ...
-                myRobot->driveZ(0);
-                if(myRobot->getMinZSwitch()){
-                    if(!down){
-                        stepSequence = 0;
-                        myRobot->slowMotorStop();
-                        myRobot->setProcedureCode(DRIVE_FORWARD);
-                    }else{
-                        stepSequence += 1;
-                        myRobot->slowMotorStop();
-                        myRobot->setProcedureCode(DRIVE_BACKWARD);
-                    }
-                }
-                //myRobot->setProcedureCode(...);
-                break;
+            break;
+            
             case IN_ERROR:
-                if (myRobot->getStartSwitch()) {
-                    myRobot->setError(false);
-                    myRobot->setProcedureCode(HOMING);
-                }
+                printf("IN_ERROR\n");
+                while(!myRobot->getStartSwitch()); //wait 
+                myRobot->setError(false);
+                myRobot->setProcedureCode(INIT);
                 break;
+
             case STOP:
-                //TODO: ...
-                //myRobot->setProcedureCode(...);
-                if(!down){
-                    if(myRobot->getStartSwitch() && myRobot->getTaskMillis()>5000){
-                        down = true;
-                        myRobot->setProcedureCode(DRIVE_BACKWARD);
-                    }
-                }else{
-                    running = false; //Get out of while(running) loop
-                }
+                printf("STOP\n");
+                running = false; //Get out of while(running) loop
+                myRobot->setProcedureCode(WAIT_FOR_START);
                 break;
             //TODO: Add more cases if needed
         }
     }
 }
-

@@ -43,6 +43,8 @@ class Robot {
         short getStartSwitch();
         double getIRSensorValue();
         void emergencyStop();
+        bool getInitPos();
+        InterruptIn *SW_START;
         
         //void playSound(std::string name); //TODO
         
@@ -88,7 +90,7 @@ class Robot {
         DigitalIn *SW_IR_FRONT;
         DigitalIn *SW_Z_MIN;
         DigitalIn *SW_Z_MAX;
-        DigitalIn *SW_START;
+        
 
         /*
         *   Sensor inputs
