@@ -15,6 +15,7 @@
         #define PIN_SWITCH_IR_BACK PB_6
         #define PIN_SWITCH_IR_MIDDLE PC_7
         #define PIN_SWITCH_IR_FRONT PA_6
+        #define PIN_SWITCH_EMERGENCY PC_14
 
         //SENSORS
         #define PIN_SENSOR_DISTANCE PC_2

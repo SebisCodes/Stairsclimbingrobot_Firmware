@@ -27,6 +27,7 @@ class Robot {
         int getProcedureCode();
         void setProcedureCode(int procedureCode);
         void setError(bool errorState); 
+        void setWarning(bool warningState); 
         bool getError(); 
         void setErrorTimeout(long long timeout);
         void resetTaskTimer();
@@ -41,6 +42,7 @@ class Robot {
         short getBackIRSwitch();
         short getStartSwitch();
         double getIRSensorValue();
+        void emergencyStop();
         
         //void playSound(std::string name); //TODO
         

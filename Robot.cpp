@@ -65,6 +65,14 @@ void Robot::resetTaskTimer() {
 }
 
 /**
+*   Disable all stepper and run in endless while
+*/
+void Robot::emergencyStop() {
+    this->motorStop();
+    while(true) printf("Emergency stop!");
+}
+
+/**
 *   Get the actual time in milliseconds since the last time reset
 *   @return long long - get the actual milliseconds
 */
@@ -170,6 +178,15 @@ void Robot::setError(bool errorState) {
     if (errorState) {
         motorStop();
     }
+}
+
+
+/**
+*   Set an warning state and show it over an LED
+*   @param warningState bool - If warning, set true, if not set false
+*/
+void Robot::setWarning(bool warningState) {
+    *(this->LED_warning) = (warningState ? 1 : 0);
 }
 
 /**
