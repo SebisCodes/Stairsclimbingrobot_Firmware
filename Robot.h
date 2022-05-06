@@ -22,6 +22,7 @@ class Robot {
         void enableMotors(bool en);
         void driveMB(short dir);
         void driveSB(short dir);
+        void driveH(short dir);
         void driveZ(short dir);
         int getProcedureCode();
         void setProcedureCode(int procedureCode);
@@ -66,6 +67,7 @@ class Robot {
         * LED variables
         */
         DigitalOut *LED_error;
+        DigitalOut *LED_warning;
         DigitalOut *LED_running;
 
         /*

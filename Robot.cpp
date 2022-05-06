@@ -37,6 +37,10 @@ Robot::Robot() {
     this->SW_Z_MAX = new DigitalIn(PIN_SWITCH_Z_MAX);
     this->SW_START = new DigitalIn(PIN_SWITCH_START);
 
+    this->SW_Z_MIN->mode(PullUp);
+    this->SW_Z_MAX->mode(PullUp);
+    this->SW_START->mode(PullUp);
+
     /*
     *   Setup sensors
     */
@@ -46,6 +50,7 @@ Robot::Robot() {
     *   Setup error management
     */
     this->LED_error = new DigitalOut(PIN_LED_ERROR);
+    this->LED_warning = new DigitalOut(PIN_LED_WARNING);
     this->LED_running = new DigitalOut(PIN_LED_RUN);
     this->setError(false);
 
@@ -197,6 +202,30 @@ bool Robot::isTimeoutError() {
 }
 
 /**
+*   Start to drive the mainbody and sidebody motors
+*   @param dir short - 1 = forward, 0 = backward
+*/
+void Robot::driveH(short dir) {
+    if (!this->error) {
+        //make sure that all motors are stopped
+        motorStop();
+        //Enable motors and set speed
+        this->enableMotors(true);
+        //Store the speed at beginning of the slow down process
+        double startSpeed = 0.5f;
+        // Reset the timer
+        this->internalTaskTimer.reset();
+        //Define the actual time
+        long long actualTime = 0;
+        //loop while speed up
+        while ((actualTime = this->getInternalTaskMillis()) < MOTOR_SLOW_STOP_DURATION) {
+            M_MB->write(0.5f+pow(-1,MOTOR_DIRECTION_MAINBODY)*pow(-1,dir)*MOTOR_PWM_MAINBODY/MOTOR_SLOW_STOP_DURATION*actualTime); // Speed(t) = zeroSpeed + fullSpeed / slow down time * t
+            M_SB->write(0.5f+pow(-1,MOTOR_DIRECTION_SIDEBODY)*pow(-1,dir)*MOTOR_PWM_SIDEBODY/MOTOR_SLOW_STOP_DURATION*actualTime); // Speed(t) = zeroSpeed + fullSpeed / slow down time * t
+        }
+    }
+}
+
+/**
 *   Start to drive the mainbody motor
 *   @param dir short - 1 = forward, 0 = backward
 */
@@ -286,7 +315,7 @@ short Robot::getMaxZSwitch() {
 *   @return short - digital value of the switch 
 */
 short Robot::getFrontIRSwitch() {
-    return this->SW_IR_FRONT->read();
+    return this->SW_IR_FRONT->read() ? 0 : 1;
 }
 
 /**
@@ -294,7 +323,7 @@ short Robot::getFrontIRSwitch() {
 *   @return short - digital value of the switch 
 */
 short Robot::getMiddleIRSwitch() {
-    return this->SW_IR_MIDDLE->read();
+    return this->SW_IR_MIDDLE->read() ? 0 : 1;
 }
 
 /**
@@ -302,7 +331,7 @@ short Robot::getMiddleIRSwitch() {
 *   @return short - digital value of the switch 
 */
 short Robot::getBackIRSwitch() {
-    return this->SW_IR_BACK->read();
+    return this->SW_IR_BACK->read() ? 0 : 1;
 }
 
 /**
