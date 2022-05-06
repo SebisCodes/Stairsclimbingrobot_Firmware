@@ -65,7 +65,7 @@ int main()
                 break;
             case DRIVE_FORWARD:
                 //TODO: Implement forward driving process
-                myRobot->driveMB(1);
+                myRobot->driveH(1);
                 if(stepSequence == 0){
                     if(myRobot->getFrontIRSwitch()){
                         myRobot->slowMotorStop();
@@ -90,7 +90,7 @@ int main()
                 break;
             case DRIVE_BACKWARD:
                 //TODO: Same as above...
-                myRobot->driveMB(0);
+                myRobot->driveH(0);
                 if(stepSequence == 0){
                     if(myRobot->getBackIRSwitch()){
                         myRobot->slowMotorStop();
