@@ -13,7 +13,7 @@
 Robot *myRobot;
 
 //To make the code beautiful, each process is described by an own enum
-enum PROCEDURES { /*TODO: Implement other enums if needed*/ WAIT_FOR_START, HOMING, DRIVE_FORWARD, DRIVE_BACKWARD, GO_UP, GO_DOWN, IN_ERROR, STOP};
+enum PROCEDURES { /*TODO: Implement other enums if needed*/ WAIT_FOR_START, HOMING, DRIVE_FORWARD, DRIVE_BACKWARD, GO_DOWN, GO_UP, IN_ERROR, STOP};
 
 //Counter for the amount of stairs
 int stairsCounter;
@@ -28,7 +28,7 @@ bool down = false;
 bool step = false;
 
 //Integer to use while climbing a step
-int sequence = 0;
+int stepSequence = 0;
 
 int main()
 {    
@@ -42,9 +42,9 @@ int main()
         switch (myRobot->getProcedureCode()) {
             case WAIT_FOR_START:
                 //TODO: Implement wait for start process
-                if(!myRobot->getStartSwitch()){
+                if(myRobot->getStartSwitch()){
                     step = true;
-                    sequence = 0;
+                    stepSequence = 0;
                     myRobot->resetTaskTimer();
                     myRobot->setProcedureCode(HOMING);
                 }
@@ -53,11 +53,10 @@ int main()
                 //TODO: Implement homing process
                 if(myRobot->getTaskMillis()>=10000){
                     myRobot->setError(true);
-                    myRobot->slowMotorStop();
                     myRobot->setProcedureCode(IN_ERROR);
                 }
-                if(myRobot->getMinZSwitch()){
-                    myRobot->driveZ(0);
+                if(!myRobot->getMaxZSwitch()){
+                    myRobot->driveZ(1);
                 }else{
                     myRobot->slowMotorStop();
                     myRobot->setProcedureCode(DRIVE_FORWARD);
@@ -67,20 +66,20 @@ int main()
             case DRIVE_FORWARD:
                 //TODO: Implement forward driving process
                 myRobot->driveMB(1);
-                if(sequence == 0){
+                if(stepSequence == 0){
                     if(myRobot->getFrontIRSwitch()){
                         myRobot->slowMotorStop();
-                        myRobot->setProcedureCode(GO_UP);
+                        myRobot->setProcedureCode(GO_DOWN);
                     }
-                }else if(sequence == 1){
+                }else if(stepSequence == 1){
                     if(myRobot->getMiddleIRSwitch()){
                         myRobot->slowMotorStop();
-                        myRobot->setProcedureCode(GO_DOWN);
+                        myRobot->setProcedureCode(GO_UP);
                     }  
-                }else if(sequence == 2){
+                }else if(stepSequence == 2){
                     //TODO: find good value
-                    if(myRobot->getTaskMillis()>=100){
-                        sequence = 0;
+                    if(myRobot->getTaskMillis()>=3000){
+                        stepSequence = 0;
                         myRobot->slowMotorStop();
                         myRobot->setProcedureCode(STOP);
                     }
@@ -92,20 +91,21 @@ int main()
             case DRIVE_BACKWARD:
                 //TODO: Same as above...
                 myRobot->driveMB(0);
-                if(sequence == 0){
+                if(stepSequence == 0){
                     if(myRobot->getBackIRSwitch()){
                         myRobot->slowMotorStop();
-                        myRobot->setProcedureCode(GO_DOWN);
+                        myRobot->setProcedureCode(GO_UP);
                     }
-                }else if(sequence == 1){
+                }else if(stepSequence == 1){
                     if(myRobot->getFrontIRSwitch()){
                         myRobot->slowMotorStop();
-                        myRobot->setProcedureCode(GO_UP);
+                        myRobot->setProcedureCode(GO_DOWN);
                     }  
-                }else if(sequence == 2){
+                }else if(stepSequence == 2){
                     //TODO: find good value
-                    if(myRobot->getTaskMillis()>=100){
-                        sequence = 0;
+                    if(myRobot->getTaskMillis()>=3000){
+                        stepSequence = 0;
+                        myRobot->resetTaskTimer();
                         myRobot->slowMotorStop();
                         myRobot->setProcedureCode(STOP);
                     }
@@ -115,47 +115,47 @@ int main()
                 }
                 //myRobot->setProcedureCode(...);
                 break;
-            case GO_UP:
+            case GO_DOWN:
                 //TODO: ...
                 myRobot->driveZ(1);
                 if(!down){
                     //TODO: Find working IR sensor value.
-                    if(myRobot->getIRSensorValue()<=1 && !step){
+                    if(myRobot->getIRSensorValue()<0.1 && !step){
                         step = true;
-                        sequence = -1;  //will be set to 0
+                        stepSequence = -1;  //will be set to 0
                         stairsCounter += 1;
                     }
-                    if(!myRobot->getMaxZSwitch()){
-                        sequence += 1;  //0 if there is a next step, 2 if there is none
+                    if(myRobot->getMaxZSwitch()){
+                        stepSequence += 1;  //0 if there is a next step, 2 if there is none
                         step = false;
                         myRobot->slowMotorStop();
                         myRobot->resetTaskTimer();
                         myRobot->setProcedureCode(DRIVE_FORWARD);
                     }
                 }else{
-                    if(!myRobot->getMaxZSwitch()){
+                    if(myRobot->getMaxZSwitch()){
                         stairsCounter -= 1;
                         if(stairsCounter > 0){
-                            sequence = 0;
+                            stepSequence = 0;
                         }else{
                             myRobot->resetTaskTimer();
-                            sequence = 2;
+                            stepSequence = 2;
                         }
                         myRobot->setProcedureCode(DRIVE_BACKWARD);
                     }
                 }
                 //myRobot->setProcedureCode(...);
                 break;
-            case GO_DOWN:
+            case GO_UP:
                 //TODO: ...
                 myRobot->driveZ(0);
-                if(!myRobot->getMinZSwitch()){
+                if(myRobot->getMinZSwitch()){
                     if(!down){
-                        sequence = 0;
+                        stepSequence = 0;
                         myRobot->slowMotorStop();
                         myRobot->setProcedureCode(DRIVE_FORWARD);
                     }else{
-                        sequence += 1;
+                        stepSequence += 1;
                         myRobot->slowMotorStop();
                         myRobot->setProcedureCode(DRIVE_BACKWARD);
                     }
@@ -163,7 +163,7 @@ int main()
                 //myRobot->setProcedureCode(...);
                 break;
             case IN_ERROR:
-                if (!myRobot->getStartSwitch()) {
+                if (myRobot->getStartSwitch()) {
                     myRobot->setError(false);
                     myRobot->setProcedureCode(HOMING);
                 }
@@ -172,7 +172,7 @@ int main()
                 //TODO: ...
                 //myRobot->setProcedureCode(...);
                 if(!down){
-                    if(!myRobot->getStartSwitch()){
+                    if(myRobot->getStartSwitch() && myRobot->getTaskMillis()>5000){
                         down = true;
                         myRobot->setProcedureCode(DRIVE_BACKWARD);
                     }
