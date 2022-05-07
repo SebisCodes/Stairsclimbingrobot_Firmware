@@ -362,7 +362,7 @@ short Robot::getStartSwitch() {
 *   Get the sensor value
 *   @return double - analog value of the sensor 
 */
-double Robot::getIRSensorValue() {
+float Robot::getIRSensorValue() {
     return this->SE_IR->read();
 }
 

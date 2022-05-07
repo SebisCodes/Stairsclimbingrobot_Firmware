@@ -41,7 +41,7 @@ class Robot {
         short getMiddleIRSwitch();
         short getBackIRSwitch();
         short getStartSwitch();
-        double getIRSensorValue();
+        float getIRSensorValue();
         void emergencyStop();
         bool getInitPos();
         InterruptIn *SW_START;
