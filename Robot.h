@@ -24,6 +24,7 @@ class Robot {
         void driveSB(short dir);
         void driveH(short dir);
         void driveZ(short dir);
+        void slowSB(short dir);
         int getProcedureCode();
         void setProcedureCode(int procedureCode);
         void setError(bool errorState); 

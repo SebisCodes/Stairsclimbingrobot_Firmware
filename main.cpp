@@ -14,7 +14,7 @@
 Robot *myRobot;
 
 //To make the code beautiful, each process is described by an own enum
-enum PROCEDURES {WAIT_FOR_START, INIT, SETUP, WAIT_FOR_DOWN, FW_TO_STEP, FW_ON_STEP, FW_LAST_STEP, BW_TO_EDGE, BW_OVER_EDGE, BW_TIMED, BW_LAST_STEP, GO_DOWN, FW_GO_UP, BW_GO_UP, IN_ERROR, STOP};
+enum PROCEDURES {WAIT_FOR_START, INIT, SETUP, WAIT_FOR_DOWN, FW_TO_STEP, FW_ON_STEP, FW_LAST_STEP, BW_TO_EDGE, BW_OVER_EDGE, BW_TIMED, BW_SLOW, BW_LAST_STEP, GO_DOWN, FW_GO_UP, BW_GO_UP, IN_ERROR, STOP};
 
 //Counter for the amount of stairs
 int stairsCounter;
@@ -189,21 +189,41 @@ int main()
                 }
                 while(run){
                     if(!myRobot->getMiddleIRSwitch()){
+                        myRobot->slowMotorStop(); //remove this if next step is BW_TIMED
                         run = false;
                     }
                 }
-                //switch to timed process, keep driving backward
+                //switch to driving slowly
                 myRobot->setProcedureCode(BW_TIMED);
                 break;
+            case BW_SLOW:
+                printf("backward slow\n"); //for troubleshooting
+                //drive backward slowly, until the front IR-switch is no longer active
+                if (myRobot->getFrontIRSwitch()) {
+                    myRobot->slowSB(0);
+                    run = true;
+                }
+                while (run) {
+                    if (myRobot->getFrontIRSwitch()) {
+                        myRobot->motorStop();
+                        run = false;
+                    }
+                }
+                //switch to moving the side-body up
+                myRobot->setProcedureCode(BW_GO_UP);
+                break;
 
-            case BW_TIMED:
+            case BW_TIMED:  //will be used, if driving slowly over the edge does not work
+                            //motor needs to still be running from last step
                 printf("backward timed\n"); //for troubleshooting
                 //stop motor, after a set amount of time has passed
                 myRobot->resetTaskTimer();
                 run = true;
-                if (myRobot->getTaskMillis()>1000) { //value needs adjusting!
-                    myRobot->motorStop();
-                    run = false;
+                while(run){
+                    if (myRobot->getTaskMillis()>1000) { //value needs adjusting!
+                        myRobot->motorStop();
+                        run = false;
+                    }
                 }
                 //switch to moving the side-body up
                 myRobot->setProcedureCode(BW_GO_UP);

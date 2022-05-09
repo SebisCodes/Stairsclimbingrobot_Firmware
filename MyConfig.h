@@ -44,6 +44,7 @@
         // Motor pwm: range between 0.0f and 0.5f
         #define MOTOR_PWM_MAINBODY 0.2
         #define MOTOR_PWM_SIDEBODY 0.4
+        #define SLOW_PWM_SIDEBODY 0.2
         #define MOTOR_PWM_ZAXIS 0.3
 
         #define MOTOR_SLOW_STOP_DURATION 200

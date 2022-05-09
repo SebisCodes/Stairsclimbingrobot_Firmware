@@ -289,6 +289,29 @@ void Robot::driveSB(short dir) {
 }
 
 /**
+*   Start to drive the sidebody motor
+*   @param dir short - 1 = forward, 0 = backward
+*/
+void Robot::slowSB(short dir) {
+    if (!this->error) {
+        //make sure that all motors are stopped
+        motorStop();
+        //Enable motors and set speed
+        this->enableMotors(true);
+        //Store the speed at beginning of the slow down process
+        double startSpeed = 0.5f;
+        // Reset the timer
+        this->internalTaskTimer.reset();
+        //Define the actual time
+        long long actualTime = 0;
+        //loop while speed up
+        while ((actualTime = this->getInternalTaskMillis()) < MOTOR_SLOW_STOP_DURATION) {
+            M_SB->write(0.5f+pow(-1,MOTOR_DIRECTION_SIDEBODY)*pow(-1,dir)*SLOW_PWM_SIDEBODY/MOTOR_SLOW_STOP_DURATION*actualTime); // Speed(t) = zeroSpeed + fullSpeed / slow down time * t
+        }
+    }
+}
+
+/**
 *   Start to drive the Z-axis motor
 *   @param dir short - 1 = forward, 0 = backward
 */
