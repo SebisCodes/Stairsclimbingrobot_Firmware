@@ -29,18 +29,18 @@ bool down = false;
 //Boolean to flag another step 
 bool step = false;
 
-/*void eStop(){
+void eStop(){
     myRobot->setError(true);
     myRobot->setWarning(true);
     myRobot->emergencyStop();
-}*/
+}
 
 int main()
 {    
     //Initialize robot class
     myRobot = new Robot();
     myRobot->setProcedureCode(WAIT_FOR_START);
-    //myRobot->SW_START->fall(eStop);
+    myRobot->SW_START->fall(eStop);
 
     while (running) {
         switch (myRobot->getProcedureCode()) {
@@ -154,7 +154,7 @@ int main()
                 run = true;
                 myRobot->resetTaskTimer();
                 while (run){
-                    if(!myRobot->getStartSwitch() && (myRobot->getTaskMillis() > 5000)){
+                    if(myRobot->getTaskMillis() > 5000){//(!myRobot->getStartSwitch() && (myRobot->getTaskMillis() > 5000)){
                         down = true;
                         run = false;
                     }
@@ -194,7 +194,7 @@ int main()
                     }
                 }
                 //switch to driving slowly
-                myRobot->setProcedureCode(BW_TIMED);
+                myRobot->setProcedureCode(BW_SLOW);
                 break;
             case BW_SLOW:
                 printf("backward slow\n"); //for troubleshooting
@@ -204,7 +204,7 @@ int main()
                     run = true;
                 }
                 while (run) {
-                    if (myRobot->getFrontIRSwitch()) {
+                    if (!myRobot->getFrontIRSwitch()) {
                         myRobot->motorStop();
                         run = false;
                     }
