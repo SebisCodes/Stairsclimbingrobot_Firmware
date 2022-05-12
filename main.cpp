@@ -25,14 +25,18 @@ bool run = false;
 
 //Boolean to switch between "up" and "down"
 bool down = false;
+bool peak = false;
 
 //Boolean to flag another step 
 bool step = false;
 
 void eStop(){
-    myRobot->setError(true);
-    myRobot->setWarning(true);
-    myRobot->emergencyStop();
+    if(!peak){
+        myRobot->setError(true);
+        myRobot->setWarning(true);
+        myRobot->emergencyStop();
+    }
+    
 }
 
 int main()
@@ -71,7 +75,7 @@ int main()
                 printf("setup\n"); //for troubleshooting
                 //move side-body up, if the upper switch is not active
                 if (!myRobot->getMaxZSwitch()) {
-                    myRobot->driveZ(1);
+                    myRobot->driveZ(1, false);
                     myRobot->resetTaskTimer();
                     run = true;
                 }
@@ -102,7 +106,7 @@ int main()
                 printf("forward to step\n"); //for troubleshooting
                 //drive forward, as long as the front IR-switch does not recognize a step
                 if(!myRobot->getFrontIRSwitch()){
-                    myRobot->driveH(1);
+                    myRobot->driveH(1, false);
                     run = true;    
                 }
                 while(run) {
@@ -119,7 +123,7 @@ int main()
                 printf("forward on step\n"); //for troubleshooting
                 //drive forward, as long as the middle IR-switch does not recognize a step
                 if(!myRobot->getMiddleIRSwitch()){
-                    myRobot->driveH(1);
+                    myRobot->driveH(1, false);
                     run = true;
                 }
                 while(run){
@@ -136,7 +140,7 @@ int main()
                 printf("forward last step\n"); //for troubleshooting
                 //drive forward for a set amount of time
                 myRobot->resetTaskTimer();
-                myRobot->driveH(1);
+                myRobot->driveH(1, false);
                 run = true;
                 while(run){
                     if(myRobot->getTaskMillis()>=1000){
@@ -151,15 +155,13 @@ int main()
             case WAIT_FOR_DOWN:
                 printf("wait for down\n"); //for troubleshooting
                 //waits on last step until beer is lifted from the robot, or at least 5 seconds
-                run = true;
+                peak = true;
+                while(myRobot->getStartSwitch());
                 myRobot->resetTaskTimer();
-                while (run){
-                    if(myRobot->getTaskMillis() > 5000){//(!myRobot->getStartSwitch() && (myRobot->getTaskMillis() > 5000)){
-                        down = true;
-                        run = false;
-                    }
-                }
-                //switch to drive backward
+                while (!myRobot->getStartSwitch() || myRobot->getTaskMillis() < 50);
+                myRobot->resetTaskTimer();
+                while (myRobot->getMillis() < 2000);
+                peak = false;
                 myRobot->setProcedureCode(BW_TO_EDGE);
                 break;
 
@@ -167,7 +169,7 @@ int main()
                 printf("backward to edge\n");
                 //drive backward, until the back IR-switch is no longer active (sensor beyond edge)
                 if(myRobot->getBackIRSwitch()){
-                    myRobot->driveH(0);
+                    myRobot->driveH(0, false);
                     run = true;
                 }
                 while(run){
@@ -184,7 +186,7 @@ int main()
                 printf("backward over edge\n"); //for troubleshooting
                 //drive backward, until the middle IR-switch is no longer active (sensor beyond edge)
                 if(myRobot->getMiddleIRSwitch()){
-                    myRobot->driveH(0);
+                    myRobot->driveH(0, true);
                     run = true;
                 }
                 while(run){
@@ -200,7 +202,7 @@ int main()
                 printf("backward slow\n"); //for troubleshooting
                 //drive backward slowly, until the front IR-switch is no longer active
                 if (myRobot->getFrontIRSwitch()) {
-                    myRobot->slowSB(0);
+                    myRobot->driveSB(0, true);
                     run = true;
                 }
                 while (run) {
@@ -233,7 +235,7 @@ int main()
                 printf("backward last step\n"); //for troubleshooting
                 //drive backward, until a set amount of time has passed
                 myRobot->resetTaskTimer();
-                myRobot->driveH(0);
+                myRobot->driveH(0, false);
                 run = true;
                 while(run){
                     if(myRobot->getTaskMillis()>=1000){
@@ -249,7 +251,7 @@ int main()
                 printf("go down\n"); //for troubleshooting
                 //drive side-body down, as long as the lower switch is inactive
                 if(!myRobot->getMinZSwitch()){
-                    myRobot->driveZ(0);
+                    myRobot->driveZ(0, false);
                     run = true;
                 }
                 while(run){
@@ -271,7 +273,7 @@ int main()
                 printf("forward go up\n"); //for troubleshooting
                 //move side-body up, as long as the upper switch is inactive
                 if(!myRobot->getMaxZSwitch()){
-                    myRobot->driveZ(1);
+                    myRobot->driveZ(1, false);
                     run = true;
                 }
                 while(run){
@@ -298,7 +300,7 @@ int main()
                 printf("backward go up\n"); //for troubleshooting
                 //move sidebody up, as long as the upper switch is inactive
                 if(!myRobot->getMaxZSwitch()){
-                    myRobot->driveZ(1);
+                    myRobot->driveZ(1, false);
                     run = true;
                 }
                 while(run){

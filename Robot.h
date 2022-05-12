@@ -20,11 +20,10 @@ class Robot {
         void motorStop();
         void slowMotorStop();
         void enableMotors(bool en);
-        void driveMB(short dir);
-        void driveSB(short dir);
-        void driveH(short dir);
-        void driveZ(short dir);
-        void slowSB(short dir);
+        void driveMB(short dir, bool slow);
+        void driveSB(short dir, bool slow);
+        void driveH(short dir, bool slow);
+        void driveZ(short dir, bool slow);
         int getProcedureCode();
         void setProcedureCode(int procedureCode);
         void setError(bool errorState); 

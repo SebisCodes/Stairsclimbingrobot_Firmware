@@ -222,7 +222,7 @@ bool Robot::isTimeoutError() {
 *   Start to drive the mainbody and sidebody motors
 *   @param dir short - 1 = forward, 0 = backward
 */
-void Robot::driveH(short dir) {
+void Robot::driveH(short dir, bool slow) {
     if (!this->error) {
         //make sure that all motors are stopped
         motorStop();
@@ -234,10 +234,18 @@ void Robot::driveH(short dir) {
         this->internalTaskTimer.reset();
         //Define the actual time
         long long actualTime = 0;
+        //Set PWM for motor to regular speed
+        double pwmMainBody = MOTOR_PWM_MAINBODY;
+        double pwmSideBody = MOTOR_PWM_SIDEBODY;
+        if (slow) {
+            //Override PWM with slow speed
+            pwmMainBody = MOTOR_PWM_MAINBODY_SLOW;
+            pwmSideBody = MOTOR_PWM_SIDEBODY_SLOW;
+        }
         //loop while speed up
         while ((actualTime = this->getInternalTaskMillis()) < MOTOR_SLOW_STOP_DURATION) {
-            M_MB->write(0.5f+pow(-1,MOTOR_DIRECTION_MAINBODY)*pow(-1,dir)*MOTOR_PWM_MAINBODY/MOTOR_SLOW_STOP_DURATION*actualTime); // Speed(t) = zeroSpeed + fullSpeed / slow down time * t
-            M_SB->write(0.5f+pow(-1,MOTOR_DIRECTION_SIDEBODY)*pow(-1,dir)*MOTOR_PWM_SIDEBODY/MOTOR_SLOW_STOP_DURATION*actualTime); // Speed(t) = zeroSpeed + fullSpeed / slow down time * t
+            M_MB->write(0.5f+pow(-1,MOTOR_DIRECTION_MAINBODY)*pow(-1,dir)*pwmMainBody/MOTOR_SLOW_STOP_DURATION*actualTime); // Speed(t) = zeroSpeed + fullSpeed / slow down time * t
+            M_SB->write(0.5f+pow(-1,MOTOR_DIRECTION_SIDEBODY)*pow(-1,dir)*pwmSideBody/MOTOR_SLOW_STOP_DURATION*actualTime); // Speed(t) = zeroSpeed + fullSpeed / slow down time * t
         }
     }
 }
@@ -246,7 +254,7 @@ void Robot::driveH(short dir) {
 *   Start to drive the mainbody motor
 *   @param dir short - 1 = forward, 0 = backward
 */
-void Robot::driveMB(short dir) {
+void Robot::driveMB(short dir, bool slow) {
     if (!this->error) {
         //make sure that all motors are stopped
         motorStop();
@@ -258,9 +266,15 @@ void Robot::driveMB(short dir) {
         this->internalTaskTimer.reset();
         //Define the actual time
         long long actualTime = 0;
+        //Set PWM for motor to regular speed
+        double pwmMainBody = MOTOR_PWM_MAINBODY;
+        if (slow) {
+            //Override PWM with slow speed
+            pwmMainBody = MOTOR_PWM_MAINBODY_SLOW;
+        }
         //loop while speed up
         while ((actualTime = this->getInternalTaskMillis()) < MOTOR_SLOW_STOP_DURATION) {
-            M_MB->write(0.5f+pow(-1,MOTOR_DIRECTION_MAINBODY)*pow(-1,dir)*MOTOR_PWM_MAINBODY/MOTOR_SLOW_STOP_DURATION*actualTime); // Speed(t) = zeroSpeed + fullSpeed / slow down time * t
+            M_MB->write(0.5f+pow(-1,MOTOR_DIRECTION_MAINBODY)*pow(-1,dir)*pwmMainBody/MOTOR_SLOW_STOP_DURATION*actualTime); // Speed(t) = zeroSpeed + fullSpeed / slow down time * t
         }
     }
 }
@@ -269,7 +283,7 @@ void Robot::driveMB(short dir) {
 *   Start to drive the sidebody motor
 *   @param dir short - 1 = forward, 0 = backward
 */
-void Robot::driveSB(short dir) {
+void Robot::driveSB(short dir, bool slow) {
     if (!this->error) {
         //make sure that all motors are stopped
         motorStop();
@@ -281,32 +295,15 @@ void Robot::driveSB(short dir) {
         this->internalTaskTimer.reset();
         //Define the actual time
         long long actualTime = 0;
-        //loop while speed up
-        while ((actualTime = this->getInternalTaskMillis()) < MOTOR_SLOW_STOP_DURATION) {
-            M_SB->write(0.5f+pow(-1,MOTOR_DIRECTION_SIDEBODY)*pow(-1,dir)*MOTOR_PWM_SIDEBODY/MOTOR_SLOW_STOP_DURATION*actualTime); // Speed(t) = zeroSpeed + fullSpeed / slow down time * t
+        //Set PWM for motor to regular speed
+        double pwmSideBody = MOTOR_PWM_SIDEBODY;
+        if (slow) {
+            //Override PWM with slow speed
+            pwmSideBody = MOTOR_PWM_SIDEBODY_SLOW;
         }
-    }
-}
-
-/**
-*   Start to drive the sidebody motor
-*   @param dir short - 1 = forward, 0 = backward
-*/
-void Robot::slowSB(short dir) {
-    if (!this->error) {
-        //make sure that all motors are stopped
-        motorStop();
-        //Enable motors and set speed
-        this->enableMotors(true);
-        //Store the speed at beginning of the slow down process
-        double startSpeed = 0.5f;
-        // Reset the timer
-        this->internalTaskTimer.reset();
-        //Define the actual time
-        long long actualTime = 0;
         //loop while speed up
         while ((actualTime = this->getInternalTaskMillis()) < MOTOR_SLOW_STOP_DURATION) {
-            M_SB->write(0.5f+pow(-1,MOTOR_DIRECTION_SIDEBODY)*pow(-1,dir)*SLOW_PWM_SIDEBODY/MOTOR_SLOW_STOP_DURATION*actualTime); // Speed(t) = zeroSpeed + fullSpeed / slow down time * t
+            M_SB->write(0.5f+pow(-1,MOTOR_DIRECTION_SIDEBODY)*pow(-1,dir)*pwmSideBody/MOTOR_SLOW_STOP_DURATION*actualTime); // Speed(t) = zeroSpeed + fullSpeed / slow down time * t
         }
     }
 }
@@ -315,7 +312,7 @@ void Robot::slowSB(short dir) {
 *   Start to drive the Z-axis motor
 *   @param dir short - 1 = forward, 0 = backward
 */
-void Robot::driveZ(short dir) {
+void Robot::driveZ(short dir, bool slow) {
     if (!this->error) {
         //make sure that all motors are stopped
         motorStop();
@@ -327,9 +324,15 @@ void Robot::driveZ(short dir) {
         this->internalTaskTimer.reset();
         //Define the actual time
         long long actualTime = 0;
+        //Set PWM for motor to regular speed
+        double pwmZ = MOTOR_PWM_ZAXIS;
+        if (slow) {
+            //Override PWM with slow speed
+            pwmZ = MOTOR_PWM_ZAXIS_SLOW;
+        }
         //loop while speed up
         while ((actualTime = this->getInternalTaskMillis()) < MOTOR_SLOW_STOP_DURATION) {
-            M_Z->write(0.5f+pow(-1,MOTOR_DIRECTION_ZAXIS)*pow(-1,dir)*MOTOR_PWM_ZAXIS/MOTOR_SLOW_STOP_DURATION*actualTime); // Speed(t) = zeroSpeed + fullSpeed / slow down time * t
+            M_Z->write(0.5f+pow(-1,MOTOR_DIRECTION_ZAXIS)*pow(-1,dir)*pwmZ/MOTOR_SLOW_STOP_DURATION*actualTime); // Speed(t) = zeroSpeed + fullSpeed / slow down time * t
         }
     }
 }
