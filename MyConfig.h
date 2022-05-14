@@ -43,9 +43,9 @@
         #define MOTOR_DIRECTION_ZAXIS 0
         // Motor pwm: range between 0.0f and 0.5f
         #define MOTOR_PWM_MAINBODY 0.2
-        #define MOTOR_PWM_MAINBODY_SLOW 0.1
+        #define MOTOR_PWM_MAINBODY_SLOW 0.3
         #define MOTOR_PWM_SIDEBODY 0.4
-        #define MOTOR_PWM_SIDEBODY_SLOW 0.2
+        #define MOTOR_PWM_SIDEBODY_SLOW 0.5
         #define MOTOR_PWM_ZAXIS 0.3
         #define MOTOR_PWM_ZAXIS_SLOW 0.15
 

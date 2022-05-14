@@ -382,7 +382,7 @@ short Robot::getBackIRSwitch() {
 *   @return short - digital value of the switch 
 */
 short Robot::getStartSwitch() {
-    return this->SW_START->read();
+    return (this->SW_START->read() ? 0 : 1);
 }
 /**
 *   Get the sensor value

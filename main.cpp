@@ -14,7 +14,7 @@
 Robot *myRobot;
 
 //To make the code beautiful, each process is described by an own enum
-enum PROCEDURES {WAIT_FOR_START, INIT, SETUP, WAIT_FOR_DOWN, FW_TO_STEP, FW_ON_STEP, FW_LAST_STEP, BW_TO_EDGE, BW_OVER_EDGE, BW_TIMED, BW_SLOW, BW_LAST_STEP, GO_DOWN, FW_GO_UP, BW_GO_UP, IN_ERROR, STOP};
+enum PROCEDURES {WAIT_FOR_START, CYCLE_UP, CYCLE_DOWN, INIT, SETUP, WAIT_FOR_DOWN, FW_TO_STEP, FW_ON_STEP, FW_LAST_STEP, BW_TO_EDGE, BW_OVER_EDGE, BW_TIMED, BW_SLOW, BW_LAST_STEP, GO_DOWN, FW_GO_UP, BW_GO_UP, IN_ERROR, STOP};
 
 //Counter for the amount of stairs
 int stairsCounter;
@@ -31,11 +31,19 @@ bool peak = false;
 bool step = false;
 
 void eStop(){
-    if(!peak){
-        myRobot->setError(true);
-        myRobot->setWarning(true);
-        myRobot->emergencyStop();
-    }
+    myRobot->setError(true);
+    myRobot->setWarning(true);
+    myRobot->emergencyStop();
+    /*if(!peak){
+        long long eTime = myRobot->getMillis();
+        while((myRobot->getMillis() - eTime) < 50);
+        if(!myRobot->getStartSwitch()){
+            myRobot->setError(true);
+            myRobot->setWarning(true);
+            myRobot->emergencyStop();
+        }
+        
+    }*/
     
 }
 
@@ -44,7 +52,9 @@ int main()
     //Initialize robot class
     myRobot = new Robot();
     myRobot->setProcedureCode(WAIT_FOR_START);
-    myRobot->SW_START->fall(eStop);
+    myRobot->SW_START->rise(eStop);
+ myRobot->driveH(1, false);
+    while(true);
 
     while (running) {
         switch (myRobot->getProcedureCode()) {
@@ -55,6 +65,22 @@ int main()
                 myRobot->setProcedureCode(INIT);
                 break;
             
+            case CYCLE_UP:
+                printf("cycle up\n");
+                myRobot->driveZ(1, false);
+                while(!myRobot->getMaxZSwitch());
+                myRobot->slowMotorStop();
+                myRobot->setProcedureCode(CYCLE_DOWN);
+                break;
+
+            case CYCLE_DOWN:
+                printf("cycle down\n");
+                myRobot->driveZ(0, false);
+                while(!myRobot->getMinZSwitch());
+                myRobot->slowMotorStop();
+                myRobot->setProcedureCode(CYCLE_UP);
+                break;
+
             case INIT:            
                 printf("init\n"); //for troubleshooting
                 //initialize variables for sequence
@@ -155,14 +181,17 @@ int main()
             case WAIT_FOR_DOWN:
                 printf("wait for down\n"); //for troubleshooting
                 //waits on last step until beer is lifted from the robot, or at least 5 seconds
-                peak = true;
+                myRobot->resetTaskTimer();
+                while(myRobot->getTaskMillis() < 5000);
+                myRobot->setProcedureCode(BW_TO_EDGE);
+                /*peak = true;
                 while(myRobot->getStartSwitch());
                 myRobot->resetTaskTimer();
                 while (!myRobot->getStartSwitch() || myRobot->getTaskMillis() < 50);
                 myRobot->resetTaskTimer();
                 while (myRobot->getMillis() < 2000);
                 peak = false;
-                myRobot->setProcedureCode(BW_TO_EDGE);
+                myRobot->setProcedureCode(BW_TO_EDGE);*/
                 break;
 
             case BW_TO_EDGE:
