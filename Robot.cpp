@@ -53,6 +53,7 @@ Robot::Robot() {
     this->LED_warning = new DigitalOut(PIN_LED_WARNING);
     this->LED_running = new DigitalOut(PIN_LED_RUN);
     this->setError(false);
+    this->setWarning(false);
 
 
 } 
@@ -221,6 +222,7 @@ bool Robot::isTimeoutError() {
 /**
 *   Start to drive the mainbody and sidebody motors
 *   @param dir short - 1 = forward, 0 = backward
+*   @param slow bool - if true: set slow speed
 */
 void Robot::driveH(short dir, bool slow) {
     if (!this->error) {
@@ -242,6 +244,10 @@ void Robot::driveH(short dir, bool slow) {
             pwmMainBody = MOTOR_PWM_MAINBODY_SLOW;
             pwmSideBody = MOTOR_PWM_SIDEBODY_SLOW;
         }
+        if (ultraslow) {
+            pwmSideBody = 0.1;
+            pwmMainBody = 0.2;
+        }
         //loop while speed up
         while ((actualTime = this->getInternalTaskMillis()) < MOTOR_SLOW_STOP_DURATION) {
             M_MB->write(0.5f+pow(-1,MOTOR_DIRECTION_MAINBODY)*pow(-1,dir)*pwmMainBody/MOTOR_SLOW_STOP_DURATION*actualTime); // Speed(t) = zeroSpeed + fullSpeed / slow down time * t
@@ -253,6 +259,7 @@ void Robot::driveH(short dir, bool slow) {
 /**
 *   Start to drive the mainbody motor
 *   @param dir short - 1 = forward, 0 = backward
+*   @param slow bool - if true: set slow speed
 */
 void Robot::driveMB(short dir, bool slow) {
     if (!this->error) {
@@ -272,6 +279,7 @@ void Robot::driveMB(short dir, bool slow) {
             //Override PWM with slow speed
             pwmMainBody = MOTOR_PWM_MAINBODY_SLOW;
         }
+        if (ultraslow) pwmMainBody = 0.1;
         //loop while speed up
         while ((actualTime = this->getInternalTaskMillis()) < MOTOR_SLOW_STOP_DURATION) {
             M_MB->write(0.5f+pow(-1,MOTOR_DIRECTION_MAINBODY)*pow(-1,dir)*pwmMainBody/MOTOR_SLOW_STOP_DURATION*actualTime); // Speed(t) = zeroSpeed + fullSpeed / slow down time * t
@@ -282,6 +290,7 @@ void Robot::driveMB(short dir, bool slow) {
 /**
 *   Start to drive the sidebody motor
 *   @param dir short - 1 = forward, 0 = backward
+*   @param slow bool - if true: set slow speed
 */
 void Robot::driveSB(short dir, bool slow) {
     if (!this->error) {
@@ -301,6 +310,7 @@ void Robot::driveSB(short dir, bool slow) {
             //Override PWM with slow speed
             pwmSideBody = MOTOR_PWM_SIDEBODY_SLOW;
         }
+        if (ultraslow) pwmSideBody = 0.1;
         //loop while speed up
         while ((actualTime = this->getInternalTaskMillis()) < MOTOR_SLOW_STOP_DURATION) {
             M_SB->write(0.5f+pow(-1,MOTOR_DIRECTION_SIDEBODY)*pow(-1,dir)*pwmSideBody/MOTOR_SLOW_STOP_DURATION*actualTime); // Speed(t) = zeroSpeed + fullSpeed / slow down time * t
@@ -311,6 +321,7 @@ void Robot::driveSB(short dir, bool slow) {
 /**
 *   Start to drive the Z-axis motor
 *   @param dir short - 1 = forward, 0 = backward
+*   @param slow bool - if true: set slow speed
 */
 void Robot::driveZ(short dir, bool slow) {
     if (!this->error) {
@@ -330,6 +341,7 @@ void Robot::driveZ(short dir, bool slow) {
             //Override PWM with slow speed
             pwmZ = MOTOR_PWM_ZAXIS_SLOW;
         }
+        if (ultraslow) pwmZ = 0.1;
         //loop while speed up
         while ((actualTime = this->getInternalTaskMillis()) < MOTOR_SLOW_STOP_DURATION) {
             M_Z->write(0.5f+pow(-1,MOTOR_DIRECTION_ZAXIS)*pow(-1,dir)*pwmZ/MOTOR_SLOW_STOP_DURATION*actualTime); // Speed(t) = zeroSpeed + fullSpeed / slow down time * t
@@ -398,4 +410,11 @@ bool Robot::getInitPos(){
     }else{
         return false;
     }
+}
+/**
+*   Set ultraslow speed
+*   @param ultraslow - if true: ultraslow is activated, if false: drive normal 
+*/
+void Robot::setUltraslowSpeed(bool ultraslow) {
+    this->ultraslow = ultraslow;
 }

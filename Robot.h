@@ -44,6 +44,7 @@ class Robot {
         float getIRSensorValue();
         void emergencyStop();
         bool getInitPos();
+        void setUltraslowSpeed(bool ultraslow);
         InterruptIn *SW_START;
         
         //void playSound(std::string name); //TODO
@@ -56,6 +57,7 @@ class Robot {
         int procedureCode = 0;
         bool error = false;
         long long errorTimeout = 0;
+        bool ultraslow = false;
         
         /*
         * Timer variables
