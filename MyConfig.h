@@ -30,9 +30,6 @@
         #define PIN_LED_WARNING PC_3
         #define PIN_LED_ERROR PB_7
 
-        //BUZZER
-        #define PIN_BUZZER PB_14
-
         /*
         *   MOTOR CONTROL CONFIG
         */

@@ -25,8 +25,7 @@ enum PROCEDURES {
     DRIVE_BACK_AT_FIRST_STEP, //8
     DRIVE_BACKWARD_ON_STAIR, //9
     DRIVE_BACKWARD_AT_LAST_STEP, //10
-    ON_ERROR, //11
-    END //12
+    END //11
     };
 
 //Counter for the amount of stairs
@@ -283,9 +282,6 @@ int main()
                 myRobot->resetTaskTimer();
                 while(myRobot->getTaskMillis() < 2000);
                 myRobot->setProcedureCode(END);
-                break;
-            case ON_ERROR:
-                eStop(true);
                 break;
             case END:
                 run = false;
