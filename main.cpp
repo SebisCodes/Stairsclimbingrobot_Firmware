@@ -45,23 +45,26 @@ bool step = false;
 //Integer to use while climbing a step
 int stepSequence = 0;
 
-void eStop() {
+void eStop(bool instand) {
     if (!waiting) {
         //make sure the button isn't clicked after several time
         long long t = myRobot->getMillis();
-        while (myRobot->getMillis() < t+50);
+        while (myRobot->getMillis() < t+50 && !instand);
         if (!myRobot->getStartSwitch()) {
             myRobot->setError(true);
             myRobot->emergencyStop();
         }
     }
 }
+void switchStop() {
+    eStop(false);
+}
 
 int main()
 {    
     //Initialize robot class
     myRobot = new Robot();
-    myRobot->SW_START->rise(&eStop);
+    myRobot->SW_START->rise(&switchStop);
     myRobot->setProcedureCode(HOMING);
     //Setup stairs counter
     stepCounter = 0;
@@ -84,7 +87,7 @@ int main()
                 //Go into loop until condition is met or timer is running out of time
                 myRobot->resetTaskTimer();
                 while (!CONDITION) {
-                    if (myRobot->getTaskMillis() >= TIMEOUT) eStop(); //Go to error if the timeout is over
+                    if (myRobot->getTaskMillis() >= TIMEOUT) eStop(true); //Go to error if the timeout is over
                 }
                 //Go to next procedure
                 myRobot->setProcedureCode(WAIT_FOR_START);
@@ -103,13 +106,13 @@ int main()
                     myRobot->driveH(1, true);
                 } else {
                     //Go to next procedure or set error if condition is wrong
-                    eStop();
+                    eStop(true);
                     break;
                 }
                 //Go into loop until condition is met or timer is running out of time
                 myRobot->resetTaskTimer();
                 while (!CONDITION) {
-                    if (myRobot->getTaskMillis() >= TIMEOUT) eStop(); //Go to error if the timeout is over
+                    if (myRobot->getTaskMillis() >= TIMEOUT) eStop(true); //Go to error if the timeout is over
                 }
                 //Go to next procedure
                 myRobot->setProcedureCode(DRIVE_Z_DOWN);
@@ -123,13 +126,13 @@ int main()
                     myRobot->driveZ(0,false);
                 } else {
                     //Go to next procedure or set error if condition is wrong
-                    eStop();
+                    eStop(true);
                     break;
                 }
                 //Go into loop until condition is met or timer is running out of time
                 myRobot->resetTaskTimer();
                 while (!CONDITION) {
-                    if (myRobot->getTaskMillis() >= TIMEOUT) eStop(); //Go to error if the timeout is over
+                    if (myRobot->getTaskMillis() >= TIMEOUT) eStop(true); //Go to error if the timeout is over
                 }
                 //Go to next procedure
                 if (down) {
@@ -147,13 +150,13 @@ int main()
                     myRobot->driveH(1, true);
                 } else {
                     //Go to next procedure or set error if condition is wrong
-                    eStop();
+                    eStop(true);
                     break;
                 }
                 //Go into loop until condition is met or timer is running out of time
                 myRobot->resetTaskTimer();
                 while (!CONDITION) {
-                    if (myRobot->getTaskMillis() >= TIMEOUT) eStop(); //Go to error if the timeout is over
+                    if (myRobot->getTaskMillis() >= TIMEOUT) eStop(true); //Go to error if the timeout is over
                 }
                 //Go to next procedure
                 myRobot->setProcedureCode(DRIVE_Z_UP);
@@ -167,7 +170,7 @@ int main()
                     myRobot->driveZ(1,false);
                 } else {
                     //Go to next procedure or set error if condition is wrong
-                    eStop();
+                    eStop(true);
                     break;
                 }
                 //Go into loop until condition is met or timer is running out of time
@@ -177,7 +180,7 @@ int main()
                 //Go into loop until condition is met or timer is running out of time
                 myRobot->resetTaskTimer();
                 while (!CONDITION) {
-                    if (myRobot->getTaskMillis() >= TIMEOUT) eStop(); //Go to error if the timeout is over
+                    if (myRobot->getTaskMillis() >= TIMEOUT) eStop(true); //Go to error if the timeout is over
                     if (myRobot->getIRSensorValue() > 0.3) {
                         if (!step) myRobot->setWarning(true);
                         step = true;
@@ -233,13 +236,13 @@ int main()
                     myRobot->driveH(0, true);
                 } else {
                     //Go to next procedure or set error if condition is wrong
-                    eStop();
+                    eStop(true);
                     break;
                 }
                 //Go into loop until condition is met or timer is running out of time
                 myRobot->resetTaskTimer();
                 while (!CONDITION) {
-                    if (myRobot->getTaskMillis() >= TIMEOUT) eStop(); //Go to error if the timeout is over
+                    if (myRobot->getTaskMillis() >= TIMEOUT) eStop(true); //Go to error if the timeout is over
                 }
                 myRobot->slowMotorStop();
                 //Go to next procedure
@@ -255,13 +258,13 @@ int main()
                     myRobot->driveH(0, true);
                 } else {
                     //Go to next procedure or set error if condition is wrong
-                    eStop();
+                    eStop(true);
                     break;
                 }
                 //Go into loop until condition is met or timer is running out of time
                 myRobot->resetTaskTimer();
                 while (!CONDITION) {
-                    if (myRobot->getTaskMillis() >= TIMEOUT) eStop(); //Go to error if the timeout is over
+                    if (myRobot->getTaskMillis() >= TIMEOUT) eStop(true); //Go to error if the timeout is over
                 }
                 myRobot->setUltraslowSpeed(false);
                 if (stepCounter <= 0) {
@@ -282,7 +285,7 @@ int main()
                 myRobot->setProcedureCode(END);
                 break;
             case ON_ERROR:
-                eStop();
+                eStop(true);
                 break;
             case END:
                 run = false;
