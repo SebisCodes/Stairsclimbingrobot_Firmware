@@ -9,10 +9,6 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -26,9 +22,9 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="ZHAW.png"/></td>
   <td id="projectalign">
-   <div id="projectname">Stairsclimbingrobot Firmware<span id="projectnumber">&#160;1.0.1</span>
+   <div id="projectname">Stairsclimbingrobot Firmware<span id="projectnumber">&#160;1.0.0</span>
    </div>
-   <div id="projectbrief">The firmware of our starisclimbing robot</div>
+   <div id="projectbrief">Stairsclimbingrobot Firmware Documentation</div>
   </td>
  </tr>
  </tbody>
@@ -53,22 +49,6 @@ $(function() {
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('functions.html',''); initResizable(); });
-/* @license-end */
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -84,16 +64,18 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 </div>
 
 <div class="contents">
-<div class="textblock">Here is a list of all documented class members with links to the class documentation for each member:</div><ul>
-<li>driveMB()&#160;:&#160;<a class="el" href="class_robot.html#a0a33c6282831e4729f55fec282735c3b">Robot</a></li>
-<li>driveSB()&#160;:&#160;<a class="el" href="class_robot.html#a6782f2cac09a1b89ced0c508ceea497e">Robot</a></li>
-<li>driveZ()&#160;:&#160;<a class="el" href="class_robot.html#a65189b9ced7934e277a454ec391f2a0b">Robot</a></li>
+<div class="textblock">Here is a list of all class members with links to the classes they belong to:</div><ul>
+<li>driveH()&#160;:&#160;<a class="el" href="class_robot.html#abf52e3f6efc44082cc79837e85d4df19">Robot</a></li>
+<li>driveMB()&#160;:&#160;<a class="el" href="class_robot.html#a36074f92fb1a0c55adaf8647f1644918">Robot</a></li>
+<li>driveSB()&#160;:&#160;<a class="el" href="class_robot.html#a69a889b281cd873874d29aca808bc968">Robot</a></li>
+<li>driveZ()&#160;:&#160;<a class="el" href="class_robot.html#abb3296b839236ab6c947d66956b1211f">Robot</a></li>
+<li>emergencyStop()&#160;:&#160;<a class="el" href="class_robot.html#ade1949f35551dbfdf05cdab940aa9d79">Robot</a></li>
 <li>enableMotors()&#160;:&#160;<a class="el" href="class_robot.html#a0e8c08ff2cd6a56393f752822cc7bbeb">Robot</a></li>
 <li>getBackIRSwitch()&#160;:&#160;<a class="el" href="class_robot.html#a7271eba19120f12c86ada4e454e27316">Robot</a></li>
 <li>getError()&#160;:&#160;<a class="el" href="class_robot.html#ac56e95fe67bfe14f20778c1402bb4373">Robot</a></li>
 <li>getErrorMillis()&#160;:&#160;<a class="el" href="class_robot.html#a644e0027cf4a896245e43628aed25a49">Robot</a></li>
 <li>getFrontIRSwitch()&#160;:&#160;<a class="el" href="class_robot.html#a31c054e3125850cd83bf701e72f3ebfa">Robot</a></li>
-<li>getIRSensorValue()&#160;:&#160;<a class="el" href="class_robot.html#a578aaa7a8aea36006b3aebf7a60b4b31">Robot</a></li>
+<li>getIRSensorValue()&#160;:&#160;<a class="el" href="class_robot.html#a0e72ceb1f957c9bdc671f14eda15e589">Robot</a></li>
 <li>getMaxZSwitch()&#160;:&#160;<a class="el" href="class_robot.html#a492925a445c4b7b49cdda9f5a2c11326">Robot</a></li>
 <li>getMiddleIRSwitch()&#160;:&#160;<a class="el" href="class_robot.html#a6b8c7a900aafbf417cd306cbf4b5812c">Robot</a></li>
 <li>getMillis()&#160;:&#160;<a class="el" href="class_robot.html#a382c73cfa5fde35390ddf8e4c2489b01">Robot</a></li>
@@ -104,18 +86,19 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>isTimeoutError()&#160;:&#160;<a class="el" href="class_robot.html#a367c31a50c2b9ea1f1085535bbae1f89">Robot</a></li>
 <li>motorStop()&#160;:&#160;<a class="el" href="class_robot.html#aa549f85959a737c086d306d3f025e56d">Robot</a></li>
 <li>resetTaskTimer()&#160;:&#160;<a class="el" href="class_robot.html#a991d4c3b97c65f7a385561438529a129">Robot</a></li>
+<li>Robot()&#160;:&#160;<a class="el" href="class_robot.html#a4fc7c70ae20623f05e06f2ecb388b6c4">Robot</a></li>
 <li>setError()&#160;:&#160;<a class="el" href="class_robot.html#ac75c5ff4ebbed315b40ae90bd7faaa2f">Robot</a></li>
 <li>setErrorTimeout()&#160;:&#160;<a class="el" href="class_robot.html#ab99801888149d86e05fbbaeadec2b4e5">Robot</a></li>
 <li>setProcedureCode()&#160;:&#160;<a class="el" href="class_robot.html#a36c8d24c32e21b37d9f31f20372fea69">Robot</a></li>
+<li>setUltraslowSpeed()&#160;:&#160;<a class="el" href="class_robot.html#a7f57960d7d08158ff42ca2248a315ad0">Robot</a></li>
+<li>setWarning()&#160;:&#160;<a class="el" href="class_robot.html#ac5de5d1b19a9e3dcc0308dca11158d1d">Robot</a></li>
 <li>slowMotorStop()&#160;:&#160;<a class="el" href="class_robot.html#abd4b5a0493fdf86e45fe3a027c8f059a">Robot</a></li>
+<li>SW_START&#160;:&#160;<a class="el" href="class_robot.html#ad717cc8ef4acd52743eca9b649f5d74e">Robot</a></li>
 </ul>
 </div><!-- contents -->
-</div><!-- doc-content -->
 <!-- start footer part -->
-<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
-  <ul>
-    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
-  </ul>
-</div>
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3
+</small></address>
 </body>
 </html>

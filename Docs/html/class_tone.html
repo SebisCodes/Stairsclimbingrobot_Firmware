@@ -9,10 +9,6 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -26,9 +22,9 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="ZHAW.png"/></td>
   <td id="projectalign">
-   <div id="projectname">Stairsclimbingrobot Firmware<span id="projectnumber">&#160;1.0.1</span>
+   <div id="projectname">Stairsclimbingrobot Firmware<span id="projectnumber">&#160;1.0.0</span>
    </div>
-   <div id="projectbrief">The firmware of our starisclimbing robot</div>
+   <div id="projectbrief">Stairsclimbingrobot Firmware Documentation</div>
   </td>
  </tr>
  </tbody>
@@ -52,23 +48,6 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
-</div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('class_tone.html',''); initResizable(); });
-/* @license-end */
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -83,6 +62,7 @@ $(document).ready(function(){initNavTree('class_tone.html',''); initResizable();
 </iframe>
 </div>
 
+</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -90,37 +70,178 @@ $(document).ready(function(){initNavTree('class_tone.html',''); initResizable();
   <div class="headertitle"><div class="title">Tone Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_tone_8h_source.html">Tone.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8aa538d19c916872a7fb9c2220645891"><td class="memItemLeft" align="right" valign="top"><a id="a8aa538d19c916872a7fb9c2220645891" name="a8aa538d19c916872a7fb9c2220645891"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Tone</b> (PinName dacPin)</td></tr>
+<tr class="memitem:a8aa538d19c916872a7fb9c2220645891"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tone.html#a8aa538d19c916872a7fb9c2220645891">Tone</a> (PinName dacPin)</td></tr>
 <tr class="separator:a8aa538d19c916872a7fb9c2220645891"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a918b2f401a58f7c204484adb5337f2ac"><td class="memItemLeft" align="right" valign="top"><a id="a918b2f401a58f7c204484adb5337f2ac" name="a918b2f401a58f7c204484adb5337f2ac"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>init</b> ()</td></tr>
+<tr class="memitem:a8aa464eb81b49102205e496524a5c54f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tone.html#a8aa464eb81b49102205e496524a5c54f">~Tone</a> ()</td></tr>
+<tr class="separator:a8aa464eb81b49102205e496524a5c54f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a918b2f401a58f7c204484adb5337f2ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tone.html#a918b2f401a58f7c204484adb5337f2ac">init</a> ()</td></tr>
 <tr class="separator:a918b2f401a58f7c204484adb5337f2ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0ae736d2c3aa34b7be7255c0e1141bb"><td class="memItemLeft" align="right" valign="top"><a id="ad0ae736d2c3aa34b7be7255c0e1141bb" name="ad0ae736d2c3aa34b7be7255c0e1141bb"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>play</b> (const float frequency, const float duration)</td></tr>
+<tr class="memitem:ad0ae736d2c3aa34b7be7255c0e1141bb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tone.html#ad0ae736d2c3aa34b7be7255c0e1141bb">play</a> (const float frequency, const float duration)</td></tr>
 <tr class="separator:ad0ae736d2c3aa34b7be7255c0e1141bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad1ab662a5d95251c46bda1efa1d0f34a"><td class="memItemLeft" align="right" valign="top"><a id="ad1ab662a5d95251c46bda1efa1d0f34a" name="ad1ab662a5d95251c46bda1efa1d0f34a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>play_melody</b> (int length, const int *notes, const int *durations, float bpm, bool repeat)</td></tr>
+<tr class="memitem:ad1ab662a5d95251c46bda1efa1d0f34a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tone.html#ad1ab662a5d95251c46bda1efa1d0f34a">play_melody</a> (int length, const int *notes, const int *durations, float bpm, bool repeat)</td></tr>
 <tr class="separator:ad1ab662a5d95251c46bda1efa1d0f34a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8414d062a4ae36a2ebfde604290c4048"><td class="memItemLeft" align="right" valign="top"><a id="a8414d062a4ae36a2ebfde604290c4048" name="a8414d062a4ae36a2ebfde604290c4048"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_bpm</b> (float bpm)</td></tr>
+<tr class="memitem:a8414d062a4ae36a2ebfde604290c4048"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tone.html#a8414d062a4ae36a2ebfde604290c4048">set_bpm</a> (float bpm)</td></tr>
 <tr class="separator:a8414d062a4ae36a2ebfde604290c4048"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a8aa538d19c916872a7fb9c2220645891" name="a8aa538d19c916872a7fb9c2220645891"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8aa538d19c916872a7fb9c2220645891">&#9670;&nbsp;</a></span>Tone()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Tone::Tone </td>
+          <td>(</td>
+          <td class="paramtype">PinName&#160;</td>
+          <td class="paramname"><em>dacPin</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8aa464eb81b49102205e496524a5c54f" name="a8aa464eb81b49102205e496524a5c54f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8aa464eb81b49102205e496524a5c54f">&#9670;&nbsp;</a></span>~Tone()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Tone::~Tone </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a918b2f401a58f7c204484adb5337f2ac" name="a918b2f401a58f7c204484adb5337f2ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a918b2f401a58f7c204484adb5337f2ac">&#9670;&nbsp;</a></span>init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Tone::init </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad0ae736d2c3aa34b7be7255c0e1141bb" name="ad0ae736d2c3aa34b7be7255c0e1141bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0ae736d2c3aa34b7be7255c0e1141bb">&#9670;&nbsp;</a></span>play()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Tone::play </td>
+          <td>(</td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>frequency</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>duration</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad1ab662a5d95251c46bda1efa1d0f34a" name="ad1ab662a5d95251c46bda1efa1d0f34a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1ab662a5d95251c46bda1efa1d0f34a">&#9670;&nbsp;</a></span>play_melody()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Tone::play_melody </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int *&#160;</td>
+          <td class="paramname"><em>notes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int *&#160;</td>
+          <td class="paramname"><em>durations</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>bpm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>repeat</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8414d062a4ae36a2ebfde604290c4048" name="a8414d062a4ae36a2ebfde604290c4048"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8414d062a4ae36a2ebfde604290c4048">&#9670;&nbsp;</a></span>set_bpm()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Tone::set_bpm </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>bpm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="_tone_8h_source.html">Tone.h</a></li>
-<li>Tone.cpp</li>
+<li><a class="el" href="_tone_8cpp.html">Tone.cpp</a></li>
 </ul>
 </div><!-- contents -->
-</div><!-- doc-content -->
 <!-- start footer part -->
-<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
-  <ul>
-    <li class="navelem"><a class="el" href="class_tone.html">Tone</a></li>
-    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
-  </ul>
-</div>
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3
+</small></address>
 </body>
 </html>

@@ -1,8 +1,18 @@
 var searchData=
 [
-  ['seterror_0',['setError',['../class_robot.html#ac75c5ff4ebbed315b40ae90bd7faaa2f',1,'Robot']]],
-  ['seterrortimeout_1',['setErrorTimeout',['../class_robot.html#ab99801888149d86e05fbbaeadec2b4e5',1,'Robot']]],
-  ['setprocedurecode_2',['setProcedureCode',['../class_robot.html#a36c8d24c32e21b37d9f31f20372fea69',1,'Robot']]],
-  ['slowmotorstop_3',['slowMotorStop',['../class_robot.html#abd4b5a0493fdf86e45fe3a027c8f059a',1,'Robot']]],
-  ['stairsclimbingrobot_5ffirmware_4',['Stairsclimbingrobot_Firmware',['../md__r_e_a_d_m_e.html',1,'']]]
+  ['main_0',['main',['../main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main.cpp']]],
+  ['main_2ecpp_1',['main.cpp',['../main_8cpp.html',1,'']]],
+  ['motor_5fdirection_5fmainbody_2',['MOTOR_DIRECTION_MAINBODY',['../_my_config_8h.html#a014ba80371e34c2a6a74c49ccf0c9867',1,'MyConfig.h']]],
+  ['motor_5fdirection_5fsidebody_3',['MOTOR_DIRECTION_SIDEBODY',['../_my_config_8h.html#a39823fc062acd79057e2ac5b6500ce7e',1,'MyConfig.h']]],
+  ['motor_5fdirection_5fzaxis_4',['MOTOR_DIRECTION_ZAXIS',['../_my_config_8h.html#af45e93095a79358094c672f7bb070eb8',1,'MyConfig.h']]],
+  ['motor_5fpwm_5fmainbody_5',['MOTOR_PWM_MAINBODY',['../_my_config_8h.html#ad5ffb1b0002356372f4051cda95305ac',1,'MyConfig.h']]],
+  ['motor_5fpwm_5fmainbody_5fslow_6',['MOTOR_PWM_MAINBODY_SLOW',['../_my_config_8h.html#a3baab92ca80d752605a8f497be0b0db2',1,'MyConfig.h']]],
+  ['motor_5fpwm_5fsidebody_7',['MOTOR_PWM_SIDEBODY',['../_my_config_8h.html#af3d385f89527347ccce4159787d2863c',1,'MyConfig.h']]],
+  ['motor_5fpwm_5fsidebody_5fslow_8',['MOTOR_PWM_SIDEBODY_SLOW',['../_my_config_8h.html#a3fc18a7256d23ff31728225b35fbb7a6',1,'MyConfig.h']]],
+  ['motor_5fpwm_5fzaxis_9',['MOTOR_PWM_ZAXIS',['../_my_config_8h.html#a1bc7ac0d80df376d8531587a8001a518',1,'MyConfig.h']]],
+  ['motor_5fpwm_5fzaxis_5fslow_10',['MOTOR_PWM_ZAXIS_SLOW',['../_my_config_8h.html#a8265c5f0a789eb3e65a2636cb20ab850',1,'MyConfig.h']]],
+  ['motor_5fslow_5fstop_5fduration_11',['MOTOR_SLOW_STOP_DURATION',['../_my_config_8h.html#a33d648d13916bfa75e7f46d3f2d83be2',1,'MyConfig.h']]],
+  ['motorstop_12',['motorStop',['../class_robot.html#aa549f85959a737c086d306d3f025e56d',1,'Robot']]],
+  ['myconfig_2eh_13',['MyConfig.h',['../_my_config_8h.html',1,'']]],
+  ['myrobot_14',['myRobot',['../main_8cpp.html#a7063bb94766cb060a8d9328426e6c43d',1,'main.cpp']]]
 ];

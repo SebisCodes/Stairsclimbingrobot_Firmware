@@ -43,7 +43,6 @@ class Robot {
         short getStartSwitch();
         float getIRSensorValue();
         void emergencyStop();
-        bool getInitPos();
         void setUltraslowSpeed(bool ultraslow);
         InterruptIn *SW_START;
         

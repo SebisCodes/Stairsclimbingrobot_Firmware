@@ -1,0 +1,247 @@
+\hypertarget{main_8cpp}{}\doxysection{main.\+cpp File Reference}
+\label{main_8cpp}\index{main.cpp@{main.cpp}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}mbed.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}PM2\+\_\+\+Libary.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Robot.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{main_8cpp_a45ba202b05caf39795aeca91b0ae547e}{TIMEOUT}}~60000
+\item 
+\#define \mbox{\hyperlink{main_8cpp_a55d51501e66f38627e1f59d44b311880}{CONDITION}}~\mbox{\hyperlink{main_8cpp_a7063bb94766cb060a8d9328426e6c43d}{my\+Robot}}-\/$>$get\+Max\+ZSwitch()
+\item 
+\#define \mbox{\hyperlink{main_8cpp_a55d51501e66f38627e1f59d44b311880}{CONDITION}}~\mbox{\hyperlink{main_8cpp_a7063bb94766cb060a8d9328426e6c43d}{my\+Robot}}-\/$>$get\+Front\+IRSwitch()
+\item 
+\#define \mbox{\hyperlink{main_8cpp_a55d51501e66f38627e1f59d44b311880}{CONDITION}}~\mbox{\hyperlink{main_8cpp_a7063bb94766cb060a8d9328426e6c43d}{my\+Robot}}-\/$>$get\+Min\+ZSwitch()
+\item 
+\#define \mbox{\hyperlink{main_8cpp_a55d51501e66f38627e1f59d44b311880}{CONDITION}}~\mbox{\hyperlink{main_8cpp_a7063bb94766cb060a8d9328426e6c43d}{my\+Robot}}-\/$>$get\+Middle\+IRSwitch()
+\item 
+\#define \mbox{\hyperlink{main_8cpp_a55d51501e66f38627e1f59d44b311880}{CONDITION}}~\mbox{\hyperlink{main_8cpp_a7063bb94766cb060a8d9328426e6c43d}{my\+Robot}}-\/$>$get\+Max\+ZSwitch()
+\item 
+\#define \mbox{\hyperlink{main_8cpp_a55d51501e66f38627e1f59d44b311880}{CONDITION}}~!\mbox{\hyperlink{main_8cpp_a7063bb94766cb060a8d9328426e6c43d}{my\+Robot}}-\/$>$get\+Back\+IRSwitch()
+\item 
+\#define \mbox{\hyperlink{main_8cpp_a55d51501e66f38627e1f59d44b311880}{CONDITION}}~!\mbox{\hyperlink{main_8cpp_a7063bb94766cb060a8d9328426e6c43d}{my\+Robot}}-\/$>$get\+Front\+IRSwitch()
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{main_8cpp_ab71737843ee2cb35e6dff0d7bab80cdc}{PROCEDURES}} \{ \newline
+\mbox{\hyperlink{main_8cpp_ab71737843ee2cb35e6dff0d7bab80cdca4bd626975c7076136f180e04b8748b39}{HOMING}}
+, \mbox{\hyperlink{main_8cpp_ab71737843ee2cb35e6dff0d7bab80cdca527eee1ea573d1cf321c43743673d38c}{WAIT\+\_\+\+FOR\+\_\+\+START}}
+, \mbox{\hyperlink{main_8cpp_ab71737843ee2cb35e6dff0d7bab80cdca0878832fcdcfaadc91a58fce352be17a}{DRIVE\+\_\+\+FORWARD\+\_\+\+AT\+\_\+\+BEGINNING}}
+, \mbox{\hyperlink{main_8cpp_ab71737843ee2cb35e6dff0d7bab80cdca8e53d50ffa4a045d73086c24961be077}{DRIVE\+\_\+\+Z\+\_\+\+DOWN}}
+, \newline
+\mbox{\hyperlink{main_8cpp_ab71737843ee2cb35e6dff0d7bab80cdcad9fa35d5f2834734e50062fed2d99679}{DRIVE\+\_\+\+FORWARD\+\_\+\+ON\+\_\+\+STAIR}}
+, \mbox{\hyperlink{main_8cpp_ab71737843ee2cb35e6dff0d7bab80cdcacd44c09997fc30ce656387137861be31}{DRIVE\+\_\+\+Z\+\_\+\+UP}}
+, \mbox{\hyperlink{main_8cpp_ab71737843ee2cb35e6dff0d7bab80cdca38dd525738bd4bf2c4c3a31e0113700a}{DRIVE\+\_\+\+FORWARD\+\_\+\+AT\+\_\+\+LAST\+\_\+\+STEP}}
+, \mbox{\hyperlink{main_8cpp_ab71737843ee2cb35e6dff0d7bab80cdcaee0f877a1630fd58814783da6d66f189}{WAIT\+\_\+\+FOR\+\_\+\+SIGNAL}}
+, \newline
+\mbox{\hyperlink{main_8cpp_ab71737843ee2cb35e6dff0d7bab80cdcaf3476c53267475173704c7a358037c57}{DRIVE\+\_\+\+BACK\+\_\+\+AT\+\_\+\+FIRST\+\_\+\+STEP}}
+, \mbox{\hyperlink{main_8cpp_ab71737843ee2cb35e6dff0d7bab80cdca1e96599e35bd97e1bc21f469bd84ae06}{DRIVE\+\_\+\+BACKWARD\+\_\+\+ON\+\_\+\+STAIR}}
+, \mbox{\hyperlink{main_8cpp_ab71737843ee2cb35e6dff0d7bab80cdca3679654e224f634e64fb3375deea8281}{DRIVE\+\_\+\+BACKWARD\+\_\+\+AT\+\_\+\+LAST\+\_\+\+STEP}}
+, \mbox{\hyperlink{main_8cpp_ab71737843ee2cb35e6dff0d7bab80cdcadc6f24fd6915a3f2786a1b7045406924}{END}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main_8cpp_ae4b68a882a0d79e434b0155208ec715e}{e\+Stop}} (bool instand)
+\item 
+void \mbox{\hyperlink{main_8cpp_abde91d80ec2f6871dd784880e30bd551}{switch\+Stop}} ()
+\item 
+int \mbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_robot}{Robot}} $\ast$ \mbox{\hyperlink{main_8cpp_a7063bb94766cb060a8d9328426e6c43d}{my\+Robot}}
+\item 
+int \mbox{\hyperlink{main_8cpp_a58b9fe0d8bdc4ddc63eb62dcd3413b10}{step\+Counter}}
+\item 
+bool \mbox{\hyperlink{main_8cpp_a3e6f76368abfbc8709f4c1346dfa6a20}{run}} = true
+\item 
+bool \mbox{\hyperlink{main_8cpp_a2af3c455555b63e20193d814f69bdbde}{waiting}} = false
+\item 
+bool \mbox{\hyperlink{main_8cpp_ac30355235d44e8f7b0a538a510bcbbeb}{down}} = false
+\item 
+bool \mbox{\hyperlink{main_8cpp_a6599facca78a3191b43beaa45239daea}{step}} = false
+\item 
+int \mbox{\hyperlink{main_8cpp_a542ca0e0871740895d26e1931571ee49}{step\+Sequence}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{main_8cpp_a55d51501e66f38627e1f59d44b311880}\label{main_8cpp_a55d51501e66f38627e1f59d44b311880}} 
+\index{main.cpp@{main.cpp}!CONDITION@{CONDITION}}
+\index{CONDITION@{CONDITION}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{CONDITION}{CONDITION}\hspace{0.1cm}{\footnotesize\ttfamily [1/7]}}
+{\footnotesize\ttfamily \#define CONDITION~\mbox{\hyperlink{main_8cpp_a7063bb94766cb060a8d9328426e6c43d}{my\+Robot}}-\/$>$get\+Max\+ZSwitch()}
+
+\mbox{\Hypertarget{main_8cpp_a55d51501e66f38627e1f59d44b311880}\label{main_8cpp_a55d51501e66f38627e1f59d44b311880}} 
+\index{main.cpp@{main.cpp}!CONDITION@{CONDITION}}
+\index{CONDITION@{CONDITION}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{CONDITION}{CONDITION}\hspace{0.1cm}{\footnotesize\ttfamily [2/7]}}
+{\footnotesize\ttfamily \#define CONDITION~\mbox{\hyperlink{main_8cpp_a7063bb94766cb060a8d9328426e6c43d}{my\+Robot}}-\/$>$get\+Front\+IRSwitch()}
+
+\mbox{\Hypertarget{main_8cpp_a55d51501e66f38627e1f59d44b311880}\label{main_8cpp_a55d51501e66f38627e1f59d44b311880}} 
+\index{main.cpp@{main.cpp}!CONDITION@{CONDITION}}
+\index{CONDITION@{CONDITION}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{CONDITION}{CONDITION}\hspace{0.1cm}{\footnotesize\ttfamily [3/7]}}
+{\footnotesize\ttfamily \#define CONDITION~\mbox{\hyperlink{main_8cpp_a7063bb94766cb060a8d9328426e6c43d}{my\+Robot}}-\/$>$get\+Min\+ZSwitch()}
+
+\mbox{\Hypertarget{main_8cpp_a55d51501e66f38627e1f59d44b311880}\label{main_8cpp_a55d51501e66f38627e1f59d44b311880}} 
+\index{main.cpp@{main.cpp}!CONDITION@{CONDITION}}
+\index{CONDITION@{CONDITION}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{CONDITION}{CONDITION}\hspace{0.1cm}{\footnotesize\ttfamily [4/7]}}
+{\footnotesize\ttfamily \#define CONDITION~\mbox{\hyperlink{main_8cpp_a7063bb94766cb060a8d9328426e6c43d}{my\+Robot}}-\/$>$get\+Middle\+IRSwitch()}
+
+\mbox{\Hypertarget{main_8cpp_a55d51501e66f38627e1f59d44b311880}\label{main_8cpp_a55d51501e66f38627e1f59d44b311880}} 
+\index{main.cpp@{main.cpp}!CONDITION@{CONDITION}}
+\index{CONDITION@{CONDITION}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{CONDITION}{CONDITION}\hspace{0.1cm}{\footnotesize\ttfamily [5/7]}}
+{\footnotesize\ttfamily \#define CONDITION~\mbox{\hyperlink{main_8cpp_a7063bb94766cb060a8d9328426e6c43d}{my\+Robot}}-\/$>$get\+Max\+ZSwitch()}
+
+\mbox{\Hypertarget{main_8cpp_a55d51501e66f38627e1f59d44b311880}\label{main_8cpp_a55d51501e66f38627e1f59d44b311880}} 
+\index{main.cpp@{main.cpp}!CONDITION@{CONDITION}}
+\index{CONDITION@{CONDITION}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{CONDITION}{CONDITION}\hspace{0.1cm}{\footnotesize\ttfamily [6/7]}}
+{\footnotesize\ttfamily \#define CONDITION~!\mbox{\hyperlink{main_8cpp_a7063bb94766cb060a8d9328426e6c43d}{my\+Robot}}-\/$>$get\+Back\+IRSwitch()}
+
+\mbox{\Hypertarget{main_8cpp_a55d51501e66f38627e1f59d44b311880}\label{main_8cpp_a55d51501e66f38627e1f59d44b311880}} 
+\index{main.cpp@{main.cpp}!CONDITION@{CONDITION}}
+\index{CONDITION@{CONDITION}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{CONDITION}{CONDITION}\hspace{0.1cm}{\footnotesize\ttfamily [7/7]}}
+{\footnotesize\ttfamily \#define CONDITION~!\mbox{\hyperlink{main_8cpp_a7063bb94766cb060a8d9328426e6c43d}{my\+Robot}}-\/$>$get\+Front\+IRSwitch()}
+
+\mbox{\Hypertarget{main_8cpp_a45ba202b05caf39795aeca91b0ae547e}\label{main_8cpp_a45ba202b05caf39795aeca91b0ae547e}} 
+\index{main.cpp@{main.cpp}!TIMEOUT@{TIMEOUT}}
+\index{TIMEOUT@{TIMEOUT}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{TIMEOUT}{TIMEOUT}}
+{\footnotesize\ttfamily \#define TIMEOUT~60000}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{main_8cpp_ab71737843ee2cb35e6dff0d7bab80cdc}\label{main_8cpp_ab71737843ee2cb35e6dff0d7bab80cdc}} 
+\index{main.cpp@{main.cpp}!PROCEDURES@{PROCEDURES}}
+\index{PROCEDURES@{PROCEDURES}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{PROCEDURES}{PROCEDURES}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{main_8cpp_ab71737843ee2cb35e6dff0d7bab80cdc}{PROCEDURES}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{HOMING@{HOMING}!main.cpp@{main.cpp}}\index{main.cpp@{main.cpp}!HOMING@{HOMING}}}\mbox{\Hypertarget{main_8cpp_ab71737843ee2cb35e6dff0d7bab80cdca4bd626975c7076136f180e04b8748b39}\label{main_8cpp_ab71737843ee2cb35e6dff0d7bab80cdca4bd626975c7076136f180e04b8748b39}} 
+HOMING&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WAIT\_FOR\_START@{WAIT\_FOR\_START}!main.cpp@{main.cpp}}\index{main.cpp@{main.cpp}!WAIT\_FOR\_START@{WAIT\_FOR\_START}}}\mbox{\Hypertarget{main_8cpp_ab71737843ee2cb35e6dff0d7bab80cdca527eee1ea573d1cf321c43743673d38c}\label{main_8cpp_ab71737843ee2cb35e6dff0d7bab80cdca527eee1ea573d1cf321c43743673d38c}} 
+WAIT\+\_\+\+FOR\+\_\+\+START&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DRIVE\_FORWARD\_AT\_BEGINNING@{DRIVE\_FORWARD\_AT\_BEGINNING}!main.cpp@{main.cpp}}\index{main.cpp@{main.cpp}!DRIVE\_FORWARD\_AT\_BEGINNING@{DRIVE\_FORWARD\_AT\_BEGINNING}}}\mbox{\Hypertarget{main_8cpp_ab71737843ee2cb35e6dff0d7bab80cdca0878832fcdcfaadc91a58fce352be17a}\label{main_8cpp_ab71737843ee2cb35e6dff0d7bab80cdca0878832fcdcfaadc91a58fce352be17a}} 
+DRIVE\+\_\+\+FORWARD\+\_\+\+AT\+\_\+\+BEGINNING&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DRIVE\_Z\_DOWN@{DRIVE\_Z\_DOWN}!main.cpp@{main.cpp}}\index{main.cpp@{main.cpp}!DRIVE\_Z\_DOWN@{DRIVE\_Z\_DOWN}}}\mbox{\Hypertarget{main_8cpp_ab71737843ee2cb35e6dff0d7bab80cdca8e53d50ffa4a045d73086c24961be077}\label{main_8cpp_ab71737843ee2cb35e6dff0d7bab80cdca8e53d50ffa4a045d73086c24961be077}} 
+DRIVE\+\_\+\+Z\+\_\+\+DOWN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DRIVE\_FORWARD\_ON\_STAIR@{DRIVE\_FORWARD\_ON\_STAIR}!main.cpp@{main.cpp}}\index{main.cpp@{main.cpp}!DRIVE\_FORWARD\_ON\_STAIR@{DRIVE\_FORWARD\_ON\_STAIR}}}\mbox{\Hypertarget{main_8cpp_ab71737843ee2cb35e6dff0d7bab80cdcad9fa35d5f2834734e50062fed2d99679}\label{main_8cpp_ab71737843ee2cb35e6dff0d7bab80cdcad9fa35d5f2834734e50062fed2d99679}} 
+DRIVE\+\_\+\+FORWARD\+\_\+\+ON\+\_\+\+STAIR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DRIVE\_Z\_UP@{DRIVE\_Z\_UP}!main.cpp@{main.cpp}}\index{main.cpp@{main.cpp}!DRIVE\_Z\_UP@{DRIVE\_Z\_UP}}}\mbox{\Hypertarget{main_8cpp_ab71737843ee2cb35e6dff0d7bab80cdcacd44c09997fc30ce656387137861be31}\label{main_8cpp_ab71737843ee2cb35e6dff0d7bab80cdcacd44c09997fc30ce656387137861be31}} 
+DRIVE\+\_\+\+Z\+\_\+\+UP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DRIVE\_FORWARD\_AT\_LAST\_STEP@{DRIVE\_FORWARD\_AT\_LAST\_STEP}!main.cpp@{main.cpp}}\index{main.cpp@{main.cpp}!DRIVE\_FORWARD\_AT\_LAST\_STEP@{DRIVE\_FORWARD\_AT\_LAST\_STEP}}}\mbox{\Hypertarget{main_8cpp_ab71737843ee2cb35e6dff0d7bab80cdca38dd525738bd4bf2c4c3a31e0113700a}\label{main_8cpp_ab71737843ee2cb35e6dff0d7bab80cdca38dd525738bd4bf2c4c3a31e0113700a}} 
+DRIVE\+\_\+\+FORWARD\+\_\+\+AT\+\_\+\+LAST\+\_\+\+STEP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WAIT\_FOR\_SIGNAL@{WAIT\_FOR\_SIGNAL}!main.cpp@{main.cpp}}\index{main.cpp@{main.cpp}!WAIT\_FOR\_SIGNAL@{WAIT\_FOR\_SIGNAL}}}\mbox{\Hypertarget{main_8cpp_ab71737843ee2cb35e6dff0d7bab80cdcaee0f877a1630fd58814783da6d66f189}\label{main_8cpp_ab71737843ee2cb35e6dff0d7bab80cdcaee0f877a1630fd58814783da6d66f189}} 
+WAIT\+\_\+\+FOR\+\_\+\+SIGNAL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DRIVE\_BACK\_AT\_FIRST\_STEP@{DRIVE\_BACK\_AT\_FIRST\_STEP}!main.cpp@{main.cpp}}\index{main.cpp@{main.cpp}!DRIVE\_BACK\_AT\_FIRST\_STEP@{DRIVE\_BACK\_AT\_FIRST\_STEP}}}\mbox{\Hypertarget{main_8cpp_ab71737843ee2cb35e6dff0d7bab80cdcaf3476c53267475173704c7a358037c57}\label{main_8cpp_ab71737843ee2cb35e6dff0d7bab80cdcaf3476c53267475173704c7a358037c57}} 
+DRIVE\+\_\+\+BACK\+\_\+\+AT\+\_\+\+FIRST\+\_\+\+STEP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DRIVE\_BACKWARD\_ON\_STAIR@{DRIVE\_BACKWARD\_ON\_STAIR}!main.cpp@{main.cpp}}\index{main.cpp@{main.cpp}!DRIVE\_BACKWARD\_ON\_STAIR@{DRIVE\_BACKWARD\_ON\_STAIR}}}\mbox{\Hypertarget{main_8cpp_ab71737843ee2cb35e6dff0d7bab80cdca1e96599e35bd97e1bc21f469bd84ae06}\label{main_8cpp_ab71737843ee2cb35e6dff0d7bab80cdca1e96599e35bd97e1bc21f469bd84ae06}} 
+DRIVE\+\_\+\+BACKWARD\+\_\+\+ON\+\_\+\+STAIR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DRIVE\_BACKWARD\_AT\_LAST\_STEP@{DRIVE\_BACKWARD\_AT\_LAST\_STEP}!main.cpp@{main.cpp}}\index{main.cpp@{main.cpp}!DRIVE\_BACKWARD\_AT\_LAST\_STEP@{DRIVE\_BACKWARD\_AT\_LAST\_STEP}}}\mbox{\Hypertarget{main_8cpp_ab71737843ee2cb35e6dff0d7bab80cdca3679654e224f634e64fb3375deea8281}\label{main_8cpp_ab71737843ee2cb35e6dff0d7bab80cdca3679654e224f634e64fb3375deea8281}} 
+DRIVE\+\_\+\+BACKWARD\+\_\+\+AT\+\_\+\+LAST\+\_\+\+STEP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{END@{END}!main.cpp@{main.cpp}}\index{main.cpp@{main.cpp}!END@{END}}}\mbox{\Hypertarget{main_8cpp_ab71737843ee2cb35e6dff0d7bab80cdcadc6f24fd6915a3f2786a1b7045406924}\label{main_8cpp_ab71737843ee2cb35e6dff0d7bab80cdcadc6f24fd6915a3f2786a1b7045406924}} 
+END&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{main_8cpp_ae4b68a882a0d79e434b0155208ec715e}\label{main_8cpp_ae4b68a882a0d79e434b0155208ec715e}} 
+\index{main.cpp@{main.cpp}!eStop@{eStop}}
+\index{eStop@{eStop}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{eStop()}{eStop()}}
+{\footnotesize\ttfamily void e\+Stop (\begin{DoxyParamCaption}\item[{bool}]{instand }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{main_8cpp_abde91d80ec2f6871dd784880e30bd551}\label{main_8cpp_abde91d80ec2f6871dd784880e30bd551}} 
+\index{main.cpp@{main.cpp}!switchStop@{switchStop}}
+\index{switchStop@{switchStop}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{switchStop()}{switchStop()}}
+{\footnotesize\ttfamily void switch\+Stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{main_8cpp_ac30355235d44e8f7b0a538a510bcbbeb}\label{main_8cpp_ac30355235d44e8f7b0a538a510bcbbeb}} 
+\index{main.cpp@{main.cpp}!down@{down}}
+\index{down@{down}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{down}{down}}
+{\footnotesize\ttfamily bool down = false}
+
+\mbox{\Hypertarget{main_8cpp_a7063bb94766cb060a8d9328426e6c43d}\label{main_8cpp_a7063bb94766cb060a8d9328426e6c43d}} 
+\index{main.cpp@{main.cpp}!myRobot@{myRobot}}
+\index{myRobot@{myRobot}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{myRobot}{myRobot}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_robot}{Robot}}$\ast$ my\+Robot}
+
+\mbox{\Hypertarget{main_8cpp_a3e6f76368abfbc8709f4c1346dfa6a20}\label{main_8cpp_a3e6f76368abfbc8709f4c1346dfa6a20}} 
+\index{main.cpp@{main.cpp}!run@{run}}
+\index{run@{run}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{run}{run}}
+{\footnotesize\ttfamily bool run = true}
+
+\mbox{\Hypertarget{main_8cpp_a6599facca78a3191b43beaa45239daea}\label{main_8cpp_a6599facca78a3191b43beaa45239daea}} 
+\index{main.cpp@{main.cpp}!step@{step}}
+\index{step@{step}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{step}{step}}
+{\footnotesize\ttfamily bool step = false}
+
+\mbox{\Hypertarget{main_8cpp_a58b9fe0d8bdc4ddc63eb62dcd3413b10}\label{main_8cpp_a58b9fe0d8bdc4ddc63eb62dcd3413b10}} 
+\index{main.cpp@{main.cpp}!stepCounter@{stepCounter}}
+\index{stepCounter@{stepCounter}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{stepCounter}{stepCounter}}
+{\footnotesize\ttfamily int step\+Counter}
+
+\mbox{\Hypertarget{main_8cpp_a542ca0e0871740895d26e1931571ee49}\label{main_8cpp_a542ca0e0871740895d26e1931571ee49}} 
+\index{main.cpp@{main.cpp}!stepSequence@{stepSequence}}
+\index{stepSequence@{stepSequence}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{stepSequence}{stepSequence}}
+{\footnotesize\ttfamily int step\+Sequence = 0}
+
+\mbox{\Hypertarget{main_8cpp_a2af3c455555b63e20193d814f69bdbde}\label{main_8cpp_a2af3c455555b63e20193d814f69bdbde}} 
+\index{main.cpp@{main.cpp}!waiting@{waiting}}
+\index{waiting@{waiting}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{waiting}{waiting}}
+{\footnotesize\ttfamily bool waiting = false}
+
