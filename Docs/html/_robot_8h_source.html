@@ -9,10 +9,6 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -26,9 +22,9 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="ZHAW.png"/></td>
   <td id="projectalign">
-   <div id="projectname">Stairsclimbingrobot Firmware<span id="projectnumber">&#160;1.0.1</span>
+   <div id="projectname">Stairsclimbingrobot Firmware<span id="projectnumber">&#160;1.0.0</span>
    </div>
-   <div id="projectbrief">The firmware of our starisclimbing robot</div>
+   <div id="projectbrief">Stairsclimbingrobot Firmware Documentation</div>
   </td>
  </tr>
  </tbody>
@@ -53,22 +49,6 @@ $(function() {
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('_robot_8h_source.html',''); initResizable(); });
-/* @license-end */
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -87,14 +67,14 @@ $(document).ready(function(){initNavTree('_robot_8h_source.html',''); initResiza
   <div class="headertitle"><div class="title">Robot.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<a href="_robot_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">/*</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">*   Robot.h - A library to control the stairsclimbing robot. </span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">*   Created by Sebastian G., Winterthur, April 04, 2022 </span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">*/</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;mbed.h&quot;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;MyConfig.h&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="_my_config_8h.html">MyConfig.h</a>&quot;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;PM2_Libary.h&quot;</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
@@ -105,115 +85,125 @@ $(document).ready(function(){initNavTree('_robot_8h_source.html',''); initResiza
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="class_robot.html">   16</a></span><span class="keyword">class </span><a class="code hl_class" href="class_robot.html">Robot</a> {</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <a class="code hl_class" href="class_robot.html">Robot</a>();</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <a class="code hl_function" href="class_robot.html#a4fc7c70ae20623f05e06f2ecb388b6c4">Robot</a>();</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_robot.html#aa549f85959a737c086d306d3f025e56d">motorStop</a>();</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_robot.html#abd4b5a0493fdf86e45fe3a027c8f059a">slowMotorStop</a>();</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_robot.html#a0e8c08ff2cd6a56393f752822cc7bbeb">enableMotors</a>(<span class="keywordtype">bool</span> en);</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_robot.html#a0a33c6282831e4729f55fec282735c3b">driveMB</a>(<span class="keywordtype">short</span> dir);</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_robot.html#a6782f2cac09a1b89ced0c508ceea497e">driveSB</a>(<span class="keywordtype">short</span> dir);</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_robot.html#a65189b9ced7934e277a454ec391f2a0b">driveZ</a>(<span class="keywordtype">short</span> dir);</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="keywordtype">int</span> <a class="code hl_function" href="class_robot.html#a71d7730f623f5f9405077de72b7204ad">getProcedureCode</a>();</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_robot.html#a36c8d24c32e21b37d9f31f20372fea69">setProcedureCode</a>(<span class="keywordtype">int</span> procedureCode);</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_robot.html#ac75c5ff4ebbed315b40ae90bd7faaa2f">setError</a>(<span class="keywordtype">bool</span> errorState); </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_robot.html#ac56e95fe67bfe14f20778c1402bb4373">getError</a>(); </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_robot.html#ab99801888149d86e05fbbaeadec2b4e5">setErrorTimeout</a>(<span class="keywordtype">long</span> <span class="keywordtype">long</span> timeout);</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_robot.html#a991d4c3b97c65f7a385561438529a129">resetTaskTimer</a>();</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code hl_function" href="class_robot.html#a8514da71b1b45e4f6a841e8c4c9da5c0">getTaskMillis</a>();</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code hl_function" href="class_robot.html#a644e0027cf4a896245e43628aed25a49">getErrorMillis</a>(); </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_robot.html#a367c31a50c2b9ea1f1085535bbae1f89">isTimeoutError</a>();</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code hl_function" href="class_robot.html#a382c73cfa5fde35390ddf8e4c2489b01">getMillis</a>(); </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="keywordtype">short</span> <a class="code hl_function" href="class_robot.html#a630c3f21da5160bf144def6989714ca0">getMinZSwitch</a>();</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keywordtype">short</span> <a class="code hl_function" href="class_robot.html#a492925a445c4b7b49cdda9f5a2c11326">getMaxZSwitch</a>();</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keywordtype">short</span> <a class="code hl_function" href="class_robot.html#a31c054e3125850cd83bf701e72f3ebfa">getFrontIRSwitch</a>();</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keywordtype">short</span> <a class="code hl_function" href="class_robot.html#a6b8c7a900aafbf417cd306cbf4b5812c">getMiddleIRSwitch</a>();</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keywordtype">short</span> <a class="code hl_function" href="class_robot.html#a7271eba19120f12c86ada4e454e27316">getBackIRSwitch</a>();</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keywordtype">short</span> <a class="code hl_function" href="class_robot.html#a43f8ab5c9cdc6ad2cc1dc863d3a3e431">getStartSwitch</a>();</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keywordtype">double</span> <a class="code hl_function" href="class_robot.html#a578aaa7a8aea36006b3aebf7a60b4b31">getIRSensorValue</a>();</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="comment">//void playSound(std::string name); //TODO</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="comment">/*</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">        *   General variables</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">        */</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="keywordtype">int</span> procedureCode = 0;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <span class="keywordtype">bool</span> error = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="keywordtype">long</span> <span class="keywordtype">long</span> errorTimeout = 0;</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <span class="comment">/*</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment">        * Timer variables</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment">        */</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        Timer mainTimer; </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        Timer taskTimer; </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        Timer internalTaskTimer; </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        Timer errorTimer; </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <span class="keywordtype">long</span> <span class="keywordtype">long</span> getInternalTaskMillis();</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="comment">/*</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment">        * LED variables</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment">        */</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        DigitalOut *LED_error;</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        DigitalOut *LED_running;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_robot.html#a36074f92fb1a0c55adaf8647f1644918">driveMB</a>(<span class="keywordtype">short</span> dir, <span class="keywordtype">bool</span> slow);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_robot.html#a69a889b281cd873874d29aca808bc968">driveSB</a>(<span class="keywordtype">short</span> dir, <span class="keywordtype">bool</span> slow);</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_robot.html#abf52e3f6efc44082cc79837e85d4df19">driveH</a>(<span class="keywordtype">short</span> dir, <span class="keywordtype">bool</span> slow);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_robot.html#abb3296b839236ab6c947d66956b1211f">driveZ</a>(<span class="keywordtype">short</span> dir, <span class="keywordtype">bool</span> slow);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="keywordtype">int</span> <a class="code hl_function" href="class_robot.html#a71d7730f623f5f9405077de72b7204ad">getProcedureCode</a>();</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_robot.html#a36c8d24c32e21b37d9f31f20372fea69">setProcedureCode</a>(<span class="keywordtype">int</span> procedureCode);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_robot.html#ac75c5ff4ebbed315b40ae90bd7faaa2f">setError</a>(<span class="keywordtype">bool</span> errorState); </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_robot.html#ac5de5d1b19a9e3dcc0308dca11158d1d">setWarning</a>(<span class="keywordtype">bool</span> warningState); </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_robot.html#ac56e95fe67bfe14f20778c1402bb4373">getError</a>(); </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_robot.html#ab99801888149d86e05fbbaeadec2b4e5">setErrorTimeout</a>(<span class="keywordtype">long</span> <span class="keywordtype">long</span> timeout);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_robot.html#a991d4c3b97c65f7a385561438529a129">resetTaskTimer</a>();</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code hl_function" href="class_robot.html#a8514da71b1b45e4f6a841e8c4c9da5c0">getTaskMillis</a>();</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code hl_function" href="class_robot.html#a644e0027cf4a896245e43628aed25a49">getErrorMillis</a>(); </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_robot.html#a367c31a50c2b9ea1f1085535bbae1f89">isTimeoutError</a>();</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code hl_function" href="class_robot.html#a382c73cfa5fde35390ddf8e4c2489b01">getMillis</a>(); </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keywordtype">short</span> <a class="code hl_function" href="class_robot.html#a630c3f21da5160bf144def6989714ca0">getMinZSwitch</a>();</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keywordtype">short</span> <a class="code hl_function" href="class_robot.html#a492925a445c4b7b49cdda9f5a2c11326">getMaxZSwitch</a>();</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keywordtype">short</span> <a class="code hl_function" href="class_robot.html#a31c054e3125850cd83bf701e72f3ebfa">getFrontIRSwitch</a>();</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keywordtype">short</span> <a class="code hl_function" href="class_robot.html#a6b8c7a900aafbf417cd306cbf4b5812c">getMiddleIRSwitch</a>();</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keywordtype">short</span> <a class="code hl_function" href="class_robot.html#a7271eba19120f12c86ada4e454e27316">getBackIRSwitch</a>();</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keywordtype">short</span> <a class="code hl_function" href="class_robot.html#a43f8ab5c9cdc6ad2cc1dc863d3a3e431">getStartSwitch</a>();</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keywordtype">float</span> <a class="code hl_function" href="class_robot.html#a0e72ceb1f957c9bdc671f14eda15e589">getIRSensorValue</a>();</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_robot.html#ade1949f35551dbfdf05cdab940aa9d79">emergencyStop</a>();</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_robot.html#a7f57960d7d08158ff42ca2248a315ad0">setUltraslowSpeed</a>(<span class="keywordtype">bool</span> ultraslow);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="class_robot.html#ad717cc8ef4acd52743eca9b649f5d74e">   47</a></span>        InterruptIn *<a class="code hl_variable" href="class_robot.html#ad717cc8ef4acd52743eca9b649f5d74e">SW_START</a>;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="comment">//void playSound(std::string name); //TODO</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="comment">/*</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment">        *   General variables</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment">        */</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keywordtype">int</span> procedureCode = 0;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keywordtype">bool</span> error = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="keywordtype">long</span> <span class="keywordtype">long</span> errorTimeout = 0;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keywordtype">bool</span> ultraslow = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <span class="comment">/*</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment">        * Timer variables</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment">        */</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        Timer mainTimer; </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        Timer taskTimer; </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        Timer internalTaskTimer; </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        Timer errorTimer; </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="keywordtype">long</span> <span class="keywordtype">long</span> getInternalTaskMillis();</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="comment">/*</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment">        * Motor variables</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment">        * LED variables</span></div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment">        */</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        FastPWM *M_MB;</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        FastPWM *M_SB;</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        FastPWM *M_Z;</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        DigitalOut *M_EN;</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="comment">/*</span></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="comment">        * Switch inputs</span></div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="comment">        */</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        DigitalIn *SW_IR_BACK;</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        DigitalIn *SW_IR_MIDDLE;</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        DigitalIn *SW_IR_FRONT;</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        DigitalIn *SW_Z_MIN;</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        DigitalIn *SW_Z_MAX;</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        DigitalIn *SW_START;</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <span class="comment">/*</span></div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="comment">        *   Sensor inputs</span></div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="comment">        */</span></div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        AnalogIn *SE_IR;</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>};</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        DigitalOut *LED_error;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        DigitalOut *LED_warning;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        DigitalOut *LED_running;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="comment">/*</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="comment">        * Motor variables</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="comment">        */</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        FastPWM *M_MB;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        FastPWM *M_SB;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        FastPWM *M_Z;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        DigitalOut *M_EN;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <span class="comment">/*</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="comment">        * Switch inputs</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="comment">        */</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        DigitalIn *SW_IR_BACK;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        DigitalIn *SW_IR_MIDDLE;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        DigitalIn *SW_IR_FRONT;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        DigitalIn *SW_Z_MIN;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        DigitalIn *SW_Z_MAX;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <span class="comment">/*</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="comment">        *   Sensor inputs</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="comment">        */</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        AnalogIn *SE_IR;</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>};</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="a_my_config_8h_html"><div class="ttname"><a href="_my_config_8h.html">MyConfig.h</a></div></div>
 <div class="ttc" id="aclass_robot_html"><div class="ttname"><a href="class_robot.html">Robot</a></div><div class="ttdef"><b>Definition:</b> Robot.h:16</div></div>
-<div class="ttc" id="aclass_robot_html_a0a33c6282831e4729f55fec282735c3b"><div class="ttname"><a href="class_robot.html#a0a33c6282831e4729f55fec282735c3b">Robot::driveMB</a></div><div class="ttdeci">void driveMB(short dir)</div><div class="ttdef"><b>Definition:</b> Robot.cpp:203</div></div>
-<div class="ttc" id="aclass_robot_html_a0e8c08ff2cd6a56393f752822cc7bbeb"><div class="ttname"><a href="class_robot.html#a0e8c08ff2cd6a56393f752822cc7bbeb">Robot::enableMotors</a></div><div class="ttdeci">void enableMotors(bool en)</div><div class="ttdef"><b>Definition:</b> Robot.cpp:116</div></div>
-<div class="ttc" id="aclass_robot_html_a31c054e3125850cd83bf701e72f3ebfa"><div class="ttname"><a href="class_robot.html#a31c054e3125850cd83bf701e72f3ebfa">Robot::getFrontIRSwitch</a></div><div class="ttdeci">short getFrontIRSwitch()</div><div class="ttdef"><b>Definition:</b> Robot.cpp:288</div></div>
-<div class="ttc" id="aclass_robot_html_a367c31a50c2b9ea1f1085535bbae1f89"><div class="ttname"><a href="class_robot.html#a367c31a50c2b9ea1f1085535bbae1f89">Robot::isTimeoutError</a></div><div class="ttdeci">bool isTimeoutError()</div><div class="ttdef"><b>Definition:</b> Robot.cpp:191</div></div>
-<div class="ttc" id="aclass_robot_html_a36c8d24c32e21b37d9f31f20372fea69"><div class="ttname"><a href="class_robot.html#a36c8d24c32e21b37d9f31f20372fea69">Robot::setProcedureCode</a></div><div class="ttdeci">void setProcedureCode(int procedureCode)</div><div class="ttdef"><b>Definition:</b> Robot.cpp:100</div></div>
-<div class="ttc" id="aclass_robot_html_a382c73cfa5fde35390ddf8e4c2489b01"><div class="ttname"><a href="class_robot.html#a382c73cfa5fde35390ddf8e4c2489b01">Robot::getMillis</a></div><div class="ttdeci">long long getMillis()</div><div class="ttdef"><b>Definition:</b> Robot.cpp:66</div></div>
-<div class="ttc" id="aclass_robot_html_a43f8ab5c9cdc6ad2cc1dc863d3a3e431"><div class="ttname"><a href="class_robot.html#a43f8ab5c9cdc6ad2cc1dc863d3a3e431">Robot::getStartSwitch</a></div><div class="ttdeci">short getStartSwitch()</div><div class="ttdef"><b>Definition:</b> Robot.cpp:312</div></div>
-<div class="ttc" id="aclass_robot_html_a492925a445c4b7b49cdda9f5a2c11326"><div class="ttname"><a href="class_robot.html#a492925a445c4b7b49cdda9f5a2c11326">Robot::getMaxZSwitch</a></div><div class="ttdeci">short getMaxZSwitch()</div><div class="ttdef"><b>Definition:</b> Robot.cpp:280</div></div>
-<div class="ttc" id="aclass_robot_html_a578aaa7a8aea36006b3aebf7a60b4b31"><div class="ttname"><a href="class_robot.html#a578aaa7a8aea36006b3aebf7a60b4b31">Robot::getIRSensorValue</a></div><div class="ttdeci">double getIRSensorValue()</div><div class="ttdef"><b>Definition:</b> Robot.cpp:319</div></div>
-<div class="ttc" id="aclass_robot_html_a630c3f21da5160bf144def6989714ca0"><div class="ttname"><a href="class_robot.html#a630c3f21da5160bf144def6989714ca0">Robot::getMinZSwitch</a></div><div class="ttdeci">short getMinZSwitch()</div><div class="ttdef"><b>Definition:</b> Robot.cpp:272</div></div>
-<div class="ttc" id="aclass_robot_html_a644e0027cf4a896245e43628aed25a49"><div class="ttname"><a href="class_robot.html#a644e0027cf4a896245e43628aed25a49">Robot::getErrorMillis</a></div><div class="ttdeci">long long getErrorMillis()</div><div class="ttdef"><b>Definition:</b> Robot.cpp:92</div></div>
-<div class="ttc" id="aclass_robot_html_a65189b9ced7934e277a454ec391f2a0b"><div class="ttname"><a href="class_robot.html#a65189b9ced7934e277a454ec391f2a0b">Robot::driveZ</a></div><div class="ttdeci">void driveZ(short dir)</div><div class="ttdef"><b>Definition:</b> Robot.cpp:249</div></div>
-<div class="ttc" id="aclass_robot_html_a6782f2cac09a1b89ced0c508ceea497e"><div class="ttname"><a href="class_robot.html#a6782f2cac09a1b89ced0c508ceea497e">Robot::driveSB</a></div><div class="ttdeci">void driveSB(short dir)</div><div class="ttdef"><b>Definition:</b> Robot.cpp:226</div></div>
-<div class="ttc" id="aclass_robot_html_a6b8c7a900aafbf417cd306cbf4b5812c"><div class="ttname"><a href="class_robot.html#a6b8c7a900aafbf417cd306cbf4b5812c">Robot::getMiddleIRSwitch</a></div><div class="ttdeci">short getMiddleIRSwitch()</div><div class="ttdef"><b>Definition:</b> Robot.cpp:296</div></div>
-<div class="ttc" id="aclass_robot_html_a71d7730f623f5f9405077de72b7204ad"><div class="ttname"><a href="class_robot.html#a71d7730f623f5f9405077de72b7204ad">Robot::getProcedureCode</a></div><div class="ttdeci">int getProcedureCode()</div><div class="ttdef"><b>Definition:</b> Robot.cpp:108</div></div>
-<div class="ttc" id="aclass_robot_html_a7271eba19120f12c86ada4e454e27316"><div class="ttname"><a href="class_robot.html#a7271eba19120f12c86ada4e454e27316">Robot::getBackIRSwitch</a></div><div class="ttdeci">short getBackIRSwitch()</div><div class="ttdef"><b>Definition:</b> Robot.cpp:304</div></div>
-<div class="ttc" id="aclass_robot_html_a8514da71b1b45e4f6a841e8c4c9da5c0"><div class="ttname"><a href="class_robot.html#a8514da71b1b45e4f6a841e8c4c9da5c0">Robot::getTaskMillis</a></div><div class="ttdeci">long long getTaskMillis()</div><div class="ttdef"><b>Definition:</b> Robot.cpp:75</div></div>
-<div class="ttc" id="aclass_robot_html_a991d4c3b97c65f7a385561438529a129"><div class="ttname"><a href="class_robot.html#a991d4c3b97c65f7a385561438529a129">Robot::resetTaskTimer</a></div><div class="ttdeci">void resetTaskTimer()</div><div class="ttdef"><b>Definition:</b> Robot.cpp:58</div></div>
-<div class="ttc" id="aclass_robot_html_aa549f85959a737c086d306d3f025e56d"><div class="ttname"><a href="class_robot.html#aa549f85959a737c086d306d3f025e56d">Robot::motorStop</a></div><div class="ttdeci">void motorStop()</div><div class="ttdef"><b>Definition:</b> Robot.cpp:126</div></div>
-<div class="ttc" id="aclass_robot_html_ab99801888149d86e05fbbaeadec2b4e5"><div class="ttname"><a href="class_robot.html#ab99801888149d86e05fbbaeadec2b4e5">Robot::setErrorTimeout</a></div><div class="ttdeci">void setErrorTimeout(long long timeout)</div><div class="ttdef"><b>Definition:</b> Robot.cpp:182</div></div>
-<div class="ttc" id="aclass_robot_html_abd4b5a0493fdf86e45fe3a027c8f059a"><div class="ttname"><a href="class_robot.html#abd4b5a0493fdf86e45fe3a027c8f059a">Robot::slowMotorStop</a></div><div class="ttdeci">void slowMotorStop()</div><div class="ttdef"><b>Definition:</b> Robot.cpp:136</div></div>
-<div class="ttc" id="aclass_robot_html_ac56e95fe67bfe14f20778c1402bb4373"><div class="ttname"><a href="class_robot.html#ac56e95fe67bfe14f20778c1402bb4373">Robot::getError</a></div><div class="ttdeci">bool getError()</div><div class="ttdef"><b>Definition:</b> Robot.cpp:174</div></div>
-<div class="ttc" id="aclass_robot_html_ac75c5ff4ebbed315b40ae90bd7faaa2f"><div class="ttname"><a href="class_robot.html#ac75c5ff4ebbed315b40ae90bd7faaa2f">Robot::setError</a></div><div class="ttdeci">void setError(bool errorState)</div><div class="ttdef"><b>Definition:</b> Robot.cpp:161</div></div>
+<div class="ttc" id="aclass_robot_html_a0e72ceb1f957c9bdc671f14eda15e589"><div class="ttname"><a href="class_robot.html#a0e72ceb1f957c9bdc671f14eda15e589">Robot::getIRSensorValue</a></div><div class="ttdeci">float getIRSensorValue()</div><div class="ttdef"><b>Definition:</b> Robot.cpp:403</div></div>
+<div class="ttc" id="aclass_robot_html_a0e8c08ff2cd6a56393f752822cc7bbeb"><div class="ttname"><a href="class_robot.html#a0e8c08ff2cd6a56393f752822cc7bbeb">Robot::enableMotors</a></div><div class="ttdeci">void enableMotors(bool en)</div><div class="ttdef"><b>Definition:</b> Robot.cpp:130</div></div>
+<div class="ttc" id="aclass_robot_html_a31c054e3125850cd83bf701e72f3ebfa"><div class="ttname"><a href="class_robot.html#a31c054e3125850cd83bf701e72f3ebfa">Robot::getFrontIRSwitch</a></div><div class="ttdeci">short getFrontIRSwitch()</div><div class="ttdef"><b>Definition:</b> Robot.cpp:372</div></div>
+<div class="ttc" id="aclass_robot_html_a36074f92fb1a0c55adaf8647f1644918"><div class="ttname"><a href="class_robot.html#a36074f92fb1a0c55adaf8647f1644918">Robot::driveMB</a></div><div class="ttdeci">void driveMB(short dir, bool slow)</div><div class="ttdef"><b>Definition:</b> Robot.cpp:264</div></div>
+<div class="ttc" id="aclass_robot_html_a367c31a50c2b9ea1f1085535bbae1f89"><div class="ttname"><a href="class_robot.html#a367c31a50c2b9ea1f1085535bbae1f89">Robot::isTimeoutError</a></div><div class="ttdeci">bool isTimeoutError()</div><div class="ttdef"><b>Definition:</b> Robot.cpp:214</div></div>
+<div class="ttc" id="aclass_robot_html_a36c8d24c32e21b37d9f31f20372fea69"><div class="ttname"><a href="class_robot.html#a36c8d24c32e21b37d9f31f20372fea69">Robot::setProcedureCode</a></div><div class="ttdeci">void setProcedureCode(int procedureCode)</div><div class="ttdef"><b>Definition:</b> Robot.cpp:114</div></div>
+<div class="ttc" id="aclass_robot_html_a382c73cfa5fde35390ddf8e4c2489b01"><div class="ttname"><a href="class_robot.html#a382c73cfa5fde35390ddf8e4c2489b01">Robot::getMillis</a></div><div class="ttdeci">long long getMillis()</div><div class="ttdef"><b>Definition:</b> Robot.cpp:80</div></div>
+<div class="ttc" id="aclass_robot_html_a43f8ab5c9cdc6ad2cc1dc863d3a3e431"><div class="ttname"><a href="class_robot.html#a43f8ab5c9cdc6ad2cc1dc863d3a3e431">Robot::getStartSwitch</a></div><div class="ttdeci">short getStartSwitch()</div><div class="ttdef"><b>Definition:</b> Robot.cpp:396</div></div>
+<div class="ttc" id="aclass_robot_html_a492925a445c4b7b49cdda9f5a2c11326"><div class="ttname"><a href="class_robot.html#a492925a445c4b7b49cdda9f5a2c11326">Robot::getMaxZSwitch</a></div><div class="ttdeci">short getMaxZSwitch()</div><div class="ttdef"><b>Definition:</b> Robot.cpp:364</div></div>
+<div class="ttc" id="aclass_robot_html_a4fc7c70ae20623f05e06f2ecb388b6c4"><div class="ttname"><a href="class_robot.html#a4fc7c70ae20623f05e06f2ecb388b6c4">Robot::Robot</a></div><div class="ttdeci">Robot()</div><div class="ttdef"><b>Definition:</b> Robot.cpp:10</div></div>
+<div class="ttc" id="aclass_robot_html_a630c3f21da5160bf144def6989714ca0"><div class="ttname"><a href="class_robot.html#a630c3f21da5160bf144def6989714ca0">Robot::getMinZSwitch</a></div><div class="ttdeci">short getMinZSwitch()</div><div class="ttdef"><b>Definition:</b> Robot.cpp:356</div></div>
+<div class="ttc" id="aclass_robot_html_a644e0027cf4a896245e43628aed25a49"><div class="ttname"><a href="class_robot.html#a644e0027cf4a896245e43628aed25a49">Robot::getErrorMillis</a></div><div class="ttdeci">long long getErrorMillis()</div><div class="ttdef"><b>Definition:</b> Robot.cpp:106</div></div>
+<div class="ttc" id="aclass_robot_html_a69a889b281cd873874d29aca808bc968"><div class="ttname"><a href="class_robot.html#a69a889b281cd873874d29aca808bc968">Robot::driveSB</a></div><div class="ttdeci">void driveSB(short dir, bool slow)</div><div class="ttdef"><b>Definition:</b> Robot.cpp:295</div></div>
+<div class="ttc" id="aclass_robot_html_a6b8c7a900aafbf417cd306cbf4b5812c"><div class="ttname"><a href="class_robot.html#a6b8c7a900aafbf417cd306cbf4b5812c">Robot::getMiddleIRSwitch</a></div><div class="ttdeci">short getMiddleIRSwitch()</div><div class="ttdef"><b>Definition:</b> Robot.cpp:380</div></div>
+<div class="ttc" id="aclass_robot_html_a71d7730f623f5f9405077de72b7204ad"><div class="ttname"><a href="class_robot.html#a71d7730f623f5f9405077de72b7204ad">Robot::getProcedureCode</a></div><div class="ttdeci">int getProcedureCode()</div><div class="ttdef"><b>Definition:</b> Robot.cpp:122</div></div>
+<div class="ttc" id="aclass_robot_html_a7271eba19120f12c86ada4e454e27316"><div class="ttname"><a href="class_robot.html#a7271eba19120f12c86ada4e454e27316">Robot::getBackIRSwitch</a></div><div class="ttdeci">short getBackIRSwitch()</div><div class="ttdef"><b>Definition:</b> Robot.cpp:388</div></div>
+<div class="ttc" id="aclass_robot_html_a7f57960d7d08158ff42ca2248a315ad0"><div class="ttname"><a href="class_robot.html#a7f57960d7d08158ff42ca2248a315ad0">Robot::setUltraslowSpeed</a></div><div class="ttdeci">void setUltraslowSpeed(bool ultraslow)</div><div class="ttdef"><b>Definition:</b> Robot.cpp:418</div></div>
+<div class="ttc" id="aclass_robot_html_a8514da71b1b45e4f6a841e8c4c9da5c0"><div class="ttname"><a href="class_robot.html#a8514da71b1b45e4f6a841e8c4c9da5c0">Robot::getTaskMillis</a></div><div class="ttdeci">long long getTaskMillis()</div><div class="ttdef"><b>Definition:</b> Robot.cpp:89</div></div>
+<div class="ttc" id="aclass_robot_html_a991d4c3b97c65f7a385561438529a129"><div class="ttname"><a href="class_robot.html#a991d4c3b97c65f7a385561438529a129">Robot::resetTaskTimer</a></div><div class="ttdeci">void resetTaskTimer()</div><div class="ttdef"><b>Definition:</b> Robot.cpp:64</div></div>
+<div class="ttc" id="aclass_robot_html_aa549f85959a737c086d306d3f025e56d"><div class="ttname"><a href="class_robot.html#aa549f85959a737c086d306d3f025e56d">Robot::motorStop</a></div><div class="ttdeci">void motorStop()</div><div class="ttdef"><b>Definition:</b> Robot.cpp:140</div></div>
+<div class="ttc" id="aclass_robot_html_ab99801888149d86e05fbbaeadec2b4e5"><div class="ttname"><a href="class_robot.html#ab99801888149d86e05fbbaeadec2b4e5">Robot::setErrorTimeout</a></div><div class="ttdeci">void setErrorTimeout(long long timeout)</div><div class="ttdef"><b>Definition:</b> Robot.cpp:205</div></div>
+<div class="ttc" id="aclass_robot_html_abb3296b839236ab6c947d66956b1211f"><div class="ttname"><a href="class_robot.html#abb3296b839236ab6c947d66956b1211f">Robot::driveZ</a></div><div class="ttdeci">void driveZ(short dir, bool slow)</div><div class="ttdef"><b>Definition:</b> Robot.cpp:326</div></div>
+<div class="ttc" id="aclass_robot_html_abd4b5a0493fdf86e45fe3a027c8f059a"><div class="ttname"><a href="class_robot.html#abd4b5a0493fdf86e45fe3a027c8f059a">Robot::slowMotorStop</a></div><div class="ttdeci">void slowMotorStop()</div><div class="ttdef"><b>Definition:</b> Robot.cpp:150</div></div>
+<div class="ttc" id="aclass_robot_html_abf52e3f6efc44082cc79837e85d4df19"><div class="ttname"><a href="class_robot.html#abf52e3f6efc44082cc79837e85d4df19">Robot::driveH</a></div><div class="ttdeci">void driveH(short dir, bool slow)</div><div class="ttdef"><b>Definition:</b> Robot.cpp:227</div></div>
+<div class="ttc" id="aclass_robot_html_ac56e95fe67bfe14f20778c1402bb4373"><div class="ttname"><a href="class_robot.html#ac56e95fe67bfe14f20778c1402bb4373">Robot::getError</a></div><div class="ttdeci">bool getError()</div><div class="ttdef"><b>Definition:</b> Robot.cpp:197</div></div>
+<div class="ttc" id="aclass_robot_html_ac5de5d1b19a9e3dcc0308dca11158d1d"><div class="ttname"><a href="class_robot.html#ac5de5d1b19a9e3dcc0308dca11158d1d">Robot::setWarning</a></div><div class="ttdeci">void setWarning(bool warningState)</div><div class="ttdef"><b>Definition:</b> Robot.cpp:189</div></div>
+<div class="ttc" id="aclass_robot_html_ac75c5ff4ebbed315b40ae90bd7faaa2f"><div class="ttname"><a href="class_robot.html#ac75c5ff4ebbed315b40ae90bd7faaa2f">Robot::setError</a></div><div class="ttdeci">void setError(bool errorState)</div><div class="ttdef"><b>Definition:</b> Robot.cpp:175</div></div>
+<div class="ttc" id="aclass_robot_html_ad717cc8ef4acd52743eca9b649f5d74e"><div class="ttname"><a href="class_robot.html#ad717cc8ef4acd52743eca9b649f5d74e">Robot::SW_START</a></div><div class="ttdeci">InterruptIn * SW_START</div><div class="ttdef"><b>Definition:</b> Robot.h:47</div></div>
+<div class="ttc" id="aclass_robot_html_ade1949f35551dbfdf05cdab940aa9d79"><div class="ttname"><a href="class_robot.html#ade1949f35551dbfdf05cdab940aa9d79">Robot::emergencyStop</a></div><div class="ttdeci">void emergencyStop()</div><div class="ttdef"><b>Definition:</b> Robot.cpp:71</div></div>
 </div><!-- fragment --></div><!-- contents -->
-</div><!-- doc-content -->
 <!-- start footer part -->
-<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
-  <ul>
-    <li class="navelem"><b>Robot.h</b></li>
-    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
-  </ul>
-</div>
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3
+</small></address>
 </body>
 </html>

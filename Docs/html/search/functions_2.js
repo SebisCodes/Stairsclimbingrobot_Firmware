@@ -4,7 +4,7 @@ var searchData=
   ['geterror_1',['getError',['../class_robot.html#ac56e95fe67bfe14f20778c1402bb4373',1,'Robot']]],
   ['geterrormillis_2',['getErrorMillis',['../class_robot.html#a644e0027cf4a896245e43628aed25a49',1,'Robot']]],
   ['getfrontirswitch_3',['getFrontIRSwitch',['../class_robot.html#a31c054e3125850cd83bf701e72f3ebfa',1,'Robot']]],
-  ['getirsensorvalue_4',['getIRSensorValue',['../class_robot.html#a578aaa7a8aea36006b3aebf7a60b4b31',1,'Robot']]],
+  ['getirsensorvalue_4',['getIRSensorValue',['../class_robot.html#a0e72ceb1f957c9bdc671f14eda15e589',1,'Robot']]],
   ['getmaxzswitch_5',['getMaxZSwitch',['../class_robot.html#a492925a445c4b7b49cdda9f5a2c11326',1,'Robot']]],
   ['getmiddleirswitch_6',['getMiddleIRSwitch',['../class_robot.html#a6b8c7a900aafbf417cd306cbf4b5812c',1,'Robot']]],
   ['getmillis_7',['getMillis',['../class_robot.html#a382c73cfa5fde35390ddf8e4c2489b01',1,'Robot']]],

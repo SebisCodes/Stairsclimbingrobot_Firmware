@@ -1,7 +1,13 @@
 \hypertarget{class_robot}{}\doxysection{Robot Class Reference}
 \label{class_robot}\index{Robot@{Robot}}
+
+
+{\ttfamily \#include $<$Robot.\+h$>$}
+
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_robot_a4fc7c70ae20623f05e06f2ecb388b6c4}{Robot}} ()
 \item 
 void \mbox{\hyperlink{class_robot_aa549f85959a737c086d306d3f025e56d}{motor\+Stop}} ()
 \item 
@@ -9,17 +15,21 @@ void \mbox{\hyperlink{class_robot_abd4b5a0493fdf86e45fe3a027c8f059a}{slow\+Motor
 \item 
 void \mbox{\hyperlink{class_robot_a0e8c08ff2cd6a56393f752822cc7bbeb}{enable\+Motors}} (bool en)
 \item 
-void \mbox{\hyperlink{class_robot_a0a33c6282831e4729f55fec282735c3b}{drive\+MB}} (short dir)
+void \mbox{\hyperlink{class_robot_a36074f92fb1a0c55adaf8647f1644918}{drive\+MB}} (short dir, bool slow)
 \item 
-void \mbox{\hyperlink{class_robot_a6782f2cac09a1b89ced0c508ceea497e}{drive\+SB}} (short dir)
+void \mbox{\hyperlink{class_robot_a69a889b281cd873874d29aca808bc968}{drive\+SB}} (short dir, bool slow)
 \item 
-void \mbox{\hyperlink{class_robot_a65189b9ced7934e277a454ec391f2a0b}{driveZ}} (short dir)
+void \mbox{\hyperlink{class_robot_abf52e3f6efc44082cc79837e85d4df19}{driveH}} (short dir, bool slow)
+\item 
+void \mbox{\hyperlink{class_robot_abb3296b839236ab6c947d66956b1211f}{driveZ}} (short dir, bool slow)
 \item 
 int \mbox{\hyperlink{class_robot_a71d7730f623f5f9405077de72b7204ad}{get\+Procedure\+Code}} ()
 \item 
 void \mbox{\hyperlink{class_robot_a36c8d24c32e21b37d9f31f20372fea69}{set\+Procedure\+Code}} (int procedure\+Code)
 \item 
 void \mbox{\hyperlink{class_robot_ac75c5ff4ebbed315b40ae90bd7faaa2f}{set\+Error}} (bool error\+State)
+\item 
+void \mbox{\hyperlink{class_robot_ac5de5d1b19a9e3dcc0308dca11158d1d}{set\+Warning}} (bool warning\+State)
 \item 
 bool \mbox{\hyperlink{class_robot_ac56e95fe67bfe14f20778c1402bb4373}{get\+Error}} ()
 \item 
@@ -47,45 +57,88 @@ short \mbox{\hyperlink{class_robot_a7271eba19120f12c86ada4e454e27316}{get\+Back\
 \item 
 short \mbox{\hyperlink{class_robot_a43f8ab5c9cdc6ad2cc1dc863d3a3e431}{get\+Start\+Switch}} ()
 \item 
-double \mbox{\hyperlink{class_robot_a578aaa7a8aea36006b3aebf7a60b4b31}{get\+IRSensor\+Value}} ()
+float \mbox{\hyperlink{class_robot_a0e72ceb1f957c9bdc671f14eda15e589}{get\+IRSensor\+Value}} ()
+\item 
+void \mbox{\hyperlink{class_robot_ade1949f35551dbfdf05cdab940aa9d79}{emergency\+Stop}} ()
+\item 
+void \mbox{\hyperlink{class_robot_a7f57960d7d08158ff42ca2248a315ad0}{set\+Ultraslow\+Speed}} (bool ultraslow)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Interrupt\+In $\ast$ \mbox{\hyperlink{class_robot_ad717cc8ef4acd52743eca9b649f5d74e}{SW\+\_\+\+START}}
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_robot_a4fc7c70ae20623f05e06f2ecb388b6c4}\label{class_robot_a4fc7c70ae20623f05e06f2ecb388b6c4}} 
+\index{Robot@{Robot}!Robot@{Robot}}
+\index{Robot@{Robot}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{Robot()}{Robot()}}
+{\footnotesize\ttfamily Robot\+::\+Robot (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_robot_a0a33c6282831e4729f55fec282735c3b}\label{class_robot_a0a33c6282831e4729f55fec282735c3b}} 
+\mbox{\Hypertarget{class_robot_abf52e3f6efc44082cc79837e85d4df19}\label{class_robot_abf52e3f6efc44082cc79837e85d4df19}} 
+\index{Robot@{Robot}!driveH@{driveH}}
+\index{driveH@{driveH}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{driveH()}{driveH()}}
+{\footnotesize\ttfamily void Robot\+::driveH (\begin{DoxyParamCaption}\item[{short}]{dir,  }\item[{bool}]{slow }\end{DoxyParamCaption})}
+
+Start to drive the mainbody and sidebody motors 
+\begin{DoxyParams}{Parameters}
+{\em dir} & short -\/ 1 = forward, 0 = backward \\
+\hline
+{\em slow} & bool -\/ if true\+: set slow speed \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_robot_a36074f92fb1a0c55adaf8647f1644918}\label{class_robot_a36074f92fb1a0c55adaf8647f1644918}} 
 \index{Robot@{Robot}!driveMB@{driveMB}}
 \index{driveMB@{driveMB}!Robot@{Robot}}
 \doxysubsubsection{\texorpdfstring{driveMB()}{driveMB()}}
-{\footnotesize\ttfamily void Robot\+::drive\+MB (\begin{DoxyParamCaption}\item[{short}]{dir }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Robot\+::drive\+MB (\begin{DoxyParamCaption}\item[{short}]{dir,  }\item[{bool}]{slow }\end{DoxyParamCaption})}
 
 Start to drive the mainbody motor 
 \begin{DoxyParams}{Parameters}
 {\em dir} & short -\/ 1 = forward, 0 = backward \\
 \hline
+{\em slow} & bool -\/ if true\+: set slow speed \\
+\hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_robot_a6782f2cac09a1b89ced0c508ceea497e}\label{class_robot_a6782f2cac09a1b89ced0c508ceea497e}} 
+\mbox{\Hypertarget{class_robot_a69a889b281cd873874d29aca808bc968}\label{class_robot_a69a889b281cd873874d29aca808bc968}} 
 \index{Robot@{Robot}!driveSB@{driveSB}}
 \index{driveSB@{driveSB}!Robot@{Robot}}
 \doxysubsubsection{\texorpdfstring{driveSB()}{driveSB()}}
-{\footnotesize\ttfamily void Robot\+::drive\+SB (\begin{DoxyParamCaption}\item[{short}]{dir }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Robot\+::drive\+SB (\begin{DoxyParamCaption}\item[{short}]{dir,  }\item[{bool}]{slow }\end{DoxyParamCaption})}
 
 Start to drive the sidebody motor 
 \begin{DoxyParams}{Parameters}
 {\em dir} & short -\/ 1 = forward, 0 = backward \\
 \hline
+{\em slow} & bool -\/ if true\+: set slow speed \\
+\hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_robot_a65189b9ced7934e277a454ec391f2a0b}\label{class_robot_a65189b9ced7934e277a454ec391f2a0b}} 
+\mbox{\Hypertarget{class_robot_abb3296b839236ab6c947d66956b1211f}\label{class_robot_abb3296b839236ab6c947d66956b1211f}} 
 \index{Robot@{Robot}!driveZ@{driveZ}}
 \index{driveZ@{driveZ}!Robot@{Robot}}
 \doxysubsubsection{\texorpdfstring{driveZ()}{driveZ()}}
-{\footnotesize\ttfamily void Robot\+::driveZ (\begin{DoxyParamCaption}\item[{short}]{dir }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Robot\+::driveZ (\begin{DoxyParamCaption}\item[{short}]{dir,  }\item[{bool}]{slow }\end{DoxyParamCaption})}
 
 Start to drive the Z-\/axis motor 
 \begin{DoxyParams}{Parameters}
 {\em dir} & short -\/ 1 = forward, 0 = backward \\
 \hline
+{\em slow} & bool -\/ if true\+: set slow speed \\
+\hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_robot_a0e8c08ff2cd6a56393f752822cc7bbeb}\label{class_robot_a0e8c08ff2cd6a56393f752822cc7bbeb}} 
+\mbox{\Hypertarget{class_robot_ade1949f35551dbfdf05cdab940aa9d79}\label{class_robot_ade1949f35551dbfdf05cdab940aa9d79}} 
+\index{Robot@{Robot}!emergencyStop@{emergencyStop}}
+\index{emergencyStop@{emergencyStop}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{emergencyStop()}{emergencyStop()}}
+{\footnotesize\ttfamily void Robot\+::emergency\+Stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Disable all stepper and run in endless while \mbox{\Hypertarget{class_robot_a0e8c08ff2cd6a56393f752822cc7bbeb}\label{class_robot_a0e8c08ff2cd6a56393f752822cc7bbeb}} 
 \index{Robot@{Robot}!enableMotors@{enableMotors}}
 \index{enableMotors@{enableMotors}!Robot@{Robot}}
 \doxysubsubsection{\texorpdfstring{enableMotors()}{enableMotors()}}
@@ -132,11 +185,11 @@ long long -\/ get the actual milliseconds of error\+Timer since the last timer r
 Get the switch value \begin{DoxyReturn}{Returns}
 short -\/ digital value of the switch 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_robot_a578aaa7a8aea36006b3aebf7a60b4b31}\label{class_robot_a578aaa7a8aea36006b3aebf7a60b4b31}} 
+\mbox{\Hypertarget{class_robot_a0e72ceb1f957c9bdc671f14eda15e589}\label{class_robot_a0e72ceb1f957c9bdc671f14eda15e589}} 
 \index{Robot@{Robot}!getIRSensorValue@{getIRSensorValue}}
 \index{getIRSensorValue@{getIRSensorValue}!Robot@{Robot}}
 \doxysubsubsection{\texorpdfstring{getIRSensorValue()}{getIRSensorValue()}}
-{\footnotesize\ttfamily double Robot\+::get\+IRSensor\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily float Robot\+::get\+IRSensor\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 Get the sensor value \begin{DoxyReturn}{Returns}
 double -\/ analog value of the sensor 
@@ -258,6 +311,28 @@ Store a running procedure code
 {\em procedure\+Code} & int -\/ the procedure\+Code to set \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{class_robot_a7f57960d7d08158ff42ca2248a315ad0}\label{class_robot_a7f57960d7d08158ff42ca2248a315ad0}} 
+\index{Robot@{Robot}!setUltraslowSpeed@{setUltraslowSpeed}}
+\index{setUltraslowSpeed@{setUltraslowSpeed}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{setUltraslowSpeed()}{setUltraslowSpeed()}}
+{\footnotesize\ttfamily void Robot\+::set\+Ultraslow\+Speed (\begin{DoxyParamCaption}\item[{bool}]{ultraslow }\end{DoxyParamCaption})}
+
+Set ultraslow speed 
+\begin{DoxyParams}{Parameters}
+{\em ultraslow} & -\/ if true\+: ultraslow is activated, if false\+: drive normal \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_robot_ac5de5d1b19a9e3dcc0308dca11158d1d}\label{class_robot_ac5de5d1b19a9e3dcc0308dca11158d1d}} 
+\index{Robot@{Robot}!setWarning@{setWarning}}
+\index{setWarning@{setWarning}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{setWarning()}{setWarning()}}
+{\footnotesize\ttfamily void Robot\+::set\+Warning (\begin{DoxyParamCaption}\item[{bool}]{warning\+State }\end{DoxyParamCaption})}
+
+Set an warning state and show it over an LED 
+\begin{DoxyParams}{Parameters}
+{\em warning\+State} & bool -\/ If warning, set true, if not set false \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{class_robot_abd4b5a0493fdf86e45fe3a027c8f059a}\label{class_robot_abd4b5a0493fdf86e45fe3a027c8f059a}} 
 \index{Robot@{Robot}!slowMotorStop@{slowMotorStop}}
 \index{slowMotorStop@{slowMotorStop}!Robot@{Robot}}
@@ -266,7 +341,16 @@ Store a running procedure code
 
 Stop the motors in a slow way (without a jerk) 
 
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_robot_ad717cc8ef4acd52743eca9b649f5d74e}\label{class_robot_ad717cc8ef4acd52743eca9b649f5d74e}} 
+\index{Robot@{Robot}!SW\_START@{SW\_START}}
+\index{SW\_START@{SW\_START}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{SW\_START}{SW\_START}}
+{\footnotesize\ttfamily Interrupt\+In$\ast$ Robot\+::\+SW\+\_\+\+START}
+
+
+
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Robot.\+h\item 
-Robot.\+cpp\end{DoxyCompactItemize}
+\mbox{\hyperlink{_robot_8h}{Robot.\+h}}\item 
+\mbox{\hyperlink{_robot_8cpp}{Robot.\+cpp}}\end{DoxyCompactItemize}
